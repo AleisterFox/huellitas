@@ -77,9 +77,10 @@
   </head>
 
   <body>
-
     <div class="whatsapp">
-      <a href="https://wa.link/gtiohk" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://wa.link/gtiohk" target="_blank"
+        ><i class="fab fa-whatsapp"></i
+      ></a>
     </div>
 
     <!-- <div class="loader__screen" id="loader">
@@ -101,138 +102,81 @@
     </div>
   </div> -->
 
-    <header>
-      <nav>
-        <a href="index.html">
-          <picture>
-            <source media="(max-width: 768px)" srcset="img/logo.jpg" />
-            <img src="img/logo.jpg" alt="" />
-          </picture>
-        </a>
-
-        <ul class="menu">
-          <li><a href="#us">Historia</a></li>
-          <li><a href="#services">Mascotas</a></li>
-          <li><a href="#faqs">Donaciones</a></li>
-          <li><a href="">Foster to adopt</a></li>
-          <li><a href="#contact" class="button">Contacto</a></li>
-          <li>
-            <a href="" target="_blank"><i class="far fa-bag-shopping"></i></a>
-          </li>
-        </ul>
-        <a><i class="fa-solid fa-bars menu__button"></i></a>
-      </nav>
-    </header>
+  <?php include 'elements/header.php' ?>
 
     <main>
-      <section id="portada-perritos">
-        <figure><img src="img/collie.jpg" alt=""></figure>
-        <h1>¡Descubre a tu próximo compañero!</h1>
-      </section>
-      <section id="perritos">
-        <div class="content">
-            <div class="filters">
-                <h3>Filtros</h3>
-                <form action="">
-                  <div class="dog-type">
-                    <label for="option1">Todos</label>
-                    <input type="checkbox" name="" id="option1" checked>
-                  </div>
-                  <div class="dog-type">
-                    <label for="option2">Mestizos</label>
-                    <input type="checkbox" name="" id="option2">
-                  </div>
-                  <div class="dog-type">
-                    <label for="option3">Chihuahuas</label>
-                    <input type="checkbox" name="" id="option3">
-                  </div>
-                </form>
-            </div>
-            <div class="perritos-container">
-                <a href="adoptar.html" class="doggy">
-                    <figure><img src="img/agata.jpg" alt=""></figure>
-                    <h4>agata</h4>
-                </a>
-                <a href="adoptar.html" class="doggy">
-                    <figure><img src="img/drako.jpg" alt=""></figure>
-                    <h4>drako</h4>
-                </a>
-                <a href="adoptar.html" class="doggy">
-                    <figure><img src="img/eros.jpg" alt=""></figure>
-                    <h4>eros</h4>
-                </a>
-                <a href="adoptar.html" class="doggy">
-                    <figure><img src="img/tony.jpg" alt=""></figure>
-                    <h4>tony</h4>
-                </a>
-                <a href="adoptar.html" class="doggy">
-                    <figure><img src="img/daisy.jpg" alt=""></figure>
-                    <h4>daisy</h4>
-                </a>
-            </div>
+      <section id="process">
+        <div class="steps">
+          <p class="active">Carrito<i class="fas fa-chevron-right"></i></p>
+          <p>Informacion<i class="fas fa-chevron-right"></i></p>
+          <p>Pago<i class="fas fa-chevron-right"></i></p>
+          <p>Envío</p>
         </div>
+        <div class="container">
+          <div class="left">
+            <div class="buying__cart">
+              <div class="top">
+                <h3>Tu carrito de compra</h3>
+                <p class="number__articles">1 Artículo</p>
+              </div>
 
-        <div class="donation-banner">
-            <figure><img src="img/perritos-vector.png" alt=""></figure>
-            <h2>¿Deseas apoyarnos en nuestra noble misión?</h2>
-            <a href="donaciones.html" class="button__secondary">Hacer Donativo</a>
+              <div class="product">
+                <i class="fas fa-x"></i>
+                <figure><img src="img/croquetas.jpg" alt="" /></figure>
+                <div class="product__information">
+                  <h3 class="product__name">Nombre del producto</h3>
+                  <p class="product__price">$ 0.00 MXN</p>
+                  <div class="input-group">
+                    <input type="number" value="0" name="Qty" id="Qty" />
+                    <button class="decrement">-</button>
+                    <button class="increment">+</button>
+                  </div>
+                </div>
+              </div>
+              <div class="total__bill">$ 0.00 MXN</div>
+              <a href="producto.php" class="back"><i class="fas fa-chevron-left"></i>Volver al producto</a>
+            </div>
+          </div>
+          <div class="right">
+            <div class="cart__total">
+              <h2>Total del carrito</h2>
+              <div class="subtotal">
+                <h4>Subtotal</h4>
+                <p class="subtotal__amount">$ 0.00 MXN</p>
+              </div>
+              <div class="total">
+                <h3>Total</h3>
+                <p class="total__amount">$ 0.00 MXN</p>
+              </div>
+              <a href="informacion.php" class="button">Finalizar Compra</a>
+              <div class="cart__bottom">
+                <p><i class="far fa-shield"></i>Compra segura</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </main>
 
-    <footer>
-      <div class="top">
-        <a href="#hero">
-          <figure>
-            <img src="img/logo.jpg" alt="" />
-          </figure>
-        </a>
-        <ul>
-          <li><a href="">Historia</a></li>
-          <li>
-            <a href="#us">Mascotas</a>
-            <ul>
-              <li><a href="">Mestizos</a></li>
-              <li><a href="">Chihuahuas</a></li>
-            </ul>
-          </li>
-          <li><a href="#services">Donaciones</a></li>
-          <li><a href="#faqs">Foster to adopt</a></li>
-          <li>
-            <a href="#contact" class="button">Contacto</a>
-            <div class="links">
-              <a href="tel: 3314148548" target="_blank"
-                ><i class="fas fa-phone"></i> 3314148548</a
-              >
-              <a href="mailto: roman@huellitasdiferentes.com" target="_blank"
-                ><i class="fas fa-envelope"></i>roman@huellitasdiferentes.com</a
-              >
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div class="middle">
-        <div class="socials">
-          <a href="" target="_blank"><i class="fab fa-facebook"></i></a>
-          <a href="" target="_blank"><i class="fab fa-instagram"></i></a>
-        </div>
-      </div>
-    </footer>
+    <?php include 'elements/footer.php' ?>
   </body>
   <script src="js/script.js"></script>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="js/loader.js"></script>
-  <script src="node_modules/@glidejs/glide/dist/glide.min.js"></script>
 
   <script>
-    var glide = new Glide("#hero-slider", {
-      type: "carousel",
-      perView: 1,
-      autoplay: 5000,
-      animationDuration: 2000,
-      animationTimingFunction: "ease-in-out",
+    const inputNumber = document.querySelector('input[type="number"]');
+    const incrementButton = document.querySelector(".increment");
+    const decrementButton = document.querySelector(".decrement");
+
+    incrementButton.addEventListener("click", function () {
+      inputNumber.stepUp();
     });
 
-    glide.mount();
+    decrementButton.addEventListener("click", function () {
+      if (inputNumber.value != 0) {
+        inputNumber.stepDown();
+      }
+    });
   </script>
 </html>

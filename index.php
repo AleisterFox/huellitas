@@ -101,28 +101,7 @@
     </div>
   </div> -->
 
-    <header>
-      <nav>
-        <a href="index.html">
-          <picture>
-            <source media="(max-width: 768px)" srcset="img/logo.jpg" />
-            <img src="img/logo.jpg" alt="" />
-          </picture>
-        </a>
-
-        <ul class="menu">
-          <li><a href="index.html">Historia</a></li>
-          <li><a href="perritos.html">Mascotas</a></li>
-          <li><a href="donaciones.html">Donaciones</a></li>
-          <li><a href="adopciones.html">Foster to adopt</a></li>
-          <li><a href="contacto.html" class="button">Contacto</a></li>
-          <li>
-            <a href="" target="_blank"><i class="far fa-bag-shopping"></i></a>
-          </li>
-        </ul>
-        <a><i class="fa-solid fa-bars menu__button"></i></a>
-      </nav>
-    </header>
+  <?php include 'elements/header.php' ?>
 
     <main>
       <section id="hero">
@@ -208,19 +187,19 @@
               <figure><img src="img/victor.jpg" alt=""></figure>
               <h4 class="title">Adopción de perritos</h4>
               <p>Ofrecemos servicios de adopción de mascotas, encuentra a tu compañero peludo perfecto</p>
-              <a href="perritos.html" class="button">Ver más <i class="fas fa-arrow-right"></i></a>
+              <a href="perritos.php" class="button">Ver más <i class="fas fa-arrow-right"></i></a>
             </div>
             <div class="service">
               <figure><img src="img/donativos.jpg" alt=""></figure>
               <h4 class="title">Hacer donativos</h4>
               <p>Tus donativos nos ayudan a seguir brindando cuidado y atención a los perritos en espera de un hogar amoroso.</p>
-              <a href="donaciones.html" class="button">Ver más <i class="fas fa-arrow-right"></i></a>
+              <a href="donaciones.php" class="button">Ver más <i class="fas fa-arrow-right"></i></a>
             </div>
             <div class="service">
               <figure><img src="img/cachorro.png" alt=""></figure>
               <h4 class="title">Foster to adopt</h4>
               <p>Nuestro programa de foster to adopt te permite brindar un hogar temporal a un perrito antes de adoptarlo de manera permanente.</p>
-              <a href="adopciones.html" class="button">Ver más <i class="fas fa-arrow-right"></i></a>
+              <a href="adopciones.php" class="button">Ver más <i class="fas fa-arrow-right"></i></a>
             </div>
           </div>
         </section>
@@ -229,8 +208,8 @@
           <figure><img src="img/dormidos.jpg" alt=""></figure>
           <h2>¡Descubre a tu próximo compañero!</h2>
           <div class="buttons">
-            <a href="perritos.html" class="button">Ver catálogo</a>
-            <a href="donaciones.html" class="button__secondary">Hacer Donativo</a>
+            <a href="perritos.php" class="button">Ver catálogo</a>
+            <a href="donaciones.php" class="button__secondary">Hacer Donativo</a>
           </div>
         </div>
 
@@ -274,61 +253,61 @@
                 <figure><img src="img/croquetas.jpg" alt=""></figure>
                 <h4>Nombre del producto</h4>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean fermentum non lorem vel ornare.</p>
-                <a href="producto.html">Ver producto &nbsp; <i class="fas fa-arrow-right"></i></a>
+                <a href="producto.php">Ver producto &nbsp; <i class="fas fa-arrow-right"></i></a>
               </div>
               <div class="product">
                 <figure><img src="img/croquetas.jpg" alt=""></figure>
                 <h4>Nombre del producto</h4>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean fermentum non lorem vel ornare.</p>
-                <a href="producto.html">Ver producto &nbsp; <i class="fas fa-arrow-right"></i></a>
+                <a href="producto.php">Ver producto &nbsp; <i class="fas fa-arrow-right"></i></a>
               </div>
               <div class="product">
                 <figure><img src="img/croquetas.jpg" alt=""></figure>
                 <h4>Nombre del producto</h4>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean fermentum non lorem vel ornare.</p>
-                <a href="producto.html">Ver producto &nbsp; <i class="fas fa-arrow-right"></i></a>
+                <a href="producto.php">Ver producto &nbsp; <i class="fas fa-arrow-right"></i></a>
               </div>
               <div class="product">
                 <figure><img src="img/croquetas.jpg" alt=""></figure>
                 <h4>Nombre del producto</h4>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean fermentum non lorem vel ornare.</p>
-                <a href="producto.html">Ver producto &nbsp; <i class="fas fa-arrow-right"></i></a>
+                <a href="producto.php">Ver producto &nbsp; <i class="fas fa-arrow-right"></i></a>
               </div>
               <div class="product">
                 <figure><img src="img/croquetas.jpg" alt=""></figure>
                 <h4>Nombre del producto</h4>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean fermentum non lorem vel ornare.</p>
-                <a href="producto.html">Ver producto &nbsp; <i class="fas fa-arrow-right"></i></a>
+                <a href="producto.php">Ver producto &nbsp; <i class="fas fa-arrow-right"></i></a>
               </div>
               <div class="product">
                 <figure><img src="img/croquetas.jpg" alt=""></figure>
                 <h4>Nombre del producto</h4>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean fermentum non lorem vel ornare.</p>
-                <a href="producto.html">Ver producto &nbsp; <i class="fas fa-arrow-right"></i></a>
+                <a href="producto.php">Ver producto &nbsp; <i class="fas fa-arrow-right"></i></a>
               </div>
               <div class="product">
                 <figure><img src="img/croquetas.jpg" alt=""></figure>
                 <h4>Nombre del producto</h4>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean fermentum non lorem vel ornare.</p>
-                <a href="producto.html">Ver producto &nbsp; <i class="fas fa-arrow-right"></i></a>
+                <a href="producto.php">Ver producto &nbsp; <i class="fas fa-arrow-right"></i></a>
               </div>
               <div class="product">
                 <figure><img src="img/croquetas.jpg" alt=""></figure>
                 <h4>Nombre del producto</h4>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean fermentum non lorem vel ornare.</p>
-                <a href="producto.html">Ver producto &nbsp; <i class="fas fa-arrow-right"></i></a>
+                <a href="producto.php">Ver producto &nbsp; <i class="fas fa-arrow-right"></i></a>
               </div>
               <div class="product">
                 <figure><img src="img/croquetas.jpg" alt=""></figure>
                 <h4>Nombre del producto</h4>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean fermentum non lorem vel ornare.</p>
-                <a href="producto.html">Ver producto &nbsp; <i class="fas fa-arrow-right"></i></a>
+                <a href="producto.php">Ver producto &nbsp; <i class="fas fa-arrow-right"></i></a>
               </div>
               <div class="product">
                 <figure><img src="img/croquetas.jpg" alt=""></figure>
                 <h4>Nombre del producto</h4>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean fermentum non lorem vel ornare.</p>
-                <a href="producto.html">Ver producto &nbsp; <i class="fas fa-arrow-right"></i></a>
+                <a href="producto.php">Ver producto &nbsp; <i class="fas fa-arrow-right"></i></a>
               </div>
             </div>
           </div>
@@ -372,44 +351,7 @@
       </section>
     </main>
 
-    <footer>
-      <div class="top">
-        <a href="#hero">
-          <figure>
-            <img src="img/logo.jpg" alt="" />
-          </figure>
-        </a>
-        <ul>
-          <li><a href="">Historia</a></li>
-          <li>
-            <a href="#us">Mascotas</a>
-            <ul>
-              <li><a href="">Mestizos</a></li>
-              <li><a href="">Chihuahuas</a></li>
-            </ul>
-          </li>
-          <li><a href="#services">Donaciones</a></li>
-          <li><a href="#faqs">Foster to adopt</a></li>
-          <li>
-            <a href="#contact" class="button">Contacto</a>
-            <div class="links">
-              <a href="tel: 3314148548" target="_blank"
-                ><i class="fas fa-phone"></i> 3314148548</a
-              >
-              <a href="mailto: roman@huellitasdiferentes.com" target="_blank"
-                ><i class="fas fa-envelope"></i>roman@huellitasdiferentes.com</a
-              >
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div class="middle">
-        <div class="socials">
-          <a href="" target="_blank"><i class="fab fa-facebook"></i></a>
-          <a href="" target="_blank"><i class="fab fa-instagram"></i></a>
-        </div>
-      </div>
-    </footer>
+    <?php include 'elements/footer.php' ?>
   </body>
   <script src="js/script.js"></script>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>

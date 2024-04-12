@@ -435,7 +435,7 @@ main {
 /* MAIN RAINBOW  */
 
 .main-rainbow {
-    background: linear-gradient(180deg, #FFC452 0%, #65A564 29%, #6385DB 50%, #F23434 100%);
+    background: url('../img/huellas-banner.png') repeat-y, linear-gradient(180deg, #FFC452 0%, #65A564 29%, #6385DB 50%, #F23434 100%);
     margin-top: -10rem;
     padding-top: 20rem;
     /* min-height: 300vh; */
@@ -567,7 +567,7 @@ main {
 
 #perritos .content {
     padding-top: 10rem;
-    background: linear-gradient(180deg, #F25937 0%, #F5F938 34%, #32EE44 63.5%, #38DFF5 93.5%);
+    background: url('../img/huellas-banner.png') repeat-y, linear-gradient(180deg, #F25937 0%, #F5F938 34%, #32EE44 63.5%, #38DFF5 93.5%);
     padding-bottom: 25rem;
 }
 
@@ -580,6 +580,17 @@ main {
     z-index: 1;
     min-height: 50rem;
     padding: var(--padding);
+}
+
+.donation-banner::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: url('../img/huellas-banner.png') repeat-y;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
 }
 
 .donation-banner h2 {
@@ -597,7 +608,7 @@ main {
     position: absolute;
     top: 0;
     left: 0;
-    z-index: -1;
+    z-index: -2;
 }
 
 
@@ -1141,7 +1152,7 @@ footer .bottom img {
     display: flex;
     flex-wrap: wrap;
     gap: 3rem;
-    row-gap: 15rem;
+    row-gap: 20rem;
     padding-top: 10rem;
     /* height: 75rem; */
     padding-bottom: 15rem;
@@ -1160,7 +1171,9 @@ footer .bottom img {
 
 #mascota .container .right div {
     display: flex;
+    flex-wrap: wrap;
     column-gap: 0.5rem;
+    row-gap: 1rem;
     margin: 1rem 0;
 }
 
@@ -1219,6 +1232,7 @@ footer .bottom img {
 #mascota #pet-slider .glide__bullet {
     width: 15rem !important;
     height: 15rem !important;
+    aspect-ratio: 1 !important;
     border-radius: 0.5rem !important;
     overflow: hidden;
     border-color: black !important;
@@ -1854,6 +1868,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .cart__modal--container {
     background-color: white;
     width: 50rem;
+    max-width: 100%;
     padding: 3rem 4rem;
     border-radius: 1rem;
     margin-left: auto;
@@ -1974,7 +1989,7 @@ input[type="number"]::-webkit-outer-spin-button {
     header .menu {
         position: absolute;
         top: 100%;
-        background-color: rgba(0, 0, 0, 0.7);
+        background-color: white;
         width: 100vw;
         left: -2rem;
         display: flex;
@@ -1999,7 +2014,7 @@ input[type="number"]::-webkit-outer-spin-button {
     header nav .menu__button {
         display: block;
         font-size: 3rem;
-        color: white;
+        color: var(--green);
         transition: all 0.5s ease-in-out;
         margin-right: 2rem;
     }
@@ -2044,8 +2059,48 @@ input[type="number"]::-webkit-outer-spin-button {
         font-size: 1.8rem;
     }
 
+    #hero .dog__counter {
+        top: 11rem;
+    }
+
+    #hero .glide__slide {
+        padding-top: 12rem;
+    }
+
+    .banner .huellas, .banner .vector {
+        width: 100%;
+        height: 100%;
+    }
+
     h2 {
         font-size: 4rem !important;
+    }
+
+    .cta-banner .buttons {
+        flex-wrap: wrap;
+        row-gap: 2rem;
+    }
+
+    #mascota .container, #mascota{
+        padding-bottom: 5rem;
+    }
+
+    #products .filters, #perritos .filters {
+        flex-grow: 1;
+        position: static;
+    }
+
+    .close__modal {
+        top: 0;
+        left: 0;
+    }
+
+    #products .product {
+        flex-grow: 1;
+    }
+
+    #alianzas p {
+        margin-bottom: 5rem;
     }
 
     #formation {
@@ -2060,6 +2115,10 @@ input[type="number"]::-webkit-outer-spin-button {
 
     #experience .container .left {
         flex-basis: auto;
+    }
+
+    #mascota #pet-slider .glide__bullet {
+        height: 9rem !important;
     }
 
     #interviews .video {

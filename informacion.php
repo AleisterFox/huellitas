@@ -102,35 +102,14 @@
     </div>
   </div> -->
 
-    <header>
-      <nav>
-        <a href="index.html">
-          <picture>
-            <source media="(max-width: 768px)" srcset="img/logo.jpg" />
-            <img src="img/logo.jpg" alt="" />
-          </picture>
-        </a>
-
-        <ul class="menu">
-          <li><a href="index.html">Historia</a></li>
-          <li><a href="perritos.html">Mascotas</a></li>
-          <li><a href="donaciones.html">Donaciones</a></li>
-          <li><a href="adopciones.html">Foster to adopt</a></li>
-          <li><a href="contacto.html" class="button">Contacto</a></li>
-          <li>
-            <a href="" target="_blank"><i class="far fa-bag-shopping"></i></a>
-          </li>
-        </ul>
-        <a><i class="fa-solid fa-bars menu__button"></i></a>
-      </nav>
-    </header>
+  <?php include 'elements/header.php' ?>
 
     <main>
       <section id="process">
         <div class="steps">
           <p>Carrito<i class="fas fa-chevron-right"></i></p>
-          <p>Informacion<i class="fas fa-chevron-right"></i></p>
-          <p class="active">Pago<i class="fas fa-chevron-right"></i></p>
+          <p class="active">Informacion<i class="fas fa-chevron-right"></i></p>
+          <p>Pago<i class="fas fa-chevron-right"></i></p>
           <p>Envío</p>
         </div>
         <div class="container">
@@ -139,62 +118,69 @@
               <div class="top">
                 <h3>Información</h3>
               </div>
-              <div class="customer__info">
-                <p class="customer__name">
-                  <strong>Nombre de la persona</strong>
-                </p>
-                <p class="customer__address">Información de la dirección</p>
-                <p class="customer__state">Estado</p>
-                <p class="customer__city">Ciudad</p>
-                <a href="">Cambiar</a>
-              </div>
-            </div>
-            <div class="buying__cart">
-              <div class="top">
-                <h3>Selecciona método de pago</h3>
-              </div>
 
-              <div class="payment">
-                <p>En Mercado Pago no es necesario crear una cuenta.</p>
+              <div class="customer__info">
                 <form action="">
-                  <div class="payment__method">
-                    <div class="option">
-                      <input type="radio" name="payment" id="mercado" />
-                      <label for="mercado">Mercado Pago</label>
-                    </div>
-                    <div class="logos">
-                        <figure><img src="img/mercado.png" alt=""></figure>
-                        <figure><img src="img/visa.png" alt=""></figure>
-                        <figure><img src="img/master.png" alt=""></figure>
-                        <figure><img src="img/amex.png" alt=""></figure>
-                      </div>
-                  </div>
-                  <div class="payment__method">
-                    <div class="option">
-                      <input type="radio" name="payment" id="paypal" />
-                      <label for="paypal">Paypal</label>
-                    </div>
-                    <div class="logos">
-                      <figure><img src="img/paypal.png" alt=""></figure>
-                    </div>
-                  </div>
-                  <div class="payment__method">
-                    <div class="option">
-                      <input type="radio" name="payment" id="transferencia" />
-                      <label for="transferencia">Transferencia electrónica referenciada</label>
-                    </div>
-                    <div class="logos">
-                      <figure><img src="img/spei.png" alt=""></figure>
-                    </div>
-                  </div>
+                  <input
+                    type="text"
+                    name="name"
+                    id="name"
+                    placeholder="Nombre"
+                    required
+                  />
+                  <input
+                    type="text"
+                    name="lastname"
+                    id="lastname"
+                    placeholder="Apellido"
+                    required
+                  />
+                  <input
+                    type="tel"
+                    name="phone"
+                    id="phone"
+                    placeholder="Teléfono"
+                    required
+                  />
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    placeholder="Email"
+                    required
+                  />
+                  <input
+                    type="text"
+                    name="address"
+                    id="address"
+                    placeholder="Dirección (Incluyendo colonia, número, piso, etc.)"
+                    required
+                  />
+                  <select name="state" id="state">
+                    <option value="javascript:void(0);">Estado</option>
+                  </select>
+                  <input
+                    type="text"
+                    name="city"
+                    id="city"
+                    placeholder="Ciudad"
+                    required
+                  />
+                  <input
+                    type="number"
+                    name="postalCode"
+                    id="postalCode"
+                    placeholder="Código Postal"
+                    required
+                  />
                 </form>
               </div>
 
               <div class="bottom">
-                <a href="informacion.html" class="back"
+                <a href="carrito.php" class="back"
                   ><i class="fas fa-chevron-left"></i>Volver al producto</a
                 >
-                <a href="envio.html" class="button">Continuar</a>
+                <a href="pago.php" class="button">Continuar</a>
               </div>
             </div>
           </div>
@@ -203,15 +189,15 @@
               <h2>Total del carrito</h2>
               <div class="subtotal">
                 <p>Subtotal</p>
-                <p class="subtotal__amount">$ 0.00MXN</p>
+                <p class="subtotal__amount">$ 0.00 MXN</p>
               </div>
               <div class="gastos__envio">
                 <p>Calculando gastos de envío</p>
-                <p class="subtotal__amount">$ 0.00MXN</p>
+                <p class="subtotal__amount">$ 0.00 MXN</p>
               </div>
               <div class="total">
                 <h3>Total</h3>
-                <p class="total__amount">$ 0.00MXN</p>
+                <p class="total__amount">$ 0.00 MXN</p>
               </div>
             </div>
           </div>
@@ -219,46 +205,55 @@
       </section>
     </main>
 
-    <footer>
-      <div class="top">
-        <a href="#hero">
-          <figure>
-            <img src="img/logo.jpg" alt="" />
-          </figure>
-        </a>
-        <ul>
-          <li><a href="">Historia</a></li>
-          <li>
-            <a href="#us">Mascotas</a>
-            <ul>
-              <li><a href="">Mestizos</a></li>
-              <li><a href="">Chihuahuas</a></li>
-            </ul>
-          </li>
-          <li><a href="#services">Donaciones</a></li>
-          <li><a href="#faqs">Foster to adopt</a></li>
-          <li>
-            <a href="#contact" class="button">Contacto</a>
-            <div class="links">
-              <a href="tel: 3314148548" target="_blank"
-                ><i class="fas fa-phone"></i> 3314148548</a
-              >
-              <a href="mailto: roman@huellitasdiferentes.com" target="_blank"
-                ><i class="fas fa-envelope"></i>roman@huellitasdiferentes.com</a
-              >
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div class="middle">
-        <div class="socials">
-          <a href="" target="_blank"><i class="fab fa-facebook"></i></a>
-          <a href="" target="_blank"><i class="fab fa-instagram"></i></a>
-        </div>
-      </div>
-    </footer>
+    <?php include 'elements/footer.php' ?>
   </body>
   <script src="js/script.js"></script>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="js/loader.js"></script>
+
+  <script>
+    const estadosMexicanos = [
+      "Aguascalientes",
+      "Baja California",
+      "Baja California Sur",
+      "Campeche",
+      "Chiapas",
+      "Chihuahua",
+      "Coahuila",
+      "Colima",
+      "Ciudad de México",
+      "Durango",
+      "Guanajuato",
+      "Guerrero",
+      "Hidalgo",
+      "Jalisco",
+      "Estado de México",
+      "Michoacán",
+      "Morelos",
+      "Nayarit",
+      "Nuevo León",
+      "Oaxaca",
+      "Puebla",
+      "Querétaro",
+      "Quintana Roo",
+      "San Luis Potosí",
+      "Sinaloa",
+      "Sonora",
+      "Tabasco",
+      "Tamaulipas",
+      "Tlaxcala",
+      "Veracruz",
+      "Yucatán",
+      "Zacatecas",
+    ];
+
+    const select = document.getElementById("state");
+
+    estadosMexicanos.forEach((estadoMexicano, index) => {
+      const option = document.createElement("option");
+      option.text = estadoMexicano;
+      option.value = index + 1;
+      select.add(option);
+    });
+  </script>
 </html>

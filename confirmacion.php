@@ -77,9 +77,10 @@
   </head>
 
   <body>
-
     <div class="whatsapp">
-      <a href="https://wa.link/gtiohk" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://wa.link/gtiohk" target="_blank"
+        ><i class="fab fa-whatsapp"></i
+      ></a>
     </div>
 
     <!-- <div class="loader__screen" id="loader">
@@ -101,110 +102,57 @@
     </div>
   </div> -->
 
-    <header>
-      <nav>
-        <a href="index.html">
-          <picture>
-            <source media="(max-width: 768px)" srcset="img/logo.jpg" />
-            <img src="img/logo.jpg" alt="" />
-          </picture>
-        </a>
-
-        <ul class="menu">
-          <li><a href="#us">Historia</a></li>
-          <li><a href="#services">Mascotas</a></li>
-          <li><a href="#faqs">Donaciones</a></li>
-          <li><a href="">Foster to adopt</a></li>
-          <li><a href="#contact" class="button">Contacto</a></li>
-          <li>
-            <a href="" target="_blank"><i class="far fa-bag-shopping"></i></a>
-          </li>
-        </ul>
-        <a><i class="fa-solid fa-bars menu__button"></i></a>
-      </nav>
-    </header>
+    <?php include 'elements/header.php' ?>
 
     <main>
-      <section id="portada-donaciones">
-        <figure><img src="img/donativos.jpg" alt=""></figure>
-        <h1>Donativos</h1>
-      </section>
-      <section id="donativos">
-        <figure><img src="img/donativos-vector.png" alt=""></figure>
+      <section id="process">
+        <div class="steps">
+          <!-- <p>Carrito<i class="fas fa-chevron-right"></i></p>
+          <p>Informacion<i class="fas fa-chevron-right"></i></p>
+          <p class="active">Pago<i class="fas fa-chevron-right"></i></p>
+          <p>Envío</p> -->
+        </div>
         <div class="container">
-            <h2>Hacer un donativo a Huellitas Diferentes</h2>
-            <p>Actos de generosidad y compromiso como el que estás a punto de realizar, permiten que podamos seguir desarrollando nuestra labor, por lo cual te estamos muy agradecidos. De esta forma, tu aportación económica se convierte en acción directa para la protección de animales en situación de peligro.</p>
-            <br>
-            <h2>¿Cómo donar?</h2>
-            <p>Para facilitar las donaciones hemos habiltado varios canales por el que nos puedes hacer llegar tu donación. Elige el que mejor te venga.</p>
-            <details>
-                <summary>Transferencia</summary>
-                <p>0123456789</p>
-            </details>
-            <details>
-                <summary>Paypal</summary>
-                <p>Paypal account</p>
-            </details>
-            <br>
-            <h2>¿Tienes preguntas?</h2>
-            <p>Si tienes preguntas puedes llamarnos al <strong><a href="tel:3314148548">3314148548</a></strong> También puedes enviar un correo a <strong><a href="mailto:roman@huellitasdiferentes.com">roman@huellitasdiferentes.com</a></strong></p>
+          <div class="left">
+            <div class="buying__cart">
+              <div class="top">
+                <h3> <span><i class="fas fa-check"></i></span> Pedido realizado con éxito</h3>
+              </div>
+              <div class="confirmation__info">
+                <p>Se enviará la confirmación a tu email.</p>
+                <p><strong>Enviando a Nombre de la persona,</strong> Datos y direccion de envío.</p>
+                <p><strong>Fecha aprox de entrega:</strong>Fecha de entrega estimada</p>
+              </div>
+              <div class="bottom conf">
+                <a href="index.php#products" class="button">Continuar comprando</a>
+              </div>
+            </div>
+            
+          </div>
+          <div class="right">
+            <div class="cart__total">
+              <h2>Total del carrito</h2>
+              <div class="subtotal">
+                <p>Subtotal</p>
+                <p class="subtotal__amount">$ 0.00MXN</p>
+              </div>
+              <div class="gastos__envio">
+                <p>Calculando gastos de envío</p>
+                <p class="subtotal__amount">$ 0.00MXN</p>
+              </div>
+              <div class="total">
+                <h3>Total</h3>
+                <p class="total__amount">$ 0.00MXN</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </main>
 
-    <footer>
-      <div class="top">
-        <a href="#hero">
-          <figure>
-            <img src="img/logo.jpg" alt="" />
-          </figure>
-        </a>
-        <ul>
-          <li><a href="">Historia</a></li>
-          <li>
-            <a href="#us">Mascotas</a>
-            <ul>
-              <li><a href="">Mestizos</a></li>
-              <li><a href="">Chihuahuas</a></li>
-            </ul>
-          </li>
-          <li><a href="#services">Donaciones</a></li>
-          <li><a href="#faqs">Foster to adopt</a></li>
-          <li>
-            <a href="#contact" class="button">Contacto</a>
-            <div class="links">
-              <a href="tel: 3314148548" target="_blank"
-                ><i class="fas fa-phone"></i> 3314148548</a
-              >
-              <a href="mailto: roman@huellitasdiferentes.com" target="_blank"
-                ><i class="fas fa-envelope"></i>roman@huellitasdiferentes.com</a
-              >
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div class="middle">
-        <div class="socials">
-          <a href="" target="_blank"><i class="fab fa-facebook"></i></a>
-          <a href="" target="_blank"><i class="fab fa-instagram"></i></a>
-        </div>
-      </div>
-    </footer>
+    <?php include 'elements/footer.php' ?>
   </body>
   <script src="js/script.js"></script>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="js/loader.js"></script>
-  <script src="node_modules/@glidejs/glide/dist/glide.min.js"></script>
-
-  <script>
-    var glide = new Glide("#hero-slider", {
-      type: "carousel",
-      perView: 1,
-      autoplay: 5000,
-      animationDuration: 2000,
-      animationTimingFunction: "ease-in-out",
-    });
-
-    glide.mount();
-  </script>
 </html>

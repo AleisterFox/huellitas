@@ -101,28 +101,7 @@
     </div>
   </div> -->
 
-    <header>
-      <nav>
-        <a href="index.html">
-          <picture>
-            <source media="(max-width: 768px)" srcset="img/logo.jpg" />
-            <img src="img/logo.jpg" alt="" />
-          </picture>
-        </a>
-
-        <ul class="menu">
-          <li><a href="#us">Historia</a></li>
-          <li><a href="#services">Mascotas</a></li>
-          <li><a href="#faqs">Donaciones</a></li>
-          <li><a href="">Foster to adopt</a></li>
-          <li><a href="#contact" class="button">Contacto</a></li>
-          <li>
-            <a href="" target="_blank"><i class="far fa-bag-shopping"></i></a>
-          </li>
-        </ul>
-        <a><i class="fa-solid fa-bars menu__button"></i></a>
-      </nav>
-    </header>
+    <?php include 'elements/header.php' ?>
 
     <main>
       <section id="portada-donaciones">
@@ -179,8 +158,8 @@
               <figure><img src="img/dormidos.jpg" alt=""></figure>
               <h2>¡Descubre a tu próximo compañero!</h2>
               <div class="buttons">
-                <a href="perritos.html" class="button">Ver catálogo</a>
-                <a href="donaciones.html" class="button__secondary">Hacer Donativo</a>
+                <a href="perritos.php" class="button">Ver catálogo</a>
+                <a href="donaciones.php" class="button__secondary">Hacer Donativo</a>
               </div>
             </div>
 
@@ -195,44 +174,7 @@
       </div>
     </main>
 
-    <footer>
-      <div class="top">
-        <a href="#hero">
-          <figure>
-            <img src="img/logo.jpg" alt="" />
-          </figure>
-        </a>
-        <ul>
-          <li><a href="">Historia</a></li>
-          <li>
-            <a href="#us">Mascotas</a>
-            <ul>
-              <li><a href="">Mestizos</a></li>
-              <li><a href="">Chihuahuas</a></li>
-            </ul>
-          </li>
-          <li><a href="#services">Donaciones</a></li>
-          <li><a href="#faqs">Foster to adopt</a></li>
-          <li>
-            <a href="#contact" class="button">Contacto</a>
-            <div class="links">
-              <a href="tel: 3314148548" target="_blank"
-                ><i class="fas fa-phone"></i> 3314148548</a
-              >
-              <a href="mailto: roman@huellitasdiferentes.com" target="_blank"
-                ><i class="fas fa-envelope"></i>roman@huellitasdiferentes.com</a
-              >
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div class="middle">
-        <div class="socials">
-          <a href="" target="_blank"><i class="fab fa-facebook"></i></a>
-          <a href="" target="_blank"><i class="fab fa-instagram"></i></a>
-        </div>
-      </div>
-    </footer>
+    <?php include 'elements/footer.php' ?>
   </body>
   <script src="js/script.js"></script>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
