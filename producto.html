@@ -183,11 +183,46 @@
             </div>
             <div class="buttons">
               <a href="carrito.html" class="button">Comprar</a>
-              <a href="javascript:void(0);" class="button">Agregar al carrito</a>
+              <a href="javascript:void(0);" class="button add__product"
+                >Agregar al carrito</a
+              >
             </div>
           </div>
         </div>
       </section>
+      <div class="cart__modal cart__modal--active">
+        <div class="cart__modal--container">
+          <div class="close__modal">
+            <i class="fas fa-x"></i>
+          </div>
+          <h2>Carrito de compra</h2>
+          <div class="products">
+            <div class="product">
+              <div class="product__info">
+                <i class="fas fa-x delete__product"></i>
+                <figure><img src="img/croquetas.jpg" alt="" /></figure>
+                <p class="product__name">Nombre del producto</p>
+              </div>
+              <p class="product__price">$ 0.00 MXN</p>
+            </div>
+          </div>
+          <div class="subtotal">
+            <h4>Subtotal</h4>
+            <p class="subtotal__amount">$ 0.00 MXN</p>
+          </div>
+          <div class="total">
+            <h3>Total</h3>
+            <p class="total__amount">$ 0.00 MXN</p>
+          </div>
+          <a href="informacion.html" class="button">Finalizar Compra</a>
+          <div class="cart__bottom">
+            <a href="javascript:void(0)" class="keep__buying"
+              >Seguir comprando</a
+            >
+            <p><i class="far fa-shield"></i>Compra segura</p>
+          </div>
+        </div>
+      </div>
     </main>
 
     <footer>
@@ -233,7 +268,7 @@
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="js/loader.js"></script>
   <script src="node_modules/@glidejs/glide/dist/glide.min.js"></script>
-
+  <script src="js/cartModal.js"></script>
   <script>
     var glide = new Glide("#pet-slider", {
       type: "carousel",
