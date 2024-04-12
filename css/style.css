@@ -1553,11 +1553,12 @@ input[type="number"]::-webkit-outer-spin-button {
 
 #process .container .left {
     flex-basis: 40rem;
-    flex-grow: 1;
+    flex-grow: 3;
 }
 
 #process .container .right {
     flex-basis: 40rem;
+    flex-grow: 1;
 }
 
 .steps {
@@ -1609,6 +1610,13 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .cart__total h3 {
     font-size: 2.2rem;
+}
+
+.gastos__envio {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    justify-content: space-between;
 }
 
 .buying__cart {
@@ -1688,6 +1696,42 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .back i {
     margin-right: 1rem;
+}
+
+.buying__cart .bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+#process .buying__cart .bottom .button {
+    width: 50%;
+}
+
+.customer__info form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.customer__info input, .customer__info select {
+    border-radius: 1rem;
+    height: 5rem;
+    flex-basis: 30rem;
+    flex-grow: 1;
+    border: 1px solid rgb(217, 217, 217);
+    text-align: left;
+    text-indent: 1rem;
+    padding: 0;
+    font-size: 1.6rem;
+    color: rgb(135, 135, 135);
+    outline: none;
+}
+
+.customer__info input::placeholder {
+    font-size: 1.6rem;
 }
 
 /* BUY PROCESS  */
