@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Animation</title>
+    <style>
+      #text {
+        font-size: 24px;
+        color: rgba(135, 135, 135, 1);
+        transition: color 1s;
+      }
+    </style>
+  </head>
+  <body>
+    <p id="text">Texto con animación de color</p>
+    <script>
+      const text = document.getElementById("text");
+
+      let colorArray = [
+        "black",
+        "black",
+        "black",
+        "black",
+        "black",
+        "black",
+        "black",
+        "black",
+        "black",
+        "black",
+      ];
+      let index = 0;
+
+      setInterval(() => {
+        colorArray[index] = "rgba(135, 135, 135, 1)";
+        text.style.color = colorArray.join(" ");
+        index++;
+        if (index >= colorArray.length) {
+          index = 0;
+        }
+      }, 100);
+    </script>
+  </body>
+</html>
