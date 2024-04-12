@@ -1793,6 +1793,11 @@ input[type="number"]::-webkit-outer-spin-button {
     min-width: 2rem;
 }
 
+.total__payment {
+    font-weight: 600;
+    color: var(--green);
+}
+
 /* BUY PROCESS  */
 
 .cart__modal {
