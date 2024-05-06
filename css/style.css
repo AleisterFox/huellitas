@@ -195,7 +195,11 @@ header nav .menu__button {
 
 header figure, header picture {
     display: block;
-    height: 10rem;
+    height: 9rem;
+}
+
+header figure img, header picture img {
+    object-fit: contain;
 }
 
 header .menu {
@@ -257,10 +261,30 @@ header .menu {
     width: fit-content;
 }
 
+.menu li:last-child {
+    position: relative;
+}
+
 .menu li:last-child>a {
     font-size: 2.4rem;
     margin: 0rem 0.5rem;
     color: black;
+}
+
+.menu .number__of--articles {
+    background-color: red;
+    color: white !important;
+    border-radius: 10rem;
+    min-width: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem !important;
+    position: absolute;
+    top: calc(50% + 0.5rem);
+    right: 0;
+
 }
 
 .menu .button__secondary {
@@ -431,12 +455,11 @@ main {
     font-size: 2rem;
 }
 
-
 /* MAIN RAINBOW  */
 
 .main-rainbow {
     background: url('../img/huellas-banner.png') repeat-y, linear-gradient(180deg, #FFC452 0%, #65A564 29%, #6385DB 50%, #F23434 100%);
-    margin-top: -10rem;
+    margin-top: -17rem;
     padding-top: 20rem;
     /* min-height: 300vh; */
 }
@@ -1977,6 +2000,13 @@ input[type="number"]::-webkit-outer-spin-button {
 .product__info .delete__product {
     font-size: 1.6rem;
     cursor: pointer;
+}
+
+@media screen and (max-width: 1380px) {
+    #products .products-container, #perritos .perritos-container {
+        flex-basis: 75rem;
+        margin-left: auto;
+    }
 }
 
 @media screen and (max-width: 769px) {

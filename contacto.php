@@ -1,89 +1,47 @@
 <!DOCTYPE html>
 <html lang="es" xml:lang="es" style="overflow-x: visible">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="author" content="Molcajete" />
-    <meta
-      name="description"
-      content="Cardiología clínica.
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Molcajete" />
+  <meta name="description" content="Cardiología clínica.
     Subespecialista formado en centro médico nacional Siglo XXI Ciudad de México.
     Diagnostico y tratamiento de las enfermedades Cardiovasculares (insuficiencia cardiaca, arritmias, bradicardia, taquicardia, bloqueo auriculoventricular, cardiopatía isquémica aguda o crónica, miocardiopatías, enfermedades del pericardio, Hipertensión arterial sistémica, estenosis carotidea, Enfermedad valvular cardiaca, entre otros).
-    Diagnostico especializado con herramientas diagnosticas como ecocardiograma, monitoreo Holter, monitoreo ambulatorio de la presión arterial, Prueba de esfuerzo."
-    />
+    Diagnostico especializado con herramientas diagnosticas como ecocardiograma, monitoreo Holter, monitoreo ambulatorio de la presión arterial, Prueba de esfuerzo." />
 
-    <meta
-      name="Keywords"
-      content="Doctor, Bulmaro Irving Padilla Gomez, salud, cardiología, cardiologo, internista, especialidad, científico, investigación, Puerto Vallarta, México"
-    />
+  <meta name="Keywords" content="Doctor, Bulmaro Irving Padilla Gomez, salud, cardiología, cardiologo, internista, especialidad, científico, investigación, Puerto Vallarta, México" />
 
-    <meta name="robots" content="all" />
-    <meta property="og:title" content="Dr. Bulmaro Irving Padilla Gomez" />
-    <meta
-      property="og:description"
-      content="Cardiología clínica.
+  <meta name="robots" content="all" />
+  <meta property="og:title" content="Dr. Bulmaro Irving Padilla Gomez" />
+  <meta property="og:description" content="Cardiología clínica.
     Subespecialista formado en centro médico nacional Siglo XXI Ciudad de México.
     Diagnostico y tratamiento de las enfermedades Cardiovasculares (insuficiencia cardiaca, arritmias, bradicardia, taquicardia, bloqueo auriculoventricular, cardiopatía isquémica aguda o crónica, miocardiopatías, enfermedades del pericardio, Hipertensión arterial sistémica, estenosis carotidea, Enfermedad valvular cardiaca, entre otros).
-    Diagnostico especializado con herramientas diagnosticas como ecocardiograma, monitoreo Holter, monitoreo ambulatorio de la presión arterial, Prueba de esfuerzo."
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="" />
-    <meta property="og:image" content="../img/imagen.png" />
-    <meta property="og:image:width" content="300" />
-    <meta property="og:image:height" content="300" />
-    <meta property="og:site_name" content="Dr. Bulmaro Irving Padilla Gomez" />
-    <meta name="msapplication-TileColor" content="rgb(16, 48, 55)" />
-    <meta name="theme-color" content="rgb(16, 48, 55)" />
+    Diagnostico especializado con herramientas diagnosticas como ecocardiograma, monitoreo Holter, monitoreo ambulatorio de la presión arterial, Prueba de esfuerzo." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="" />
+  <meta property="og:image" content="../img/imagen.png" />
+  <meta property="og:image:width" content="300" />
+  <meta property="og:image:height" content="300" />
+  <meta property="og:site_name" content="Dr. Bulmaro Irving Padilla Gomez" />
+  <meta name="msapplication-TileColor" content="rgb(16, 48, 55)" />
+  <meta name="theme-color" content="rgb(16, 48, 55)" />
 
-    <link
-      href="https://cdn.jsdelivr.net/gh/eliyantosarage/font-awesome-pro@main/fontawesome-pro-6.5.1-web/css/all.min.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/animate.css" />
-    <link
-      rel="shortcut icon"
-      href="img/icon.png"
-      type="image/x-icon"
-      media="(prefers-color-scheme: light)"
-    />
-    <link
-      rel="shortcut icon"
-      href="img/icon.png"
-      type="image/x-icon"
-      media="(prefers-color-scheme: dark)"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="node_modules/@glidejs/glide/dist/css/glide.core.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="node_modules/@glidejs/glide/dist/css/glide.theme.min.css"
-    />
-    <link rel="stylesheet" href="css/loader.css" />
+  <?php include 'elements/estilos.php'?>
 
-    <script src="js/wow.min.js"></script>
-    <script>
-      new WOW().init();
-    </script>
-    <title>Huellitas diferentes</title>
-  </head>
+  <script src="js/wow.min.js"></script>
+  <script>
+    new WOW().init();
+  </script>
+  <title>Huellitas diferentes</title>
+</head>
 
-  <body>
-    <div class="whatsapp">
-      <a href="https://wa.link/gtiohk" target="_blank"
-        ><i class="fab fa-whatsapp"></i
-      ></a>
-    </div>
+<body>
+  <div class="whatsapp">
+    <a href="https://wa.link/gtiohk" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  </div>
 
-    <!-- <div class="loader__screen" id="loader">
+  <!-- <div class="loader__screen" id="loader">
     <div id="wifi-loader">
       <svg class="circle-outer" viewBox="0 0 86 86">
         <circle class="back" cx="43" cy="43" r="40"></circle>
@@ -102,72 +60,50 @@
     </div>
   </div> -->
 
-    <?php include 'elements/header.php' ?>
+  <?php include 'elements/header.php' ?>
 
-    <main>
-      <div class="success-modal">
-        <div class="check"><i class="fas fa-check"></i></div>
-        <p>Enviado con éxito.</p>
-        <p>En breve nos pondremos en contacto con usted.</p>
-        <a href="javascript:void(0)" class="button close-success-modal">Cerrar</a>
-      </div>
+  <main>
+    <div class="success-modal">
+      <div class="check"><i class="fas fa-check"></i></div>
+      <p>Enviado con éxito.</p>
+      <p>En breve nos pondremos en contacto con usted.</p>
+      <a href="javascript:void(0)" class="button close-success-modal">Cerrar</a>
+    </div>
 
-      <section id="contact-page">
-        <figure>
-          <img src="img/contact.jpg" alt="" />
-        </figure>
-        <section id="contact">
-          <div class="container">
-            <div class="left">
-              <h2>Contacto</h2>
-              <a href="tel:3314148548"
-                ><i class="fas fa-phone"></i> &nbsp; 3314148548</a
-              >
-              <a href="mailto:roman@huellitasdiferentes.com"
-                ><i class="fas fa-envelope"></i
-                >&nbsp;roman@huellitasdiferentes.com</a
-              >
-              <div class="socials">
-                <a href=""><i class="fab fa-instagram"></i></a>
-                <a href=""><i class="fab fa-facebook"></i></a>
-              </div>
-            </div>
-            <div class="right">
-              <form action="">
-                <input
-                  type="text"
-                  name="name"
-                  id="name"
-                  placeholder="Nombre*"
-                  required
-                />
-                <input type="tel" name="phone" id="phone" placeholder="Tel." />
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  placeholder="Email*"
-                  required
-                />
-                <textarea
-                  name="message"
-                  id="message"
-                  cols="30"
-                  rows="10"
-                  placeholder="Mensaje"
-                ></textarea>
-                <button type="submit" class="button">Enviar</button>
-              </form>
+    <section id="contact-page">
+      <figure>
+        <img src="img/contact.jpg" alt="" />
+      </figure>
+      <section id="contact">
+        <div class="container">
+          <div class="left">
+            <h2>Contacto</h2>
+            <a href="tel:3314148548"><i class="fas fa-phone"></i> &nbsp; 3314148548</a>
+            <a href="mailto:roman@huellitasdiferentes.com"><i class="fas fa-envelope"></i>&nbsp;roman@huellitasdiferentes.com</a>
+            <div class="socials">
+              <a href=""><i class="fab fa-instagram"></i></a>
+              <a href=""><i class="fab fa-facebook"></i></a>
             </div>
           </div>
-        </section>
+          <div class="right">
+            <form action="">
+              <input type="text" name="name" id="name" placeholder="Nombre*" required />
+              <input type="tel" name="phone" id="phone" placeholder="Tel." />
+              <input type="email" name="email" id="email" placeholder="Email*" required />
+              <textarea name="message" id="message" cols="30" rows="10" placeholder="Mensaje"></textarea>
+              <button type="submit" class="button">Enviar</button>
+            </form>
+          </div>
+        </div>
       </section>
-    </main>
+    </section>
+  </main>
 
-    <?php include 'elements/footer.php' ?>
-  </body>
-  <script src="js/script.js"></script>
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <script src="js/loader.js"></script>
-  <script src="node_modules/@glidejs/glide/dist/glide.min.js"></script>
+  <?php include 'elements/footer.php' ?>
+</body>
+<script src="js/script.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="js/loader.js"></script>
+<script src="node_modules/@glidejs/glide/dist/glide.min.js"></script>
+
 </html>
