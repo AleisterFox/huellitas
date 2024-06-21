@@ -3,10 +3,13 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\CategoriesController;
 
 Auth::routes(['register' => false]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::middleware([])->group(function() {
     Route::get('/', [MainController::class, 'index']);
@@ -21,4 +24,9 @@ Route::middleware([])->group(function() {
     Route::get('/confirmacion', [MainController::class, 'confirmacion']);
     Route::get('/envio', [MainController::class, 'envio']);
     Route::get('/pago', [MainController::class, 'pago']);
+});
+
+Route::prefix('admin')->group(function() {
+    Route::resource('productos', ProductsController::class);
+    Route::resource('categorias', CategoriesController::class);
 });
