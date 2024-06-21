@@ -7,8 +7,10 @@
 @section('content')
 <h3>Productos</h3>
 
-<div class="row d-flex d-justify-content-end">
-    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProductModal">Agregar producto</button>
+<div class="row mt-5 mb-5 d-flex justify-content-end">
+    <div class="col-sm-5 text-end">
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProductModal">Agregar producto</button>
+    </div>
 </div>
 
 <div id="content" class="row">
@@ -31,7 +33,7 @@
                 <td>{{ $product->price }}</td>
                 <td>{{ $product->in_stock }}</td>
                 <td>
-                     
+                    <button data-id="{{ $product->id }}" type="submit" class="deleteProduct btn btn-danger">Eliminar</button>
                 </td>
             </tr>
             @endforeach
@@ -98,5 +100,39 @@
             "url": "https://cdn.datatables.net/plug-ins/1.10.24/i18n/Spanish.json"
         }
     });
+
+    $(".deleteProduct").on('click', function() {
+        var id = $(this).data('id');
+        Swal.fire({
+            text: 'Desea eliminar este registro?',
+            icon: 'error',
+            confirmButtonText: 'Confirmar',
+            showCancelButton: true,
+            cancelButtonText: 'Cancelar'
+        }).then(function(result) {
+            if (result.isConfirmed) {
+                console.log('/admin/productos/' + id)
+                $.ajax({
+                    url: '/admin/productos/' + id,
+                    type: 'POST',
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                        _method:"DELETE"
+                    },
+                    success: function(response) {
+                        Swal.fire({
+                            title: 'Eliminado!',
+                            text: 'El registro ha sido eliminado',
+                            icon: 'success',
+                            confirmButtonText: 'Cool'
+                        }).then(function() {
+                            location.reload();
+                        });
+                    }
+                });
+            }
+        });
+    });
+
 </script>
 @endpush

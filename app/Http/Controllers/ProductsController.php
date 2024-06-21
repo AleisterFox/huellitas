@@ -10,7 +10,7 @@ class ProductsController extends Controller
     public function index()
     {
         return view('admin.products.index', [
-            'products' => Product::all()
+            'products' => Product::orderBy('id', 'desc')->get()
         ]);
     }
 
@@ -27,8 +27,10 @@ class ProductsController extends Controller
         return redirect()->route('productos.index');
     }
 
-    public function destroy(Product $product)
+    public function destroy($product)
     {
+        $product = Product::find($product);
+        
         $product->delete();
 
         return redirect()->route('productos.index');
