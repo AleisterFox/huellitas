@@ -152,7 +152,7 @@
         <a href="informacion.php" class="button">Finalizar Compra</a>
         <div class="cart__bottom">
           <a href="javascript:void(0)" class="keep__buying">Seguir comprando</a>
-          <p><i class="far fa-shield"></i>Compra segura</p>
+          <p><i class="fas fa-shield"></i>Compra segura</p>
         </div>
       </div>
     </div>
