@@ -1,3 +1,9 @@
+<?php 
+
+require 'import.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="es" xml:lang="es" style="overflow-x: visible">
 
