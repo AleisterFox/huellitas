@@ -42,13 +42,6 @@ class ProductsController extends Controller
 
         $params = $request->all();
 
-        $request->validate([
-            'name' => 'required',
-            'price' => 'required',
-            'description' => 'required',
-            'image' => 'required'
-        ]);
-
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $file->move(public_path('images'), $fileName);
@@ -65,12 +58,6 @@ class ProductsController extends Controller
     {
         $fileName = time() . $request->image?->getClientOriginalName();
         $params = $request->all();
-
-        $request->validate([
-            'name' => 'required',
-            'price' => 'required',
-            'description' => 'required',
-        ]);
 
         if ($request->hasFile('image')) {
             $file = $request->file('image');

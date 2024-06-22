@@ -30,7 +30,7 @@ Route::middleware([])->group(function() {
     Route::get('/pago', [MainController::class, 'pago']);
 });
 
-Route::prefix('admin')->group(function() {
+Route::prefix('admin')->middleware(['auth'])->group(function() {
     Route::resource('productos', ProductsController::class);
     Route::get('productos/{product}/categorias', [ProductsController::class, 'editCategory'])->name('productos.categories');
     Route::put('productos/{product}/categorias', [ProductsController::class, 'updateCategory'])->name('productos.categories.update');
