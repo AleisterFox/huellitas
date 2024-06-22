@@ -30,6 +30,9 @@ Route::middleware([])->group(function() {
 
 Route::prefix('admin')->group(function() {
     Route::resource('productos', ProductsController::class);
+    Route::get('productos/{product}/categorias', [ProductsController::class, 'editCategory'])->name('productos.categories');
+    Route::put('productos/{product}/categorias', [ProductsController::class, 'updateCategory'])->name('productos.categories.update');
+
     Route::resource('categorias', CategoriesController::class);
 
     Route::resource('contacto', ContactFormController::class);

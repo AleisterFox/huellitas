@@ -34,6 +34,7 @@
                         data-id="{{ $category->id }}"
                         data-name="{{ $category->name }}"
                         data-parent_id="{{ $category->parent_id }}"
+                        data-category_id="{{ $category->id }}"
                     >
                         <i class="fs-4 bi-grid"></i>
                     </button>
@@ -122,7 +123,6 @@
     </div>
 </div>
 
-
 @endsection
 
 @push('scripts')
@@ -140,9 +140,11 @@
         var id = $(this).data('id');
         var name = $(this).data('name');
         var parent_id = $(this).data('parent_id');
+        var category_id = $(this).data('category_id');
 
         $("#categoryId").val(id);
 
+        $("#updateCategoryModal #category_id").val(category_id);
         $("#updateCategoryModal #name").val(name);
         $("#updateCategoryModal #parent_id").val(parent_id);
 
@@ -153,6 +155,7 @@
         var id = $("#categoryId").val();
         var name = $("#updateCategoryModal #name").val();
         var parent_id = $("#updateCategoryModal #parent_id").val();
+        var category_id = $("#updateCategoryModal #category_id").val();
 
         $.ajax({
             url: '/admin/categorias/' + id,
@@ -161,7 +164,8 @@
                 "_token": "{{ csrf_token() }}",
                 _method:"PUT",
                 name: name,
-                parent_id: parent_id
+                parent_id: parent_id,
+                category_id: category_id
             },
             success: function(response) {
                 Swal.fire({

@@ -41,24 +41,48 @@
                 <td>{{ $product->price }}</td>
                 <td>{{ $product->in_stock }}</td>
                 <td>
-                    <button class="btn btn-info updateProduct"
-                        id="updateProduct-{{ $product->id }}"
-                        data-id="{{ $product->id }}"
-                        data-name="{{ $product->name }}"
-                        data-description="{{ $product->description }}"
-                        data-price="{{ $product->price }}"
-                        data-in_stock="{{ $product->in_stock }}"
-                    >
-                        <i class="fs-4 bi-grid"></i>
-                    </button>
-                    <button data-id="{{ $product->id }}" type="submit" class="deleteProduct btn btn-danger">
-                        <i class="fs-4 bi-trash"></i>
-                    </button>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button class="btn btn-warning updateCategories"
+                            data-id="{{ $product->id }}"
+                        >
+                            <i class="fa-4 bi-tags"></i>
+                        </button>
+                        <button class="btn btn-info updateProduct" id="updateProduct-{{ $product->id }}" data-id="{{ $product->id }}" data-name="{{ $product->name }}" data-description="{{ $product->description }}" data-price="{{ $product->price }}" data-in_stock="{{ $product->in_stock }}" data-category_id="{{ $product->category_id }}">
+                            <i class="fs-4 bi-grid"></i>
+                        </button>
+                        <button data-id="{{ $product->id }}" type="submit" class="deleteProduct btn btn-danger">
+                            <i class="fs-4 bi-trash"></i>
+                        </button>
+                    </div>
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
+</div>
+
+<div class="modal fade" id="addCategoryModal" tabindex="-1" aria-labelledby="addCategoryModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addCategoryModalLabel">Agregar categoria</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="addCategoryForm" method="post">
+                    @csrf
+                    <input type="hidden" id="productId">
+                    <div class="update-categories">
+
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" id="updateCategoriesButton" class="btn btn-primary">Agregar</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
@@ -89,14 +113,6 @@
                         <input type="number" class="form-control" id="in_stock" name="in_stock">
                     </div>
                     <div class="mb-3">
-                        <label for="category" class="form-label">Categoría</label>
-                        <select class="form-select" id="category_id" name="category_id">
-                            <option value="1">Categoría 1</option>
-                            <option value="2">Categoría 2</option>
-                            <option value="3">Categoría 3</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
                         <label for="image" class="form-label">Imagen</label>
                         <input type="file" class="form-control" id="image" name="image" required>
                     </div>
@@ -118,7 +134,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="addProductForm"  method="post">
+                <form id="addProductForm" method="post">
                     @csrf
                     <div class="mb-3">
                         <label for="name" class="form-label">Nombre</label>
@@ -139,9 +155,9 @@
                     <div class="mb-3">
                         <label for="category" class="form-label">Categoría</label>
                         <select class="form-select" id="category_id" name="category_id">
-                            <option value="1">Categoría 1</option>
-                            <option value="2">Categoría 2</option>
-                            <option value="3">Categoría 3</option>
+                            @foreach($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="mb-3">
@@ -172,12 +188,57 @@
         }
     });
 
+    $(".updateCategories").on('click', function() {
+        var id = $(this).data('id');
+
+        $("#productId").val(id);
+
+        $.ajax({
+            url: '/admin/productos/' + id + '/categorias',
+            type: 'GET',
+            success: function(response) {
+                $("#addCategoryModal").modal('show');
+                $("#addCategoryModal .update-categories").html(response);
+            }
+        });
+    });
+
+    $("#updateCategoriesButton").on('click', function() {
+        var id = $("#productId").val();
+        var categories = [];
+
+        $("#addCategoryModal input[type=checkbox]:checked").each(function() {
+            categories.push($(this).data('id'));
+        });
+
+        $.ajax({
+            url: '/admin/productos/' + id + '/categorias',
+            type: 'POST',
+            data: {
+                "_token": "{{ csrf_token() }}",
+                '_method': 'PUT',
+                categories: categories
+            },
+            success: function(response) {
+                Swal.fire({
+                    title: 'Actualizado!',
+                    text: 'El registro ha sido actualizado',
+                    icon: 'success',
+                    confirmButtonText: 'Aceptar'
+                }).then(function() {
+                    location.reload();
+                });
+            }
+        });
+    });
+
     $(".updateProduct").on('click', function() {
         var id = $(this).data('id');
         var name = $(this).data('name');
         var description = $(this).data('description');
         var price = $(this).data('price');
         var in_stock = $(this).data('in_stock');
+
         $("#productId").val(id);
 
         $("#updateProductModal #name").val(name);
@@ -186,7 +247,7 @@
         $("#updateProductModal #in_stock").val(in_stock);
 
         $("#updateProductModal").modal('show');
-    }); 
+    });
 
     $("#updateProductButton").on('click', function() {
         var id = $("#productId").val();
@@ -194,31 +255,40 @@
         var description = $("#updateProductModal #description").val();
         var price = $("#updateProductModal #price").val();
         var in_stock = $("#updateProductModal #in_stock").val();
+        var image = $("#updateProductModal #image").val();
+
+        var formData = new FormData();
+
+        if (image) {
+            formData.append('image', $("#updateProductModal #image")[0].files[0]);
+        }
+
+        formData.append('name', name);
+        formData.append('description', description);
+        formData.append('price', price);
+        formData.append('in_stock', in_stock);
+        formData.append('_token', "{{ csrf_token() }}");
+        formData.append('_method', 'PUT');
 
         $.ajax({
             url: '/admin/productos/' + id,
             type: 'POST',
-            data: {
-                "_token": "{{ csrf_token() }}",
-                _method:"PUT",
-                name: name,
-                description: description,
-                price: price,
-                in_stock: in_stock
-            },
+            data: formData,
+            contentType: false,
+            processData: false,
             success: function(response) {
                 Swal.fire({
                     title: 'Actualizado!',
                     text: 'El registro ha sido actualizado',
                     icon: 'success',
-                    confirmButtonText: 'Cool'
+                    confirmButtonText: 'Aceptar'
                 }).then(function() {
                     location.reload();
                 });
             }
         });
-    }); 
-    
+    });
+
     $(".deleteProduct").on('click', function() {
         var id = $(this).data('id');
         Swal.fire({
@@ -235,7 +305,7 @@
                     type: 'POST',
                     data: {
                         "_token": "{{ csrf_token() }}",
-                        _method:"DELETE"
+                        _method: "DELETE"
                     },
                     success: function(response) {
                         Swal.fire({
@@ -251,6 +321,5 @@
             }
         });
     });
-
 </script>
 @endpush
