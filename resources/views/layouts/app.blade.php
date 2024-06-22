@@ -65,6 +65,9 @@
                                     <li>
                                         <a href="/admin/productos" class="nav-link px-0"> <span class="d-none d-sm-inline">Gestión Productos</span></a>
                                     </li>
+                                    <li>
+                                        <a href="/admin/pet-categories" class="nav-link px-0"> <span class="d-none d-sm-inline">Gestión Categoria Perritos</span></a>
+                                    </li>
                                 </ul>
                             </li>
                             <li>

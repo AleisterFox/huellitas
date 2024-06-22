@@ -8,6 +8,8 @@ use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ContactFormController;
 use App\Http\Controllers\AdoptionFormController;
+use App\Http\Controllers\PetsController;
+use App\Http\Controllers\PetCategoriesController;
 
 Auth::routes(['register' => false]);
 
@@ -32,6 +34,9 @@ Route::prefix('admin')->group(function() {
     Route::resource('productos', ProductsController::class);
     Route::get('productos/{product}/categorias', [ProductsController::class, 'editCategory'])->name('productos.categories');
     Route::put('productos/{product}/categorias', [ProductsController::class, 'updateCategory'])->name('productos.categories.update');
+
+    Route::resource('pets', PetsController::class);
+    Route::resource('pet-categories', PetCategoriesController::class);
 
     Route::resource('categorias', CategoriesController::class);
 
