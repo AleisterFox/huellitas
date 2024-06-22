@@ -2,12 +2,14 @@
 
 @section('content')
 <main>
-    <div class="success-modal">
-        <div class="check"><i class="fas fa-check"></i></div>
-        <p>Enviado con éxito.</p>
-        <p>En breve nos pondremos en contacto con usted.</p>
-        <a href="javascript:void(0)" class="button close-success-modal">Cerrar</a>
-    </div>
+    @if (session('message'))
+        <div class="success-modal">
+            <div class="check"><i class="fas fa-check"></i></div>
+            <p>Enviado con éxito.</p>
+            <p>En breve nos pondremos en contacto con usted.</p>
+            <a href="javascript:void(0)" class="button close-success-modal">Cerrar</a>
+        </div>
+    @endif
 
     <section id="contact-page">
         <figure>
@@ -25,7 +27,8 @@
                     </div>
                 </div>
                 <div class="right">
-                    <form action="">
+                    <form action="{{ route('contacto.store') }}" method="post">
+                        @csrf
                         <input type="text" name="name" id="name" placeholder="Nombre*" required />
                         <input type="tel" name="phone" id="phone" placeholder="Tel." />
                         <input type="email" name="email" id="email" placeholder="Email*" required />

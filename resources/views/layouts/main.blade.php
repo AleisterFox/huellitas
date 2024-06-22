@@ -75,16 +75,6 @@
 <script src="js/glide.min.js"></script>
 
 @stack('scripts')
-<script>
-  var glide = new Glide("#hero-slider", {
-    type: "carousel",
-    perView: 1,
-    autoplay: 5000,
-    animationDuration: 2000,
-    animationTimingFunction: "ease-in-out",
-  });
 
-  glide.mount();
-</script>
 
 </html>

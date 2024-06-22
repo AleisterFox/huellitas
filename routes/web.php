@@ -6,6 +6,8 @@ use App\Http\Controllers\MainController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\ContactFormController;
+use App\Http\Controllers\AdoptionFormController;
 
 Auth::routes(['register' => false]);
 
@@ -29,4 +31,7 @@ Route::middleware([])->group(function() {
 Route::prefix('admin')->group(function() {
     Route::resource('productos', ProductsController::class);
     Route::resource('categorias', CategoriesController::class);
+
+    Route::resource('contacto', ContactFormController::class);
+    Route::resource('adopciones', AdoptionFormController::class);
 });

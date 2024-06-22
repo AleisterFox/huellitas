@@ -98,3 +98,34 @@
 </main>
 
 @endsection
+
+@push('scripts')
+<script src="js/cartModal.js"></script>
+<script>
+    var glide = new Glide("#pet-slider", {
+        type: "carousel",
+        perView: 1,
+        autoplay: 5000,
+        animationDuration: 2000,
+        animationTimingFunction: "ease-in-out",
+    });
+
+    glide.mount();
+</script>
+
+<script>
+    const inputNumber = document.querySelector('input[type="number"]');
+    const incrementButton = document.querySelector(".increment");
+    const decrementButton = document.querySelector(".decrement");
+
+    incrementButton.addEventListener("click", function() {
+        inputNumber.stepUp();
+    });
+
+    decrementButton.addEventListener("click", function() {
+        if (inputNumber.value != 0) {
+            inputNumber.stepDown();
+        }
+    });
+</script>
+@endpush

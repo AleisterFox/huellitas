@@ -37,9 +37,11 @@
                     >
                         <i class="fs-4 bi-grid"></i>
                     </button>
-                    <button data-id="{{ $category->id }}" type="submit" class="deleteCategory btn btn-danger">
-                        <i class="fs-4 bi-trash"></i>
-                    </button>
+                    @if ($category->parent)
+                        <button data-id="{{ $category->id }}" type="submit" class="deleteCategory btn btn-danger">
+                            <i class="fs-4 bi-trash"></i>
+                        </button>
+                    @endif
                 </td>
             </tr>
             @endforeach
