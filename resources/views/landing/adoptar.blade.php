@@ -9,24 +9,41 @@
                     <div class="glide__track" data-glide-el="track">
                         <ul class="glide__slides">
                             <li style="border: 1px solid" class="glide__slide">
-                                <figure><img src="/img/agata.jpg" alt="" /></figure>
+                                <figure><img src="/pets/{{ $pet->image }}" alt="" /></figure>
                             </li>
-                            <li style="border: 1px solid" class="glide__slide">
-                                <figure><img src="/img/agata2.jpg" alt="" /></figure>
-                            </li>
-                            <li style="border: 1px solid" class="glide__slide">
-                                <figure><img src="/img/agata3.jpg" alt="" /></figure>
-                            </li>
-                            <li style="border: 1px solid" class="glide__slide">
-                                <figure><img src="/img/agata4.jpg" alt="" /></figure>
-                            </li>
+
+                            @if ($pet->image2)
+                                <li style="border: 1px solid" class="glide__slide">
+                                    <figure><img src="/pets/{{ $pet->image2 }}" alt="" /></figure>
+                                </li>
+                            @endif
+                            
+                            @if ($pet->image3)
+                                <li style="border: 1px solid" class="glide__slide">
+                                    <figure><img src="/pets/{{ $pet->image3 }}" alt="" /></figure>
+                                </li>
+                            @endif
+
+                            @if ($pet->image4)
+                                <li style="border: 1px solid" class="glide__slide">
+                                    <figure><img src="/pets/{{ $pet->image4 }}" alt="" /></figure>
+                                </li>
+                            @endif
                         </ul>
 
                         <div class="glide__bullets" data-glide-el="controls[nav]">
-                            <button class="glide__bullet" data-glide-dir="=0"><img src="/img/agata.jpg" alt=""></button>
-                            <button class="glide__bullet" data-glide-dir="=1"><img src="/img/agata2.jpg" alt=""></button>
-                            <button class="glide__bullet" data-glide-dir="=2"><img src="/img/agata3.jpg" alt=""></button>
-                            <button class="glide__bullet" data-glide-dir="=3"><img src="/img/agata4.jpg" alt=""></button>
+                            <button class="glide__bullet" data-glide-dir="=0"><img src="/pets/{{ $pet->image }}" alt=""></button>
+                            @if ($pet->image2)
+                                <button class="glide__bullet" data-glide-dir="=1"><img src="/pets/{{ $pet->image2 }}" alt=""></button>
+                            @endif
+
+                            @if ($pet->image3)
+                                <button class="glide__bullet" data-glide-dir="=2"><img src="/pets/{{ $pet->image3 }}" alt=""></button>
+                            @endif
+
+                            @if ($pet->image4)
+                                <button class="glide__bullet" data-glide-dir="=3"><img src="/pets/{{ $pet->image4 }}" alt=""></button>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -43,7 +60,7 @@
                 </div>
                 <div class="size">
                     <p><strong>Talla:</strong></p>
-                    <p>Grande</p>
+                    <p>{{ $pet->size }}</p>
                 </div>
                 <div class="behavior">
                     <p><strong>Convive con:</strong></p>
@@ -57,7 +74,7 @@
                     {{ $pet->description }}
                 </p>
                 <div class="available">
-                    <p>Disponible</p>
+                    <p>{{ $pet->status() }}</p>
                 </div>
             </div>
         </div>

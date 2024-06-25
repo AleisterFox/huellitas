@@ -46,6 +46,7 @@
                             data-id="{{ $product->id }}">
                             <i class="fa-4 bi-tags"></i>
                         </button>
+                        
                         <button class="btn btn-success updateProductImages" 
                             data-id="{{ $product->id }}"
                             data-image2="/images/{{ $product->image2 }}"

@@ -52,6 +52,34 @@ class PetsController extends Controller
         return redirect()->route('pets.index');
     }
 
+    public function updateImages(Request $request, $pet)
+    {
+        $pet = Pet::find($pet);
+        
+        if ($request->image2) {
+            $fileName = time() . $request->image2->getClientOriginalName();
+            $file = $request->file('image2');
+            $file->move(public_path('pets'), $fileName);
+            $pet->update(['image2' => $fileName]);
+        }
+
+        if ($request->image3) {
+            $fileName = time() . $request->image3->getClientOriginalName();
+            $file = $request->file('image3');
+            $file->move(public_path('pets'), $fileName);
+            $pet->update(['image3' => $fileName]);
+        }
+
+        if ($request->image4) {
+            $fileName = time() . $request->image4->getClientOriginalName();
+            $file = $request->file('image4');
+            $file->move(public_path('pets'), $fileName);
+            $pet->update(['image4' => $fileName]);
+        }
+        
+        return redirect()->route('pets.index');
+    }
+
     public function destroy($pet)
     {
         $pet = Pet::find($pet);

@@ -35,23 +35,38 @@
                     @endif
                 </td>
                 <td>{{ $pet->name }}</td>
-                <td>{{ $pet->description }}</td>
+                <td>
+                    <div style="width: 400px;">
+                        {{ $pet->description }}
+                    </div>
+                </td>
                 <td>{{ $pet->raza->name }}</td>
                 <td>
-                    <button class="btn btn-primary updatePet" 
-                        data-id="{{ $pet->id }}" 
-                        data-name="{{ $pet->name }}" 
-                        data-description="{{ $pet->description }}" 
-                        data-age="{{ $pet->age }}"
-                        data-sex="{{ $pet->sex }}"
-                        data-breed="{{ $pet->breed }}"
-                        data-size="{{ $pet->size }}"
-                        >
-                        <i class="fs-4 bi-grid"></i>
-                    </button>
-                    <button class="btn btn-danger deletePet" data-id="{{ $pet->id }}">
-                        <i class="fs-4 bi-trash"></i>
-                    </button>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button class="btn btn-primary updatePet" 
+                            data-id="{{ $pet->id }}" 
+                            data-name="{{ $pet->name }}" 
+                            data-description="{{ $pet->description }}" 
+                            data-age="{{ $pet->age }}"
+                            data-sex="{{ $pet->sex }}"
+                            data-breed="{{ $pet->breed }}"
+                            data-size="{{ $pet->size }}"
+                            data-live_with="{{ $pet->live_with }}"
+                            >
+                            <i class="fs-4 bi-grid"></i>
+                        </button>
+                        <button class="btn btn-success updatePetImages" 
+                            data-id="{{ $pet->id }}"
+                            data-image2="/pets/{{ $pet->image2 }}"
+                            data-image3="/pets/{{ $pet->image3 }}"
+                            data-image4="/pets/{{ $pet->image4 }}"
+                            >
+                            <i class="bi bi-card-image"></i>
+                        </button>
+                        <button class="btn btn-danger deletePet" data-id="{{ $pet->id }}">
+                            <i class="fs-4 bi-trash"></i>
+                        </button>
+                    </div>
                 </td>
             </tr>
             @endforeach
@@ -93,42 +108,7 @@
             <div class="modal-body">
                 <form id="addProductForm" action="{{ route('pets.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" id="productId">
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="name" name="name" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="description" class="form-label" required>Descripción</label>
-                        <textarea class="form-control" id="description" name="description"></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="age" class="form-label" required>Edad</label>
-                        <input type="number" class="form-control" id="age" name="age"></input>
-                    </div>
-                    <div class="mb-3">
-                        <label for="age" class="form-label" required>Sexo</label>
-                        <select name="sex" class="form-control">
-                            <option value="Macho">Macho</option>
-                            <option value="Hembra">Hembra</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="breed" class="form-label" required>Raza</label>
-                        <select name="breed" class="form-control">
-                            @foreach($breeds as $category)
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="size" class="form-label" required>Tamaño</label>
-                        <textarea class="form-control" id="size" name="size"></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="image" class="form-label">Imagen</label>
-                        <input type="file" class="form-control" id="image" name="image" required>
-                    </div>
+                    @include('admin.pets._form')
                 </form>
             </div>
             <div class="modal-footer">
@@ -149,42 +129,7 @@
             <div class="modal-body">
                 <form id="addProductForm" method="post">
                     @csrf
-                    <input type="hidden" id="productId">
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" id="name" name="name" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="description" class="form-label" required>Descripción</label>
-                        <textarea class="form-control" id="description" name="description"></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="age" class="form-label" required>Edad</label>
-                        <input type="number" class="form-control" id="age" name="age"></input>
-                    </div>
-                    <div class="mb-3">
-                        <label for="sex" class="form-label" required>Sexo</label>
-                        <select id="sex" name="sex" class="form-control">
-                            <option value="Macho">Macho</option>
-                            <option value="Hembra">Hembra</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="breed" class="form-label" required>Raza</label>
-                        <select id="breed" name="breed" class="form-control">
-                            @foreach($breeds as $category)
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="size" class="form-label" required>Tamaño</label>
-                        <textarea class="form-control" id="size" name="size"></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="image" class="form-label">Imagen</label>
-                        <input type="file" class="form-control" id="image" name="image" required>
-                    </div>
+                    @include('admin.pets._form')
                 </form>
             </div>
             <div class="modal-footer">
@@ -195,6 +140,51 @@
     </div>
 </div>
 
+<div class="modal fade" id="updateImagesPetModal" tabindex="-1" aria-labelledby="updateImagesPetModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updateImagesPetModal">Actualizar imagenes</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="addProductForm" method="post">
+                    @csrf
+                    <input type="hidden" id="productId">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label for="image" class="form-label">Imagen2</label>
+                                <input type="file" class="form-control" id="image2" name="image2" required>
+                                <img src="" id="img-image2" class="img-fluid" width="250px">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label for="image2" class="form-label">Imagen3</label>
+                                <input type="file" class="form-control" id="image3" name="image3" required>
+                                <img src="" id="img-image3" class="img-fluid" width="250px">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label for="image3" class="form-label">Imagen4</label>
+                                <input type="file" class="form-control" id="image4" name="image4" required>
+                                <img src="" id="img-image4" class="img-fluid" width="250px">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" id="updateImagesPetModalButton" class="btn btn-primary">Actualizar</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 @endsection
 
@@ -261,6 +251,7 @@
         var sex = $(this).data('sex');
         var breed = $(this).data('breed');
         var size = $(this).data('size');
+        var live_with = $(this).data('live_with');
 
         $("#productId").val(id);
 
@@ -270,8 +261,63 @@
         $("#updatePetModal #sex").val(sex);
         $("#updatePetModal #breed").val(breed);
         $("#updatePetModal #size").val(size);
+        $("#updatePetModal #live_with").val(live_with);
 
         $("#updatePetModal").modal('show');
+    });
+
+    $(".updatePetImages").on('click', function() {
+        var id = $(this).data('id');
+        var image2 = $(this).data('image2');
+        var image3 = $(this).data('image3');
+        var image4 = $(this).data('image4');
+        var image5 = $(this).data('image5');
+
+        $("#petId").val(id);
+        $("#updateImagesPetModal #img-image2").attr('src', image2);
+        $("#updateImagesPetModal #img-image3").attr('src', image3);
+        $("#updateImagesPetModal #img-image4").attr('src', image4);
+        $("#updateImagesPetModal #img-image5").attr('src', image5);
+
+        $("#updateImagesPetModal").modal('show');
+    });
+
+    $("#updateImagesPetModalButton").on('click', function() {
+        var id = $("#petId").val();
+        var formData = new FormData();
+
+        if ($("#updateImagesPetModal #image2")[0].files.length > 0) {
+            formData.append('image2', $("#updateImagesPetModal #image2")[0].files[0]);
+        }
+
+        if ($("#updateImagesPetModal #image3")[0].files.length > 0) {
+            formData.append('image3', $("#updateImagesPetModal #image3")[0].files[0]);
+        }
+
+        if ($("#updateImagesPetModal #image4")[0].files.length > 0) {
+            formData.append('image4', $("#updateImagesPetModal #image4")[0].files[0]);
+        }
+
+        formData.append('_token', "{{ csrf_token() }}");
+        formData.append('_method', 'PUT');
+
+        $.ajax({
+            url: '/admin/pets/' + id + '/imagenes',
+            type: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                Swal.fire({
+                    title: 'Actualizado!',
+                    text: 'El registro ha sido actualizado',
+                    icon: 'success',
+                    confirmButtonText: 'Aceptar'
+                }).then(function() {
+                    location.reload();
+                });
+            }
+        });
     });
 
     $("#updatePetButton").on('click', function() {
@@ -282,6 +328,7 @@
         var sex = $("#updatePetModal #sex").val();
         var breed = $("#updatePetModal #breed").val();
         var size = $("#updatePetModal #size").val();
+        var live_with = $("#updatePetModal #live_with").val();
         var image = $("#updatePetModal #image").val();
 
         var formData = new FormData();
@@ -296,6 +343,7 @@
         formData.append('sex', sex);
         formData.append('breed', breed);
         formData.append('size', size);
+        formData.append('live_with', live_with);
         formData.append('_token', "{{ csrf_token() }}");
         formData.append('_method', 'PUT');
 

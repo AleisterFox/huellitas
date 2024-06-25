@@ -15,4 +15,9 @@ class Pet extends Model
     {
         return $this->belongsTo(PetCategory::class, 'breed');
     }
+
+    public function status()
+    {
+        return $this->status == 1 ? 'Disponible' : 'Adoptado';
+    }
 }
