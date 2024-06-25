@@ -8,6 +8,9 @@
     </a>
 
     <ul class="menu">
+      @if (auth()->check())
+        <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+      @endif
       <li><a href="/">Historia</a></li>
       <li><a href="/perritos">Mascotas</a></li>
       <li><a href="/donaciones">Donaciones</a></li>

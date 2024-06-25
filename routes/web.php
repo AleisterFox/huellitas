@@ -10,6 +10,7 @@ use App\Http\Controllers\ContactFormController;
 use App\Http\Controllers\AdoptionFormController;
 use App\Http\Controllers\PetsController;
 use App\Http\Controllers\PetCategoriesController;
+use App\Http\Controllers\DashboardController;
 
 Auth::routes(['register' => false]);
 
@@ -31,6 +32,7 @@ Route::middleware([])->group(function() {
 });
 
 Route::prefix('admin')->middleware(['auth'])->group(function() {
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('productos', ProductsController::class);
     Route::get('productos/{product}/categorias', [ProductsController::class, 'editCategory'])->name('productos.categories');
     Route::put('productos/{product}/categorias', [ProductsController::class, 'updateCategory'])->name('productos.categories.update');
