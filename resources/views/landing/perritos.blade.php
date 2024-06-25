@@ -13,23 +13,18 @@
                 <form action="">
                     <div class="dog-type">
                         <label for="option1">Todos</label>
-                        <input type="checkbox" name="" id="option1" checked>
+                        <input type="checkbox" id="default-category" class="category-checkbox" value="0" checked>
                     </div>
                     @foreach($categories as $category)
                     <div class="dog-type">
                         <label for="option2">{{ $category->name }}</label>
-                        <input type="checkbox" name="" id="option2">
+                        <input type="checkbox" class="category-checkbox" value="{{ $category->id }}">
                     </div>
                     @endforeach
                 </form>
             </div>
             <div class="perritos-container">
-                @foreach($pets as $pet)
-                    <a href="/adoptar" class="doggy">
-                        <figure><img src="img/agata.jpg" alt=""></figure>
-                        <h4>{{ $pet->name }}</h4>
-                    </a>
-                @endforeach
+                @each('landing._perrito', $pets, 'pet')
             </div>
         </div>
 
@@ -41,3 +36,32 @@
     </section>
 </main>
 @endsection
+
+@push('scripts')
+    <script>
+        $(".category-checkbox").on('click', function() {
+
+            if ($(this).val() != 0) {
+                $('#default-category').prop('checked', false);
+            } else {
+                $('.category-checkbox').prop('checked', false);
+                $(this).prop('checked', true);
+            }
+
+            let categories = $('.category-checkbox:checked').map(function() {
+                return $(this).val();
+            }).get();
+
+            $.ajax({
+                url: '/perritos',
+                method: 'POST',
+                data: {
+                    categories: categories
+                },
+                success: function(data) {
+                    $('.perritos-container').html(data);
+                }
+            });
+        });
+    </script>
+@endpush

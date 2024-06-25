@@ -18,7 +18,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::middleware([])->group(function() {
     Route::get('/', [MainController::class, 'index']);
-    Route::get('/perritos', [MainController::class, 'perritos']);
+    Route::match(['get', 'post'], '/perritos', [MainController::class, 'perritos']);
     Route::get('/donaciones', [MainController::class, 'donaciones']);
     Route::get('/adopciones', [MainController::class, 'adopciones']);
     Route::get('/contacto', [MainController::class, 'contacto']);

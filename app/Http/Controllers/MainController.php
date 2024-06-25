@@ -13,10 +13,26 @@ class MainController extends Controller
         return view('index');
     }
 
-    public function perritos()
+    public function perritos(Request $request)
     {
+        if ($request->isMethod('post') && $request->has('categories')) {
+            if ($request->collect('categories')->contains(0)) {
+                $pets = Pet::all();
+            } else {
+                $pets = Pet::whereIn('breed', $request->collect('categories'))->get();
+            }
+
+            return $pets->map(function($pet) {
+                return view('landing._perrito', [
+                    'pet' => $pet
+                ])->render();
+            })->implode('');
+        } else {
+            $pets = Pet::all();
+        }
+    
         return view('landing.perritos', [
-            'pets' => Pet::all(),
+            'pets' => $pets,
             'categories' => PetCategory::all()
         ]);
     }
