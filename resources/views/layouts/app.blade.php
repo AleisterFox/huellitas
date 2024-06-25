@@ -26,7 +26,15 @@
             display: flex;
             align-items: center;
             color: white !important;
-            font-size: 20px !important;
+            font-size: 15px !important;
+        }
+
+        .active {
+            background-color: #8D96A4 !important;
+        }
+
+        .active > span {
+            padding: 1px;
         }
     </style>
     <div id="app">
@@ -39,14 +47,14 @@
                         </a>
                         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                             <li class="nav-item">
-                                <a href="#" class="nav-link align-middle px-0">
+                                <a href="#" class="nav-link align-middle px-0 text-center">
                                     <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
                                     <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Pedidos</span> </a>
-                                <ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+                                <ul class="collapse nav flex-column ms-4" id="submenu1" data-bs-parent="#menu">
                                     <li class="w-100">
                                         <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1 </a>
                                     </li>
@@ -56,29 +64,48 @@
                                 </ul>
                             </li>
                             <li>
+                                @php
+                                    $shouldOpen = in_array(request()->route()->getName(), ['categorias.index', 'productos.index', 'pets.index', 'pet-categories.index']);
+                                @endphp
                                 <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
                                     <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Gestión Tienda</span></a>
-                                <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
+                                <ul class="collapse nav flex-column ms-4 {{ $shouldOpen ? 'show' : '' }}" id="submenu2" data-bs-parent="#menu">
                                     <li class="w-100">
-                                        <a href="/admin/categorias" class="nav-link px-0"> <span class="d-none d-sm-inline">Gestión Categorías</span></a>
+                                        <a href="{{ route('categorias.index') }}" 
+                                            class="nav-link px-0 {{ request()->route()->getName() == 'categorias.index' ? 'active' : '' }}"> 
+                                            <span class="d-none d-sm-inline">Categorías</span></a>
                                     </li>
                                     <li>
-                                        <a href="/admin/productos" class="nav-link px-0"> <span class="d-none d-sm-inline">Gestión Productos</span></a>
+                                        <a href="{{ route('productos.index') }}" 
+                                            class="nav-link px-0 {{ request()->route()->getName() == 'productos.index' ? 'active' : '' }}"> 
+                                            <span class="d-none d-sm-inline">Productos</span>
+                                        </a>
                                     </li>
                                     <li>
-                                        <a href="/admin/pets" class="nav-link px-0"> <span class="d-none d-sm-inline">Gestión Perritos</span></a>
+                                        <a href="{{ route('pets.index') }}" 
+                                            class="nav-link px-0 {{ request()->route()->getName() == 'pets.index' ? 'active' : '' }}"> 
+                                            <span class="d-none d-sm-inline">Perritos</span>
+                                        </a>
                                     </li>
                                     <li>
-                                        <a href="/admin/pet-categories" class="nav-link px-0"> <span class="d-none d-sm-inline">Gestión Categoria Perritos</span></a>
+                                        <a href="{{ route('pet-categories.index') }}" 
+                                            class="nav-link px-0 {{ request()->route()->getName() == 'pet-categories.index' ? 'active' : '' }}"> 
+                                            <span class="d-none d-sm-inline">Categoria Perritos</span>
+                                        </a>
                                     </li>
                                 </ul>
                             </li>
+                            @php
+                                $shouldOpen = in_array(request()->route()->getName(), ['contacto.index']);
+                            @endphp
                             <li>
                                 <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
                                     <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Gestión página</span> </a>
-                                <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+                                <ul class="collapse nav flex-column ms-4 {{ $shouldOpen ? 'show' : '' }}" id="submenu3" data-bs-parent="#menu">
                                     <li class="w-100">
-                                        <a href="{{ route('contacto.index') }}" class="nav-link px-0"> <span class="d-none d-sm-inline">Formulario de contacto</span></a>
+                                        <a href="{{ route('contacto.index') }}" class="nav-link px-0 {{ request()->route()->getName() == 'contacto.index' ? 'active' : '' }}"> 
+                                            <span class="d-none d-sm-inline">Formulario de contacto</span>
+                                        </a>
                                     </li>
                                 </ul>
                             </li>

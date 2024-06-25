@@ -34,6 +34,7 @@ Route::prefix('admin')->middleware(['auth'])->group(function() {
     Route::resource('productos', ProductsController::class);
     Route::get('productos/{product}/categorias', [ProductsController::class, 'editCategory'])->name('productos.categories');
     Route::put('productos/{product}/categorias', [ProductsController::class, 'updateCategory'])->name('productos.categories.update');
+    Route::put('productos/{product}/imagenes', [ProductsController::class, 'updateImages'])->name('productos.images');
 
     Route::resource('pets', PetsController::class);
     Route::resource('pet-categories', PetCategoriesController::class);

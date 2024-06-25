@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('size');
             $table->text('description');
             $table->integer('age');
-            $table->string('live_with');
+            $table->string('live_with')->nullable();
             $table->string('breed');
             $table->timestamps();
         });

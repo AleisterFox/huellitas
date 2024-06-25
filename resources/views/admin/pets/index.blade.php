@@ -18,15 +18,41 @@
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Imagen</th>
                 <th>Name</th>
+                <th>Descripción</th>
+                <th>Raza</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
             @foreach($pets as $pet)
-
             <tr>
                 <td>{{ $pet->id }}</td>
+                <td>
+                    @if ($pet->image)
+                        <img src="/pets/{{ $pet->image }}" alt="{{ $pet->name }}" style="width: 100px;">
+                    @endif
+                </td>
                 <td>{{ $pet->name }}</td>
+                <td>{{ $pet->description }}</td>
+                <td>{{ $pet->raza->name }}</td>
+                <td>
+                    <button class="btn btn-primary updatePet" 
+                        data-id="{{ $pet->id }}" 
+                        data-name="{{ $pet->name }}" 
+                        data-description="{{ $pet->description }}" 
+                        data-age="{{ $pet->age }}"
+                        data-sex="{{ $pet->sex }}"
+                        data-breed="{{ $pet->breed }}"
+                        data-size="{{ $pet->size }}"
+                        >
+                        <i class="fs-4 bi-grid"></i>
+                    </button>
+                    <button class="btn btn-danger deletePet" data-id="{{ $pet->id }}">
+                        <i class="fs-4 bi-trash"></i>
+                    </button>
+                </td>
             </tr>
             @endforeach
         </tbody>
@@ -81,12 +107,27 @@
                         <input type="number" class="form-control" id="age" name="age"></input>
                     </div>
                     <div class="mb-3">
+                        <label for="age" class="form-label" required>Sexo</label>
+                        <select name="sex" class="form-control">
+                            <option value="Macho">Macho</option>
+                            <option value="Hembra">Hembra</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="breed" class="form-label" required>Raza</label>
+                        <select name="breed" class="form-control">
+                            @foreach($breeds as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="mb-3">
                         <label for="size" class="form-label" required>Tamaño</label>
                         <textarea class="form-control" id="size" name="size"></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="image" class="form-label">Imagen</label>
-                        <input type="file" class="form-control" id="image" name="image">
+                        <input type="file" class="form-control" id="image" name="image" required>
                     </div>
                 </form>
             </div>
@@ -98,16 +139,17 @@
     </div>
 </div>
 
-<div class="modal fade" id="updateProductModal" tabindex="-1" aria-labelledby="updateProductModal" aria-hidden="true">
+<div class="modal fade" id="updatePetModal" tabindex="-1" aria-labelledby="updatePetModal" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="updateProductModal">Actualizar producto</h5>
+                <h5 class="modal-title" id="updatePetModal">Actualizar producto</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form id="addProductForm" method="post">
                     @csrf
+                    <input type="hidden" id="productId">
                     <div class="mb-3">
                         <label for="name" class="form-label">Nombre</label>
                         <input type="text" class="form-control" id="name" name="name" required>
@@ -117,29 +159,36 @@
                         <textarea class="form-control" id="description" name="description"></textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="price" class="form-label" required>Precio</label>
-                        <input type="number" class="form-control" id="price" name="price">
+                        <label for="age" class="form-label" required>Edad</label>
+                        <input type="number" class="form-control" id="age" name="age"></input>
                     </div>
                     <div class="mb-3">
-                        <label for="stock" class="form-label" required>Stock</label>
-                        <input type="number" class="form-control" id="in_stock" name="in_stock">
+                        <label for="sex" class="form-label" required>Sexo</label>
+                        <select id="sex" name="sex" class="form-control">
+                            <option value="Macho">Macho</option>
+                            <option value="Hembra">Hembra</option>
+                        </select>
                     </div>
                     <div class="mb-3">
-                        <label for="category" class="form-label">Categoría</label>
-                        <select class="form-select" id="category_id" name="category_id">
+                        <label for="breed" class="form-label" required>Raza</label>
+                        <select id="breed" name="breed" class="form-control">
                             @foreach($breeds as $category)
-                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
                         </select>
                     </div>
                     <div class="mb-3">
+                        <label for="size" class="form-label" required>Tamaño</label>
+                        <textarea class="form-control" id="size" name="size"></textarea>
+                    </div>
+                    <div class="mb-3">
                         <label for="image" class="form-label">Imagen</label>
-                        <input type="file" class="form-control" id="image" name="image">
+                        <input type="file" class="form-control" id="image" name="image" required>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="submit" id="updateProductButton" class="btn btn-primary">Actualizar</button>
+                <button type="submit" id="updatePetButton" class="btn btn-primary">Actualizar</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
             </div>
         </div>
@@ -166,7 +215,7 @@
         $("#productId").val(id);
 
         $.ajax({
-            url: '/admin/productos/' + id + '/categorias',
+            url: '/admin/pets/' + id + '/categorias',
             type: 'GET',
             success: function(response) {
                 $("#addCategoryModal").modal('show');
@@ -184,7 +233,7 @@
         });
 
         $.ajax({
-            url: '/admin/productos/' + id + '/categorias',
+            url: '/admin/pets/' + id + '/categorias',
             type: 'POST',
             data: {
                 "_token": "{{ csrf_token() }}",
@@ -204,46 +253,54 @@
         });
     });
 
-    $(".updateProduct").on('click', function() {
+    $(".updatePet").on('click', function() {
         var id = $(this).data('id');
         var name = $(this).data('name');
         var description = $(this).data('description');
-        var price = $(this).data('price');
-        var in_stock = $(this).data('in_stock');
+        var age = $(this).data('age');
+        var sex = $(this).data('sex');
+        var breed = $(this).data('breed');
+        var size = $(this).data('size');
 
         $("#productId").val(id);
 
-        $("#updateProductModal #name").val(name);
-        $("#updateProductModal #description").val(description);
-        $("#updateProductModal #price").val(price);
-        $("#updateProductModal #in_stock").val(in_stock);
+        $("#updatePetModal #name").val(name);
+        $("#updatePetModal #description").val(description);
+        $("#updatePetModal #age").val(age);
+        $("#updatePetModal #sex").val(sex);
+        $("#updatePetModal #breed").val(breed);
+        $("#updatePetModal #size").val(size);
 
-        $("#updateProductModal").modal('show');
+        $("#updatePetModal").modal('show');
     });
 
-    $("#updateProductButton").on('click', function() {
+    $("#updatePetButton").on('click', function() {
         var id = $("#productId").val();
-        var name = $("#updateProductModal #name").val();
-        var description = $("#updateProductModal #description").val();
-        var price = $("#updateProductModal #price").val();
-        var in_stock = $("#updateProductModal #in_stock").val();
-        var image = $("#updateProductModal #image").val();
+        var name = $("#updatePetModal #name").val();
+        var description = $("#updatePetModal #description").val();
+        var age = $("#updatePetModal #age").val();
+        var sex = $("#updatePetModal #sex").val();
+        var breed = $("#updatePetModal #breed").val();
+        var size = $("#updatePetModal #size").val();
+        var image = $("#updatePetModal #image").val();
 
         var formData = new FormData();
 
         if (image) {
-            formData.append('image', $("#updateProductModal #image")[0].files[0]);
+            formData.append('image', $("#updatePetModal #image")[0].files[0]);
         }
 
         formData.append('name', name);
         formData.append('description', description);
-        formData.append('price', price);
-        formData.append('in_stock', in_stock);
+        formData.append('age', age);
+        formData.append('sex', sex);
+        formData.append('breed', breed);
+        formData.append('size', size);
         formData.append('_token', "{{ csrf_token() }}");
         formData.append('_method', 'PUT');
 
         $.ajax({
-            url: '/admin/productos/' + id,
+            url: '/admin/pets/' + id,
             type: 'POST',
             data: formData,
             contentType: false,
@@ -261,7 +318,7 @@
         });
     });
 
-    $(".deleteProduct").on('click', function() {
+    $(".deletePet").on('click', function() {
         var id = $(this).data('id');
         Swal.fire({
             text: 'Desea eliminar este registro?',
@@ -271,9 +328,9 @@
             cancelButtonText: 'Cancelar'
         }).then(function(result) {
             if (result.isConfirmed) {
-                console.log('/admin/productos/' + id)
+                console.log('/admin/pets/' + id)
                 $.ajax({
-                    url: '/admin/productos/' + id,
+                    url: '/admin/pets/' + id,
                     type: 'POST',
                     data: {
                         "_token": "{{ csrf_token() }}",

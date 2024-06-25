@@ -10,4 +10,9 @@ class Pet extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function raza()
+    {
+        return $this->belongsTo(PetCategory::class, 'breed');
+    }
 }

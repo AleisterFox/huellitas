@@ -34,7 +34,7 @@
                 <td>{{ $product->name }}</td>
                 <td>
                     @if ($product->image)
-                        <img src="/images/{{ $product->image }}" alt="{{ $product->name }}" style="width: 100px;">
+                    <img src="/images/{{ $product->image }}" alt="{{ $product->name }}" style="width: 100px;">
                     @endif
                 </td>
                 <td>{{ $product->description }}</td>
@@ -42,10 +42,18 @@
                 <td>{{ $product->in_stock }}</td>
                 <td>
                     <div class="btn-group" role="group" aria-label="Basic example">
-                        <button class="btn btn-warning updateCategories"
-                            data-id="{{ $product->id }}"
-                        >
+                        <button class="btn btn-warning updateCategories" 
+                            data-id="{{ $product->id }}">
                             <i class="fa-4 bi-tags"></i>
+                        </button>
+                        <button class="btn btn-success updateProductImages" 
+                            data-id="{{ $product->id }}"
+                            data-image2="/images/{{ $product->image2 }}"
+                            data-image3="/images/{{ $product->image3 }}"
+                            data-image4="/images/{{ $product->image4 }}"
+                            data-image5="/images/{{ $product->image5 }}"
+                            >
+                            <i class="bi bi-card-image"></i>
                         </button>
                         <button class="btn btn-info updateProduct" id="updateProduct-{{ $product->id }}" data-id="{{ $product->id }}" data-name="{{ $product->name }}" data-description="{{ $product->description }}" data-price="{{ $product->price }}" data-in_stock="{{ $product->in_stock }}" data-category_id="{{ $product->category_id }}">
                             <i class="fs-4 bi-grid"></i>
@@ -174,6 +182,59 @@
     </div>
 </div>
 
+<div class="modal fade" id="updateImagesProductModal" tabindex="-1" aria-labelledby="updateImagesProductModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updateImagesProductModal">Actualizar producto</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="addProductForm" method="post">
+                    @csrf
+                    <input type="hidden" id="productId">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label for="image" class="form-label">Imagen1</label>
+                                <input type="file" class="form-control" id="image" name="image" required>
+                                <img src="" id="img-image2" class="img-fluid" width="250px">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label for="image2" class="form-label">Imagen2</label>
+                                <input type="file" class="form-control" id="image2" name="image2" required>
+                                <img src="" id="img-image3" class="img-fluid" width="250px">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label for="image3" class="form-label">Imagen3</label>
+                                <input type="file" class="form-control" id="image3" name="image3" required>
+                                <img src="" id="img-image4" class="img-fluid" width="250px">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label for="image4" class="form-label">Imagen4</label>
+                                <input type="file" class="form-control" id="image4" name="image4" required>
+                                <img src="" id="img-image5" class="img-fluid" width="250px">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" id="updateImagesProductModalButton" class="btn btn-primary">Actualizar</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 @endsection
 
@@ -201,6 +262,22 @@
                 $("#addCategoryModal .update-categories").html(response);
             }
         });
+    });
+
+    $(".updateProductImages").on('click', function() {
+        var id = $(this).data('id');
+        var image2 = $(this).data('image2');
+        var image3 = $(this).data('image3');
+        var image4 = $(this).data('image4');
+        var image5 = $(this).data('image5');
+
+        $("#productId").val(id);
+        $("#updateImagesProductModal #img-image2").attr('src', image2);
+        $("#updateImagesProductModal #img-image3").attr('src', image3);
+        $("#updateImagesProductModal #img-image4").attr('src', image4);
+        $("#updateImagesProductModal #img-image5").attr('src', image5);
+
+        $("#updateImagesProductModal").modal('show');
     });
 
     $("#updateCategoriesButton").on('click', function() {
@@ -247,6 +324,48 @@
         $("#updateProductModal #in_stock").val(in_stock);
 
         $("#updateProductModal").modal('show');
+    });
+
+    $("#updateImagesProductModalButton").on('click', function() {
+        var id = $("#productId").val();
+        var formData = new FormData();
+
+        if ($("#updateImagesProductModal #image")[0].files.length > 0) {
+            formData.append('image2', $("#updateImagesProductModal #image")[0].files[0]);
+        }
+
+        if ($("#updateImagesProductModal #image2")[0].files.length > 0) {
+            formData.append('image3', $("#updateImagesProductModal #image2")[0].files[0]);
+        }
+
+        if ($("#updateImagesProductModal #image3")[0].files.length > 0) {
+            formData.append('image4', $("#updateImagesProductModal #image3")[0].files[0]);
+        }
+
+        if ($("#updateImagesProductModal #image4")[0].files.length > 0) {
+            formData.append('image5', $("#updateImagesProductModal #image4")[0].files[0]);
+        }
+
+        formData.append('_token', "{{ csrf_token() }}");
+        formData.append('_method', 'PUT');
+
+        $.ajax({
+            url: '/admin/productos/' + id + '/imagenes',
+            type: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                Swal.fire({
+                    title: 'Actualizado!',
+                    text: 'El registro ha sido actualizado',
+                    icon: 'success',
+                    confirmButtonText: 'Aceptar'
+                }).then(function() {
+                    location.reload();
+                });
+            }
+        });
     });
 
     $("#updateProductButton").on('click', function() {
