@@ -3,7 +3,7 @@
     <a href="/">
       <picture>
         <source media="(max-width: 768px)" srcset="img/logo.jpg" />
-        <img src="img/logo.jpg" alt="" />
+        <img src="/img/logo.jpg" alt="" />
       </picture>
     </a>
 

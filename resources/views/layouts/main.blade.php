@@ -29,7 +29,7 @@
 
   @include('layouts.styles')
 
-  <script src="js/wow.min.js"></script>
+  <script src="/js/wow.min.js"></script>
   <script>
     new WOW().init();
   </script>
@@ -69,10 +69,10 @@
   @include('layouts.footer')
 </body>
 
-<script src="js/script.js"></script>
+<script src="/js/script.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="js/loader.js"></script>
-<script src="js/glide.min.js"></script>
+<script src="/js/loader.js"></script>
+<script src="/js/glide.min.js"></script>
 
 @stack('scripts')
 

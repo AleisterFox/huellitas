@@ -15,37 +15,21 @@
                         <label for="option1">Todos</label>
                         <input type="checkbox" name="" id="option1" checked>
                     </div>
+                    @foreach($categories as $category)
                     <div class="dog-type">
-                        <label for="option2">Mestizos</label>
+                        <label for="option2">{{ $category->name }}</label>
                         <input type="checkbox" name="" id="option2">
                     </div>
-                    <div class="dog-type">
-                        <label for="option3">Chihuahuas</label>
-                        <input type="checkbox" name="" id="option3">
-                    </div>
+                    @endforeach
                 </form>
             </div>
             <div class="perritos-container">
-                <a href="/adoptar" class="doggy">
-                    <figure><img src="img/agata.jpg" alt=""></figure>
-                    <h4>agata</h4>
-                </a>
-                <a href="/adoptar" class="doggy">
-                    <figure><img src="img/drako.jpg" alt=""></figure>
-                    <h4>drako</h4>
-                </a>
-                <a href="/adoptar" class="doggy">
-                    <figure><img src="img/eros.jpg" alt=""></figure>
-                    <h4>eros</h4>
-                </a>
-                <a href="/adoptar" class="doggy">
-                    <figure><img src="img/tony.jpg" alt=""></figure>
-                    <h4>tony</h4>
-                </a>
-                <a href="/adoptar" class="doggy">
-                    <figure><img src="img/daisy.jpg" alt=""></figure>
-                    <h4>daisy</h4>
-                </a>
+                @foreach($pets as $pet)
+                    <a href="/adoptar" class="doggy">
+                        <figure><img src="img/agata.jpg" alt=""></figure>
+                        <h4>{{ $pet->name }}</h4>
+                    </a>
+                @endforeach
             </div>
         </div>
 

@@ -2,7 +2,7 @@
     <div class="top">
         <a href="#hero">
             <figure>
-                <img src="img/logo.jpg" alt="" />
+                <img src="/img/logo.jpg" alt="" />
             </figure>
         </a>
         <ul>

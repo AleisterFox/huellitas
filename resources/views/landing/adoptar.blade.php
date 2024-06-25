@@ -9,37 +9,37 @@
                     <div class="glide__track" data-glide-el="track">
                         <ul class="glide__slides">
                             <li style="border: 1px solid" class="glide__slide">
-                                <figure><img src="img/agata.jpg" alt="" /></figure>
+                                <figure><img src="/img/agata.jpg" alt="" /></figure>
                             </li>
                             <li style="border: 1px solid" class="glide__slide">
-                                <figure><img src="img/agata2.jpg" alt="" /></figure>
+                                <figure><img src="/img/agata2.jpg" alt="" /></figure>
                             </li>
                             <li style="border: 1px solid" class="glide__slide">
-                                <figure><img src="img/agata3.jpg" alt="" /></figure>
+                                <figure><img src="/img/agata3.jpg" alt="" /></figure>
                             </li>
                             <li style="border: 1px solid" class="glide__slide">
-                                <figure><img src="img/agata4.jpg" alt="" /></figure>
+                                <figure><img src="/img/agata4.jpg" alt="" /></figure>
                             </li>
                         </ul>
 
                         <div class="glide__bullets" data-glide-el="controls[nav]">
-                            <button class="glide__bullet" data-glide-dir="=0"><img src="img/agata.jpg" alt=""></button>
-                            <button class="glide__bullet" data-glide-dir="=1"><img src="img/agata2.jpg" alt=""></button>
-                            <button class="glide__bullet" data-glide-dir="=2"><img src="img/agata3.jpg" alt=""></button>
-                            <button class="glide__bullet" data-glide-dir="=3"><img src="img/agata4.jpg" alt=""></button>
+                            <button class="glide__bullet" data-glide-dir="=0"><img src="/img/agata.jpg" alt=""></button>
+                            <button class="glide__bullet" data-glide-dir="=1"><img src="/img/agata2.jpg" alt=""></button>
+                            <button class="glide__bullet" data-glide-dir="=2"><img src="/img/agata3.jpg" alt=""></button>
+                            <button class="glide__bullet" data-glide-dir="=3"><img src="/img/agata4.jpg" alt=""></button>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="right">
-                <h2 class="dog__name">Ágata</h2>
+                <h2 class="dog__name">{{ $pet->name }}</h2>
                 <div class="gender">
                     <p><strong>Sexo:</strong></p>
                     <p>Hembra</p>
                 </div>
                 <div class="age">
                     <p><strong>Edad:</strong></p>
-                    <p>5 años</p>
+                    <p>{{ $pet->age }} años</p>
                 </div>
                 <div class="size">
                     <p><strong>Talla:</strong></p>
@@ -51,17 +51,10 @@
                 </div>
                 <div class="race">
                     <p><strong>Mix de raza:</strong></p>
-                    <p>Australian Shepherd</p>
+                    <p>{{ $pet->raza->name }}</p>
                 </div>
                 <p class="dog__description">
-                    Ágata, una perrita de 5 años, fue rescatada después de pasar15
-                    días en la caseta de seguridad de un fraccionamiento. A pesar de
-                    buscar a su familia sin éxito, nadie la reclamó. Ante la amenaza
-                    de ser llevada a la perrera, Ágata llegó a nuestro refugio. Su
-                    personalidad tranquila y amorosa la convierte en una compañera
-                    perfecta para otros perros y niños. Ahora, con nosotros, Ágata ha
-                    encontrado un refugio lleno de amor y estabilidad, lejos de la
-                    incertidumbre que alguna vez la rodeó.
+                    {{ $pet->description }}
                 </p>
                 <div class="available">
                     <p>Disponible</p>
@@ -170,3 +163,17 @@
     </section>
 </main>
 @endsection
+
+@push('scripts')
+<script>
+  var glide = new Glide("#pet-slider", {
+    type: "carousel",
+    perView: 1,
+    autoplay: 5000,
+    animationDuration: 2000,
+    animationTimingFunction: "ease-in-out",
+  });
+
+  glide.mount();
+</script>
+@endpush

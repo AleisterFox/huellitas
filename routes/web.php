@@ -23,7 +23,7 @@ Route::middleware([])->group(function() {
     Route::get('/adopciones', [MainController::class, 'adopciones']);
     Route::get('/contacto', [MainController::class, 'contacto']);
     Route::get('/producto', [MainController::class, 'producto']);
-    Route::get('/adoptar', [MainController::class, 'adoptar']);
+    Route::get('/adoptar/{pet}', [MainController::class, 'adoptar']);
     Route::get('/carrito', [MainController::class, 'carrito']);
     Route::get('/informacion', [MainController::class, 'informacion']);
     Route::get('/confirmacion', [MainController::class, 'confirmacion']);

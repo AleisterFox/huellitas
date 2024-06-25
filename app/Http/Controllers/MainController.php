@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Pet;
+use App\Models\PetCategory;
 
 class MainController extends Controller
 {
@@ -13,7 +15,10 @@ class MainController extends Controller
 
     public function perritos()
     {
-        return view('landing.perritos');
+        return view('landing.perritos', [
+            'pets' => Pet::all(),
+            'categories' => PetCategory::all()
+        ]);
     }
 
     public function donaciones()
@@ -36,9 +41,11 @@ class MainController extends Controller
         return view('landing.producto');
     }
 
-    public function adoptar()
+    public function adoptar(Pet $pet)
     {
-        return view('landing.adoptar');
+        return view('landing.adoptar', [
+            'pet' => $pet
+        ]);
     }
 
     public function carrito()
