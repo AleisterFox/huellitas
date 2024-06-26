@@ -9,48 +9,41 @@
                     <div class="glide__track" data-glide-el="track">
                         <ul class="glide__slides">
                             <li style="border: 1px solid" class="glide__slide">
-                                <figure><img src="img/croquetas.jpg" alt="" /></figure>
+                                <figure><img src="/img/croquetas.jpg" alt="" /></figure>
                             </li>
                             <li style="border: 1px solid" class="glide__slide">
-                                <figure><img src="img/croquetas.jpg" alt="" /></figure>
+                                <figure><img src="/img/croquetas.jpg" alt="" /></figure>
                             </li>
                             <li style="border: 1px solid" class="glide__slide">
-                                <figure><img src="img/croquetas.jpg" alt="" /></figure>
+                                <figure><img src="/img/croquetas.jpg" alt="" /></figure>
                             </li>
                             <li style="border: 1px solid" class="glide__slide">
-                                <figure><img src="img/croquetas.jpg" alt="" /></figure>
+                                <figure><img src="/img/croquetas.jpg" alt="" /></figure>
                             </li>
                         </ul>
 
                         <div class="glide__bullets" data-glide-el="controls[nav]">
                             <button class="glide__bullet" data-glide-dir="=0">
-                                <img src="img/croquetas.jpg" alt="" />
+                                <img src="/img/croquetas.jpg" alt="" />
                             </button>
                             <button class="glide__bullet" data-glide-dir="=1">
-                                <img src="img/croquetas.jpg" alt="" />
+                                <img src="/img/croquetas.jpg" alt="" />
                             </button>
                             <button class="glide__bullet" data-glide-dir="=2">
-                                <img src="img/croquetas.jpg" alt="" />
+                                <img src="/img/croquetas.jpg" alt="" />
                             </button>
                             <button class="glide__bullet" data-glide-dir="=3">
-                                <img src="img/croquetas.jpg" alt="" />
+                                <img src="/img/croquetas.jpg" alt="" />
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="right">
-                <h2 class="product__name">Nombre del producto</h2>
-                <p class="price"><strong>$0.00 MXN</strong></p>
+                <h2 class="product__name">{{ $product->name }}</h2>
+                <p class="price"><strong>${{ $product->price }} MXN</strong></p>
                 <p class="product__description">
-                    Ágata, una perrita de 5 años, fue rescatada después de pasar15
-                    días en la caseta de seguridad de un fraccionamiento. A pesar de
-                    buscar a su familia sin éxito, nadie la reclamó. Ante la amenaza
-                    de ser llevada a la perrera, Ágata llegó a nuestro refugio. Su
-                    personalidad tranquila y amorosa la convierte en una compañera
-                    perfecta para otros perros y niños. Ahora, con nosotros, Ágata ha
-                    encontrado un refugio lleno de amor y estabilidad, lejos de la
-                    incertidumbre que alguna vez la rodeó.
+                    {{ $product->description }}
                 </p>
                 <div class="input-group">
                     <input type="number" value="0" name="Qty" id="Qty" />
@@ -74,7 +67,7 @@
                 <div class="product">
                     <div class="product__info">
                         <i class="fas fa-x delete__product"></i>
-                        <figure><img src="img/croquetas.jpg" alt="" /></figure>
+                        <figure><img src="/img/croquetas.jpg" alt="" /></figure>
                         <p class="product__name">Nombre del producto</p>
                     </div>
                     <p class="product__price">$ 0.00 MXN</p>

@@ -3,6 +3,11 @@
 @section('content')
 <main>
     <section id="mascota">
+        @if (session('success'))
+            <div style="background-color: rgb(37, 90, 50); color: rgb(153, 230, 171);">
+                <h2>Se ha enviado el formulario satisfactoriamente</h2>
+            </div>
+        @endif
         <div class="container">
             <div class="left">
                 <div class="glide" id="pet-slider">
@@ -13,36 +18,36 @@
                             </li>
 
                             @if ($pet->image2)
-                                <li style="border: 1px solid" class="glide__slide">
-                                    <figure><img src="/pets/{{ $pet->image2 }}" alt="" /></figure>
-                                </li>
+                            <li style="border: 1px solid" class="glide__slide">
+                                <figure><img src="/pets/{{ $pet->image2 }}" alt="" /></figure>
+                            </li>
                             @endif
-                            
+
                             @if ($pet->image3)
-                                <li style="border: 1px solid" class="glide__slide">
-                                    <figure><img src="/pets/{{ $pet->image3 }}" alt="" /></figure>
-                                </li>
+                            <li style="border: 1px solid" class="glide__slide">
+                                <figure><img src="/pets/{{ $pet->image3 }}" alt="" /></figure>
+                            </li>
                             @endif
 
                             @if ($pet->image4)
-                                <li style="border: 1px solid" class="glide__slide">
-                                    <figure><img src="/pets/{{ $pet->image4 }}" alt="" /></figure>
-                                </li>
+                            <li style="border: 1px solid" class="glide__slide">
+                                <figure><img src="/pets/{{ $pet->image4 }}" alt="" /></figure>
+                            </li>
                             @endif
                         </ul>
 
                         <div class="glide__bullets" data-glide-el="controls[nav]">
                             <button class="glide__bullet" data-glide-dir="=0"><img src="/pets/{{ $pet->image }}" alt=""></button>
                             @if ($pet->image2)
-                                <button class="glide__bullet" data-glide-dir="=1"><img src="/pets/{{ $pet->image2 }}" alt=""></button>
+                            <button class="glide__bullet" data-glide-dir="=1"><img src="/pets/{{ $pet->image2 }}" alt=""></button>
                             @endif
 
                             @if ($pet->image3)
-                                <button class="glide__bullet" data-glide-dir="=2"><img src="/pets/{{ $pet->image3 }}" alt=""></button>
+                            <button class="glide__bullet" data-glide-dir="=2"><img src="/pets/{{ $pet->image3 }}" alt=""></button>
                             @endif
 
                             @if ($pet->image4)
-                                <button class="glide__bullet" data-glide-dir="=3"><img src="/pets/{{ $pet->image4 }}" alt=""></button>
+                            <button class="glide__bullet" data-glide-dir="=3"><img src="/pets/{{ $pet->image4 }}" alt=""></button>
                             @endif
                         </div>
                     </div>
@@ -79,26 +84,22 @@
             </div>
         </div>
         <div class="adoption-form">
-            <form action="">
-                <h2>Aplica para adoptarme</h2>
 
+            <form action="{{ route('pet-adoption-form') }}" method="post">
+                @csrf
+                <h2>Aplica para adoptarme</h2>
+                <input type="hidden" value="{{ $pet->id }}" name="pet_id">
                 <fieldset>
                     <legend>Datos personales</legend>
                     <input type="text" name="name" id="name" placeholder="Nombre*" required>
-                    <select name="age" id="age">
-                        <option value="">edad*</option>
-                        <option value="">edad</option>
-                        <option value="">edad</option>
-                        <option value="">edad</option>
-                    </select>
-                    <input type="text" name="job" id="job" placeholder="Ocupación*" required>
-                    <select name="house-type" id="house-type">
+                    <input type="number" name="age" id="age" placeholder="Edad*" required>
+                    <input type="text" name="work" id="job" placeholder="Ocupación*" required>
+                    <select name="house_type" id="house-type" required>
                         <option value="">Tipo de vivienda*</option>
-                        <option value="">casa</option>
-                        <option value="">casa</option>
-                        <option value="">casa</option>
+                        <option value="casa">casa</option>
+                        <option value="casa">casa</option>
                     </select>
-                    <input type="text" name="garden" id="garden" placeholder="Tamaño de jardin" required>
+                    <input type="text" name="garden_type" id="garden" placeholder="Tamaño de jardin" required>
                     <input type="text" name="address" id="address" placeholder="Dirección completa*" required>
                     <input type="email" name="email" id="email" placeholder="Correo*" required>
                     <input type="tel" name="phone" id="phone" placeholder="Teléfono*" required>
@@ -107,72 +108,66 @@
                 <fieldset>
                     <legend>Preguntas Generales</legend>
                     <label for="reason">¿Por qué te gustaría adoptar un perro?</label>
-                    <textarea name="reason" id="reason" cols="30" rows="10" placeholder="Escribe*" required></textarea>
+                    <textarea name="reason_to_adopt" id="reason" cols="30" rows="10" placeholder="Escribe*" required></textarea>
                     <label for="actual-dog">¿Tienes perro actualmente?</label>
-                    <select name="actual-dog" id="actual-dog" required>
+                    <select name="has_pet" id="actual-dog" required>
                         <option value="">Seleccione*</option>
-                        <option value="si">Si</option>
-                        <option value="no">No</option>
+                        <option value="1">Si</option>
+                        <option value="0">No</option>
                     </select>
                     <label for="exercise">¿Cuánto ejercicio le puedes dar a tu perro diario?</label>
-                    <select name="exercise" id="exercise" required>
+                    <select name="workout_time" id="exercise" required>
                         <option value="">Seleccione*</option>
-                        <option value="">30 min</option>
-                        <option value="">1 hr</option>
+                        <option value="30">30 min</option>
+                        <option value="1">1 hr</option>
                     </select>
                     <label for="time-alone">¿Cuánto tiempo se quedaría solo el perro al día?</label>
-                    <select name="time-alone" id="time-alone">
+                    <select name="pet_alone_time" id="time-alone">
                         <option value="">Seleccione*</option>
-                        <option value="">time1</option>
-                        <option value="">time2</option>
+                        <option value="1">time1</option>
+                        <option value="2">time2</option>
                     </select>
                     <label for="other-people">¿Hay personas de la 3era edad o con capacidad diferente en su vivienda?</label>
-                    <select name="other-people" id="other-people">
+                    <select name="old_parents" id="other-people">
                         <option value="">Seleccione*</option>
-                        <option value="">si</option>
-                        <option value="">no</option>
+                        <option value="1">si</option>
+                        <option value="0">no</option>
                     </select>
                     <label for="kids">¿Hay niños pequeños en su domicilio que habitaran con el perro?</label>
                     <select name="kids" id="kids">
                         <option value="">Seleccione*</option>
-                        <option value="">si</option>
-                        <option value="">no</option>
-                    </select>
-                    <label for="energy">¿Qué tanta energía deseas en el perro?</label>
-                    <select name="energy" id="energy">
-                        <option value="">Seleccione*</option>
-                        <option value="">si</option>
-                        <option value="">no</option>
+                        <option value="1">si</option>
+                        <option value="0">no</option>
                     </select>
                     <label for="other-pets">¿Cuenta usted con alguna otra mascota (gatos, aves, etc.)?
                         En caso de seleccionar si, mencione cual.</label>
 
-                    <select name="other-pets" id="other-pets">
+                    <select name="has_any_other_pet" id="other-pets">
                         <option value="">Seleccione*</option>
-                        <option value="">si</option>
-                        <option value="">no</option>
+                        <option value="1">si</option>
+                        <option value="0">no</option>
                     </select>
-                    <input type="text" name="second-pet" id="second-pet" placeholder="Mencione">
+                    <input type="text" name="pet_type" id="second-pet" placeholder="Mencione">
                     <label for="vet">¿Cuentas con veterinario de confianza?</label>
-                    <select name="vet" id="vet">
+                    <select name="has_vet" id="vet">
                         <option value="">Seleccione*</option>
-                        <option value="">si</option>
-                        <option value="">no</option>
+                        <option value="1">si</option>
+                        <option value="0">no</option>
                     </select>
                     <label for="unanime">¿Todas las personas que viven en la casa están de acuerdo con la adopción?</label>
-                    <select name="unanime" id="unanime">
+                    <select name="family_aggree" id="unanime">
                         <option value="">Seleccione*</option>
-                        <option value="">si</option>
-                        <option value="">no</option>
+                        <option value="1">si</option>
+                        <option value="0">no</option>
                     </select>
                     <label for="medio-informacion">¿Por qué medio te enteraste de la adopción de Ágata?</label>
-                    <select name="medio-informacion" id="medio-informacion">
+                    <select name="media_adopt" id="medio-informacion">
                         <option value="">Seleccione*</option>
-                        <option value="">medio1</option>
-                        <option value="">medio2</option>
+                        <option value="medio1">medio1</option>
+                        <option value="medio12">medio2</option>
                     </select>
                     <label for="why">Platícanos un poco más de ti, ¿Por qué consideras que eres la persona adecuada para darle un hogar?</label>
-                    <textarea name="why" id="why" cols="30" rows="10" placeholder="Mensaje*" required></textarea>
+                    <textarea name="message" id="why" cols="30" rows="10" placeholder="Mensaje*" required></textarea>
                     <button type="submit" class="button">Enviar Formulario</button>
                 </fieldset>
             </form>
@@ -183,14 +178,14 @@
 
 @push('scripts')
 <script>
-  var glide = new Glide("#pet-slider", {
-    type: "carousel",
-    perView: 1,
-    autoplay: 5000,
-    animationDuration: 2000,
-    animationTimingFunction: "ease-in-out",
-  });
+    var glide = new Glide("#pet-slider", {
+        type: "carousel",
+        perView: 1,
+        autoplay: 5000,
+        animationDuration: 2000,
+        animationTimingFunction: "ease-in-out",
+    });
 
-  glide.mount();
+    glide.mount();
 </script>
 @endpush

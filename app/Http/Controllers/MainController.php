@@ -5,12 +5,36 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Pet;
 use App\Models\PetCategory;
+use App\Models\PetAdoptionForm;
+use App\Models\Category;
+use App\Models\Product;
 
 class MainController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        return view('index');
+        if ($request->isMethod('post') && $request->has('categories')) {
+            if ($request->collect('categories')->contains(0)) {
+                $products = Product::all();
+            } else {
+                $products = Product::whereHas('categories', function($query) use ($request) {
+                    $query->whereIn('category_id', $request->collect('categories'));
+                })->get();
+            }
+
+            return $products->map(function($product) {
+                return view('landing._product', [
+                    'product' => $product
+                ])->render();
+            })->implode('');
+        } else {
+            $products = Pet::all();
+        }
+
+        return view('index', [
+            'products' => Product::all(),
+            'categories' => Category::all()
+        ]);
     }
 
     public function perritos(Request $request)
@@ -52,9 +76,11 @@ class MainController extends Controller
         return view('landing.contacto');
     }
 
-    public function producto()
+    public function producto(Product $product)
     {
-        return view('landing.producto');
+        return view('landing.producto', [
+            'product' => $product
+        ]);
     }
 
     public function adoptar(Pet $pet)
@@ -82,5 +108,12 @@ class MainController extends Controller
     public function envio()
     {
         return view('landing.envio');
+    }
+
+    public function petAdoptionForm(Request $request)
+    {
+        PetAdoptionForm::create($request->all());
+
+        return redirect()->back()->with('success', 'Pet adoption form submitted successfully');
     }
 }

@@ -96,7 +96,7 @@
                                 </ul>
                             </li>
                             @php
-                                $shouldOpen = in_array(request()->route()->getName(), ['contacto.index']);
+                                $shouldOpen = in_array(request()->route()->getName(), ['contacto.index', 'pet-adoption-form.index']);
                             @endphp
                             <li>
                                 <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
@@ -105,6 +105,11 @@
                                     <li class="w-100">
                                         <a href="{{ route('contacto.index') }}" class="nav-link px-0 {{ request()->route()->getName() == 'contacto.index' ? 'active' : '' }}"> 
                                             <span class="d-none d-sm-inline">Formulario de contacto</span>
+                                        </a>
+                                    </li>
+                                    <li class="w-100">
+                                        <a href="{{ route('pet-adoption-form.index') }}" class="nav-link px-0 {{ request()->route()->getName() == 'pet-adoption-form.index' ? 'active' : '' }}"> 
+                                            <span class="d-none d-sm-inline">Solicitudes de adopciones</span>
                                         </a>
                                     </li>
                                 </ul>

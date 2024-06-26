@@ -11,24 +11,27 @@ use App\Http\Controllers\AdoptionFormController;
 use App\Http\Controllers\PetsController;
 use App\Http\Controllers\PetCategoriesController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PetAdoptionFormController;
 
 Auth::routes(['register' => false]);
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::middleware([])->group(function() {
-    Route::get('/', [MainController::class, 'index']);
+    Route::match(['get','post'], '/', [MainController::class, 'index']);
     Route::match(['get', 'post'], '/perritos', [MainController::class, 'perritos']);
     Route::get('/donaciones', [MainController::class, 'donaciones']);
     Route::get('/adopciones', [MainController::class, 'adopciones']);
     Route::get('/contacto', [MainController::class, 'contacto']);
-    Route::get('/producto', [MainController::class, 'producto']);
+    Route::get('/producto/{product}', [MainController::class, 'producto']);
     Route::get('/adoptar/{pet}', [MainController::class, 'adoptar']);
     Route::get('/carrito', [MainController::class, 'carrito']);
     Route::get('/informacion', [MainController::class, 'informacion']);
     Route::get('/confirmacion', [MainController::class, 'confirmacion']);
     Route::get('/envio', [MainController::class, 'envio']);
     Route::get('/pago', [MainController::class, 'pago']);
+
+    Route::post('pet-adoption-form', [MainController::class, 'petAdoptionForm'])->name('pet-adoption-form');
 });
 
 Route::prefix('admin')->middleware(['auth'])->group(function() {
@@ -46,4 +49,5 @@ Route::prefix('admin')->middleware(['auth'])->group(function() {
 
     Route::resource('contacto', ContactFormController::class);
     Route::resource('adopciones', AdoptionFormController::class);
+    Route::resource('pet-adoption-form', PetAdoptionFormController::class);
 });

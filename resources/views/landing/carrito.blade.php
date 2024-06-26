@@ -19,7 +19,7 @@
 
                     <div class="product">
                         <i class="fas fa-x"></i>
-                        <figure><img src="img/croquetas.jpg" alt="" /></figure>
+                        <figure><img src="/img/croquetas.jpg" alt="" /></figure>
                         <div class="product__information">
                             <h3 class="product__name">Nombre del producto</h3>
                             <p class="product__price">$ 0.00 MXN</p>
