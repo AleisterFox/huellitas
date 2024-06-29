@@ -12,6 +12,7 @@ use App\Http\Controllers\PetsController;
 use App\Http\Controllers\PetCategoriesController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PetAdoptionFormController;
+use App\Http\Controllers\ShoppingCartController;
 
 Auth::routes(['register' => false]);
 
@@ -32,6 +33,10 @@ Route::middleware([])->group(function() {
     Route::get('/pago', [MainController::class, 'pago']);
 
     Route::post('pet-adoption-form', [MainController::class, 'petAdoptionForm'])->name('pet-adoption-form');
+
+    Route::post('add-to-cart', [ShoppingCartController::class, 'addToCart'])->name('add-to-cart');
+    Route::post('remove-from-cart', [ShoppingCartController::class, 'removeFromCart'])->name('remove-from-cart');
+    Route::post('update-cart', [ShoppingCartController::class, 'updateCart'])->name('update-cart');
 });
 
 Route::prefix('admin')->middleware(['auth'])->group(function() {

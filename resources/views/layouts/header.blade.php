@@ -1,3 +1,4 @@
+@use('App\Services\CartService')
 <header>
   <nav>
     <a href="/">
@@ -18,7 +19,7 @@
       <li><a href="/contacto" class="button">Contacto</a></li>
       <li class="shop-cart">
         <a href="/carrito"><i class="fas fa-bag-shopping"></i></a>
-        <p class="number__of--articles">1</p>
+        <p class="number__of--articles">{{ CartService::getCount() }}</p>
       </li>
     </ul>
     <a><i class="fa-solid fa-bars menu__button"></i></a>

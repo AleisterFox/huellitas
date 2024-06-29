@@ -8,6 +8,7 @@ use App\Models\PetCategory;
 use App\Models\PetAdoptionForm;
 use App\Models\Category;
 use App\Models\Product;
+use App\Services\CartService;
 
 class MainController extends Controller
 {
@@ -90,9 +91,15 @@ class MainController extends Controller
         ]);
     }
 
-    public function carrito()
+    public function carrito(CartService $cartService)
     {
-        return view('landing.carrito');
+        if (CartService::getCount() === 0) {
+            return redirect('/');
+        }
+
+        return view('landing.carrito', [
+            'products' => $cartService->getProducts()
+        ]);
     }
 
     public function informacion()

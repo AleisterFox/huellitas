@@ -5,6 +5,7 @@
     <section id="mascota">
         <div class="container">
             <div class="left">
+                <input type="hidden" value="{{ $product->id }}" value="product_id" id="productId">
                 <div class="glide product-slider" id="pet-slider">
                     <div class="glide__track" data-glide-el="track">
                         <ul class="glide__slides">
@@ -17,7 +18,7 @@
                                 <figure><img src="/images/{{ $product->image2 }}" alt="" /></figure>
                             </li>
                             @endif
-                          
+
                             @if ($product->image3)
                             <li style="border: 1px solid" class="glide__slide">
                                 <figure><img src="/images/{{ $product->image3 }}" alt="" /></figure>
@@ -80,8 +81,8 @@
                     <button class="increment">+</button>
                 </div>
                 <div class="buttons">
-                    <a href="/carrito" class="button">Comprar</a>
-                    <a href="javascript:void(0);" class="button add__product">Agregar al carrito</a>
+                    <button class="button" id="get_product" disabled>Comprar</button>
+                    <button class="button add__product" id="add__product" disabled>Agregar al carrito</button>
                 </div>
             </div>
         </div>
@@ -122,7 +123,7 @@
 @endsection
 
 @push('scripts')
-<script src="js/cartModal.js"></script>
+<script src="/js/cartModal.js"></script>
 <script>
     var glide = new Glide("#pet-slider", {
         type: "carousel",
@@ -136,18 +137,60 @@
 </script>
 
 <script>
+    const addToCartButton = document.getElementById("add__product");
+    const getProduct = document.getElementById("get_product");
     const inputNumber = document.querySelector('input[type="number"]');
     const incrementButton = document.querySelector(".increment");
     const decrementButton = document.querySelector(".decrement");
 
     incrementButton.addEventListener("click", function() {
         inputNumber.stepUp();
+        addToCartButton.disabled = false;
+        getProduct.disabled = false;
     });
 
     decrementButton.addEventListener("click", function() {
         if (inputNumber.value != 0) {
             inputNumber.stepDown();
+        } else {
+            addToCartButton.disabled = true;
+            getProduct.disabled = true;
         }
+    });
+</script>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+    const quantity = document.getElementById("Qty");
+    const product = document.getElementById("productId");
+
+    function addToCart() {
+        const params = {
+            product_id: product.value,
+            quantity: quantity.value,
+            "_token": "{{ csrf_token() }}",
+        };
+        return $.ajax({
+            url: '/add-to-cart',
+            method: 'POST',
+            data: params,
+            success: function(response) {
+                console.log(response);
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+    }
+
+    getProduct.addEventListener('click', function() {
+        addToCart().then(() => {
+            window.location.href = '/carrito';
+        });
+    });
+
+    addToCartButton.addEventListener('click', function() {
+        addToCart();
     });
 </script>
 @endpush
