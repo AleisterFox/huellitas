@@ -78,8 +78,24 @@ class OrderController extends Controller
             $order->update([
                 'preference_response' => $request->all()
             ]);
-        }
 
-        dd($order->preference_response);
+            $order->updateStatus();
+            $cartService->clear();
+            return redirect('/')->with('message', $order->getStatusMessage());
+        }
+    }
+
+    public function notification(Request $request)
+    {
+        $data = $request->all();
+        $order = Order::where('preferences_id', $data['id'])->first();
+
+        if ($order) {
+            $order->update([
+                'preference_response' => $data
+            ]);
+
+            $order->updateStatus();
+        }
     }
 }

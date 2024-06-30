@@ -102,8 +102,12 @@ class MainController extends Controller
         ]);
     }
 
-    public function informacion()
+    public function informacion(CartService $cartService)
     {
+        if (CartService::getCount() === 0) {
+            return redirect('/');
+        }
+        
         return view('landing.informacion');
     }
 
