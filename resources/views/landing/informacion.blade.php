@@ -18,9 +18,10 @@
                     </div>
 
                     <div class="customer__info">
-                        <form action="">
+                        <form id="orderForm" action="{{ route('order.store') }}" method="post">
+                            @csrf
                             <input type="text" name="name" id="name" placeholder="Nombre" required />
-                            <input type="text" name="lastname" id="lastname" placeholder="Apellido" required />
+                            <input type="text" name="last_name" id="lastname" placeholder="Apellido" required />
                             <input type="tel" name="phone" id="phone" placeholder="Teléfono" required />
                             <input type="email" name="email" id="email" placeholder="Email" required />
                             <input type="text" name="address" id="address" placeholder="Dirección (Incluyendo colonia, número, piso, etc.)" required />
@@ -28,13 +29,13 @@
                                 <option value="javascript:void(0);">Estado</option>
                             </select>
                             <input type="text" name="city" id="city" placeholder="Ciudad" required />
-                            <input type="number" name="postalCode" id="postalCode" placeholder="Código Postal" required />
+                            <input type="number" name="zip" id="postalCode" placeholder="Código Postal" required />
                         </form>
                     </div>
 
                     <div class="bottom">
                         <a href="/carrito" class="back"><i class="fas fa-chevron-left"></i>Volver al producto</a>
-                        <a href="/pago" class="button">Continuar</a>
+                        <button form="orderForm" class="button">Continuar</button>
                     </div>
                 </div>
             </div>
