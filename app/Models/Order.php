@@ -31,6 +31,19 @@ class Order extends Model
         }, 0);
     }
 
+    public function getOrderId()
+    {
+        if (!$this->preference_response) {
+            return null;
+        }
+
+        if (!isset($this->preference_response['collection_id'])) {
+            return null;
+        }
+        
+        return $this->preference_response['collection_id'];
+    }
+
     public function isSuccessful()
     {
         return $this->status === self::STATUS_APPROVED;

@@ -10,6 +10,13 @@ use MercadoPago\MercadoPagoConfig;
 
 class OrderController extends Controller
 {
+    public function index()
+    {
+        return view('admin.orders.index', [
+            'orders' => Order::whereNotNull('preference_response')->get()
+        ]);
+    }
+
     // https://www.youtube.com/watch?v=pCYpPqGoUqM&ab_channel=C%C3%B3digosdeProgramaci%C3%B3n-MR
     // https://github.com/mroblesdev/checkout-mercadopago-php-js
     public function store(Request $request, CartService $cartService)

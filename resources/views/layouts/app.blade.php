@@ -52,14 +52,14 @@
                                 </a>
                             </li>
                             <li>
+                                @php
+                                    $shouldOpen = in_array(request()->route()->getName(), ['order.index']);
+                                @endphp
                                 <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
                                     <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Pedidos</span> </a>
-                                <ul class="collapse nav flex-column ms-4" id="submenu1" data-bs-parent="#menu">
+                                <ul class="collapse nav flex-column ms-4 {{ $shouldOpen ? 'show' : '' }}" id="submenu1" data-bs-parent="#menu">
                                     <li class="w-100">
-                                        <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1 </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2 </a>
+                                        <a href="{{ route('order.index') }}" class="nav-link px-0 {{ request()->route()->getName() == 'order.index' ? 'active' : '' }}"> <span class="d-none d-sm-inline">Pedidos</span> </a>
                                     </li>
                                 </ul>
                             </li>
