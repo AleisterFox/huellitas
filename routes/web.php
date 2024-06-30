@@ -40,6 +40,7 @@ Route::middleware([])->group(function() {
     Route::post('update-cart', [ShoppingCartController::class, 'updateCart'])->name('update-cart');
 
     Route::resource('order', OrderController::class);
+    Route::get('order-callback/{order}', [OrderController::class, 'callback'])->name('order.callback');
 });
 
 Route::prefix('admin')->middleware(['auth'])->group(function() {

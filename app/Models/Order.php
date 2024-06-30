@@ -11,6 +11,10 @@ class Order extends Model
 
     protected $guarded = [];
 
+    protected $casts = [
+        'preference_response' => 'array'
+    ];
+
     public function products()
     {
         return $this->belongsToMany(Product::class)->withPivot('quantity', 'price')->withTimestamps();
