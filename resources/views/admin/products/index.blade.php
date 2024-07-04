@@ -34,10 +34,14 @@
                 <td>{{ $product->name }}</td>
                 <td>
                     @if ($product->image)
-                    <img src="/images/{{ $product->image }}" alt="{{ $product->name }}" style="width: 100px;">
+                    <img src="/images/{{ $product->image }}" alt="{{ $product->name }}" style="width: 60px;">
                     @endif
                 </td>
-                <td>{{ $product->description }}</td>
+                <td>
+                    <div style="width: 350px;">
+                        {{ $product->description }}
+                    </div>
+                </td>
                 <td>{{ $product->price }}</td>
                 <td>{{ $product->in_stock }}</td>
                 <td>
@@ -199,7 +203,7 @@
                             <div class="mb-3">
                                 <label for="image" class="form-label">Imagen1</label>
                                 <input type="file" class="form-control" id="image" name="image" required>
-                                <img src="" id="img-image2" class="img-fluid" width="250px">
+                                <img id="img-image2" class="img-fluid" width="100px">
                             </div>
                         </div>
 
@@ -207,7 +211,7 @@
                             <div class="mb-3">
                                 <label for="image2" class="form-label">Imagen2</label>
                                 <input type="file" class="form-control" id="image2" name="image2" required>
-                                <img src="" id="img-image3" class="img-fluid" width="250px">
+                                <img id="img-image3" class="img-fluid" width="100px">
                             </div>
                         </div>
 
@@ -215,7 +219,7 @@
                             <div class="mb-3">
                                 <label for="image3" class="form-label">Imagen3</label>
                                 <input type="file" class="form-control" id="image3" name="image3" required>
-                                <img src="" id="img-image4" class="img-fluid" width="250px">
+                                <img id="img-image4" class="img-fluid" width="100px">
                             </div>
                         </div>
 
@@ -223,7 +227,7 @@
                             <div class="mb-3">
                                 <label for="image4" class="form-label">Imagen4</label>
                                 <input type="file" class="form-control" id="image4" name="image4" required>
-                                <img src="" id="img-image5" class="img-fluid" width="250px">
+                                <img src="" id="img-image5" class="img-fluid" width="100px">
                             </div>
                         </div>
                     </div>

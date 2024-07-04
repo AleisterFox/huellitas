@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use App\Models\PetCategory;
+use App\Models\Category;
 
 class DatabaseSeeder extends Seeder
 {
@@ -26,5 +27,7 @@ class DatabaseSeeder extends Seeder
         collect(["Mestizos", "Chihuahua"])->each(function($category) {
             PetCategory::firstOrCreate(['name' => $category]); 
         });
+
+        Category::firstOrCreate(['name' => 'Categoria padre']);
     }
 }

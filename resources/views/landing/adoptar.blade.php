@@ -4,9 +4,7 @@
 <main>
     <section id="mascota">
         @if (session('success'))
-            <div style="background-color: rgb(37, 90, 50); color: rgb(153, 230, 171);">
-                <h2>Se ha enviado el formulario satisfactoriamente</h2>
-            </div>
+            @include('layouts._alert', ['message' => 'Se ha enviado el formulario satisfactoriamente'])
         @endif
         <div class="container">
             <div class="left">

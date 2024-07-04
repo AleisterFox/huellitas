@@ -35,7 +35,7 @@
 
                     <div class="bottom">
                         <a href="/carrito" class="back"><i class="fas fa-chevron-left"></i>Volver al producto</a>
-                        <button form="orderForm" class="button">Continuar</button>
+                        <button form="orderForm" id="createPreference" class="button">Continuar</button>
                     </div>
                 </div>
             </div>

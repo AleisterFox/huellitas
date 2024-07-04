@@ -11,13 +11,21 @@ class ShoppingCartController extends Controller
 {
     public function addToCart(Request $request, CartService $cart)
     {
+        $html = "";
+    
         if ($request->has('product_id') && $request->has('quantity')) {
             $product = Product::find($request->product_id);
             $cart->add([
                 'product' => $product,
                 'quantity' => $request->quantity
             ]);
+
+            $html = Blade::render(<<<HTML
+                @include('landing._cart_modal')
+            HTML);
         }
+
+        return $html;
     }
 
     public function updateCart(Request $request, CartService $cart)

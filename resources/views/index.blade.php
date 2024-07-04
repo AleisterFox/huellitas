@@ -4,8 +4,12 @@
 <main>
     <section id="hero">
         <div class="glide" id="hero-slider">
+            @session('message')
+                @include('layouts._alert', ['message' => $value])
+            @endif
             <div class="glide__track" data-glide-el="track">
                 <ul class="glide__slides">
+
                     <li style="border: 1px solid" class="glide__slide">
                         <figure><img src="/img/collie.jpg" alt="" /></figure>
                         <h1>¡Descubre a tu próximo compañero!</h1>

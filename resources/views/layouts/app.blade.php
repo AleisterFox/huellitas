@@ -13,7 +13,6 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     @stack('styles')
@@ -36,6 +35,11 @@
         .active > span {
             padding: 1px;
         }
+
+        ul > li > a {
+            display: inline-block;
+            padding: 2px;
+        }
     </style>
     <div id="app">
         <div class="container-fluid">
@@ -47,19 +51,19 @@
                         </a>
                         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                             <li class="nav-item">
-                                <a href="{{ route('dashboard') }}" class="nav-link align-middle px-0 text-center">
+                                <a href="{{ route('dashboard') }}" class="nav-link align-middle text-center">
                                     <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                                @php
+                                    $shouldOpen = in_array(request()->route()->getName(), ['order.index']);
+                                @endphp
+                                <a href="#submenu1" data-bs-toggle="collapse" class="nav-link align-middle">
                                     <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Pedidos</span> </a>
-                                <ul class="collapse nav flex-column ms-4" id="submenu1" data-bs-parent="#menu">
+                                <ul class="collapse nav flex-column ms-5 {{ $shouldOpen ? 'show' : '' }}" id="submenu1" data-bs-parent="#menu">
                                     <li class="w-100">
-                                        <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1 </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2 </a>
+                                        <a href="{{ route('order.index') }}" class="nav-link {{ request()->route()->getName() == 'order.index' ? 'active' : '' }}"> <span class="d-none d-sm-inline">Pedidos</span> </a>
                                     </li>
                                 </ul>
                             </li>
@@ -67,29 +71,29 @@
                                 @php
                                     $shouldOpen = in_array(request()->route()->getName(), ['categorias.index', 'productos.index', 'pets.index', 'pet-categories.index']);
                                 @endphp
-                                <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
+                                <a href="#submenu2" data-bs-toggle="collapse" class="nav-link align-middle ">
                                     <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Gestión Tienda</span></a>
-                                <ul class="collapse nav flex-column ms-4 {{ $shouldOpen ? 'show' : '' }}" id="submenu2" data-bs-parent="#menu">
+                                <ul class="collapse nav flex-column ms-5 {{ $shouldOpen ? 'show' : '' }}" id="submenu2" data-bs-parent="#menu">
                                     <li class="w-100">
                                         <a href="{{ route('categorias.index') }}" 
-                                            class="nav-link px-0 {{ request()->route()->getName() == 'categorias.index' ? 'active' : '' }}"> 
+                                            class="nav-link {{ request()->route()->getName() == 'categorias.index' ? 'active' : '' }}"> 
                                             <span class="d-none d-sm-inline">Categorías</span></a>
                                     </li>
                                     <li>
                                         <a href="{{ route('productos.index') }}" 
-                                            class="nav-link px-0 {{ request()->route()->getName() == 'productos.index' ? 'active' : '' }}"> 
+                                            class="nav-link {{ request()->route()->getName() == 'productos.index' ? 'active' : '' }}"> 
                                             <span class="d-none d-sm-inline">Productos</span>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="{{ route('pets.index') }}" 
-                                            class="nav-link px-0 {{ request()->route()->getName() == 'pets.index' ? 'active' : '' }}"> 
+                                            class="nav-link {{ request()->route()->getName() == 'pets.index' ? 'active' : '' }}"> 
                                             <span class="d-none d-sm-inline">Perritos</span>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="{{ route('pet-categories.index') }}" 
-                                            class="nav-link px-0 {{ request()->route()->getName() == 'pet-categories.index' ? 'active' : '' }}"> 
+                                            class="nav-link {{ request()->route()->getName() == 'pet-categories.index' ? 'active' : '' }}"> 
                                             <span class="d-none d-sm-inline">Categoria Perritos</span>
                                         </a>
                                     </li>
@@ -99,16 +103,16 @@
                                 $shouldOpen = in_array(request()->route()->getName(), ['contacto.index', 'pet-adoption-form.index']);
                             @endphp
                             <li>
-                                <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                                <a href="#submenu3" data-bs-toggle="collapse" class="nav-link align-middle">
                                     <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Gestión página</span> </a>
-                                <ul class="collapse nav flex-column ms-4 {{ $shouldOpen ? 'show' : '' }}" id="submenu3" data-bs-parent="#menu">
+                                <ul class="collapse nav flex-column ms-5 {{ $shouldOpen ? 'show' : '' }}" id="submenu3" data-bs-parent="#menu">
                                     <li class="w-100">
-                                        <a href="{{ route('contacto.index') }}" class="nav-link px-0 {{ request()->route()->getName() == 'contacto.index' ? 'active' : '' }}"> 
+                                        <a href="{{ route('contacto.index') }}" class="nav-link {{ request()->route()->getName() == 'contacto.index' ? 'active' : '' }}"> 
                                             <span class="d-none d-sm-inline">Formulario de contacto</span>
                                         </a>
                                     </li>
                                     <li class="w-100">
-                                        <a href="{{ route('pet-adoption-form.index') }}" class="nav-link px-0 {{ request()->route()->getName() == 'pet-adoption-form.index' ? 'active' : '' }}"> 
+                                        <a href="{{ route('pet-adoption-form.index') }}" class="nav-link {{ request()->route()->getName() == 'pet-adoption-form.index' ? 'active' : '' }}"> 
                                             <span class="d-none d-sm-inline">Solicitudes de adopciones</span>
                                         </a>
                                     </li>
