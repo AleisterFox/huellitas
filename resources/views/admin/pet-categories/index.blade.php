@@ -35,11 +35,9 @@
                     >
                         <i class="fs-4 bi-grid"></i>
                     </button>
-                    @if ($category->parent)
-                        <button data-id="{{ $category->id }}" type="submit" class="deleteCategory btn btn-danger">
-                            <i class="fs-4 bi-trash"></i>
-                        </button>
-                    @endif
+                    <button data-id="{{ $category->id }}" type="submit" class="deleteCategory btn btn-danger">
+                        <i class="fs-4 bi-trash"></i>
+                    </button>
                 </td>
             </tr>
             @endforeach
@@ -155,7 +153,7 @@
         }).then(function(result) {
             if (result.isConfirmed) {
                 $.ajax({
-                    url: '/admin/categorias/' + id,
+                    url: '/admin/pet-categories/' + id,
                     type: 'POST',
                     data: {
                         "_token": "{{ csrf_token() }}",

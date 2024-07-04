@@ -31,4 +31,13 @@ class PetCategoriesController extends Controller
 
         return redirect()->route('pet-categories.index');
     }
+
+    public function destroy($category)
+    {
+        $category = PetCategory::find($category);
+
+        $category->delete();
+
+        return redirect()->route('pet-categories.index');
+    }
 }

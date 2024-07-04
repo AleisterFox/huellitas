@@ -16,13 +16,6 @@ class ContactFormController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'message' => 'required',
-            'phone' => 'required',
-        ]);
-
         ContactForm::create($request->all());
 
         return redirect()->back()->with('message', 'Formulario enviado correctamente');

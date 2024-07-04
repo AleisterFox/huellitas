@@ -8,7 +8,7 @@
 
 <h1>Pedidos</h1>
 
-<div id="content" class="row">
+<div id="content" class="row mt-5">
     <table id="example" class="table table-striped" style="width:100%">
         <thead>
             <tr>

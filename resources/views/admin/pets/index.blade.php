@@ -31,12 +31,12 @@
                 <td>{{ $pet->id }}</td>
                 <td>
                     @if ($pet->image)
-                        <img src="/pets/{{ $pet->image }}" alt="{{ $pet->name }}" style="width: 100px;">
+                        <img src="/pets/{{ $pet->image }}" alt="{{ $pet->name }}" style="width: 60px;">
                     @endif
                 </td>
                 <td>{{ $pet->name }}</td>
                 <td>
-                    <div style="width: 400px;">
+                    <div style="width: 350px;">
                         {{ $pet->description }}
                     </div>
                 </td>
@@ -156,7 +156,7 @@
                             <div class="mb-3">
                                 <label for="image" class="form-label">Imagen2</label>
                                 <input type="file" class="form-control" id="image2" name="image2" required>
-                                <img src="" id="img-image2" class="img-fluid" width="250px">
+                                <img id="img-image2" class="img-fluid" width="250px">
                             </div>
                         </div>
 
@@ -164,7 +164,7 @@
                             <div class="mb-3">
                                 <label for="image2" class="form-label">Imagen3</label>
                                 <input type="file" class="form-control" id="image3" name="image3" required>
-                                <img src="" id="img-image3" class="img-fluid" width="250px">
+                                <img id="img-image3" class="img-fluid" width="250px">
                             </div>
                         </div>
 
@@ -172,7 +172,7 @@
                             <div class="mb-3">
                                 <label for="image3" class="form-label">Imagen4</label>
                                 <input type="file" class="form-control" id="image4" name="image4" required>
-                                <img src="" id="img-image4" class="img-fluid" width="250px">
+                                <img id="img-image4" class="img-fluid" width="250px">
                             </div>
                         </div>
                     </div>
@@ -273,11 +273,23 @@
         var image4 = $(this).data('image4');
         var image5 = $(this).data('image5');
 
+        console.log(image2, image3, image4, image5)
         $("#petId").val(id);
-        $("#updateImagesPetModal #img-image2").attr('src', image2);
-        $("#updateImagesPetModal #img-image3").attr('src', image3);
-        $("#updateImagesPetModal #img-image4").attr('src', image4);
-        $("#updateImagesPetModal #img-image5").attr('src', image5);
+        if (image2) {
+            $("#updateImagesPetModal #img-image2").attr('src', image2);
+        }
+        
+        if (image3) {
+            $("#updateImagesPetModal #img-image3").attr('src', image3);
+        }
+
+        if (image4) {
+            $("#updateImagesPetModal #img-image4").attr('src', image4);
+        }
+
+        if (image5) {
+            $("#updateImagesPetModal #img-image5").attr('src', image5);
+        }
 
         $("#updateImagesPetModal").modal('show');
     });
