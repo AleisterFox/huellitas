@@ -93,24 +93,7 @@
                 <i class="fas fa-x"></i>
             </div>
             <h2>Carrito de compra</h2>
-            <div class="products">
-                <div class="product">
-                    <div class="product__info">
-                        <i class="fas fa-x delete__product"></i>
-                        <figure><img src="/img/croquetas.jpg" alt="" /></figure>
-                        <p class="product__name">Nombre del producto</p>
-                    </div>
-                    <p class="product__price">$ 0.00 MXN</p>
-                </div>
-            </div>
-            <div class="subtotal">
-                <h4>Subtotal</h4>
-                <p class="subtotal__amount">$ 0.00 MXN</p>
-            </div>
-            <div class="total">
-                <h3>Total</h3>
-                <p class="total__amount">$ 0.00 MXN</p>
-            </div>
+            <div id="cart-content"></div>
             <a href="informacion" class="button">Finalizar Compra</a>
             <div class="cart__bottom">
                 <a href="javascript:void(0)" class="keep__buying">Seguir comprando</a>
@@ -175,7 +158,7 @@
             method: 'POST',
             data: params,
             success: function(response) {
-                console.log(response);
+                $("#cart-content").html(response);
             },
             error: function(error) {
                 console.log(error);
@@ -191,6 +174,23 @@
 
     addToCartButton.addEventListener('click', function() {
         addToCart();
+    });
+
+    $(document).on('click', '.delete__product', function() {
+        $.ajax({
+            url: '/remove-from-cart',
+            method: 'POST',
+            data: {
+                product_id: $(this).data('product_id'),
+                "_token": "{{ csrf_token() }}",
+            },
+            success: function(response) {
+                window.location.reload();
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
     });
 </script>
 @endpush
