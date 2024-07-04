@@ -17,6 +17,13 @@ class OrderController extends Controller
         ]);
     }
 
+    public function show(Order $order)
+    {
+        return view('admin.orders.show', [
+            'order' => $order
+        ])->render();
+    }
+
     // https://www.youtube.com/watch?v=pCYpPqGoUqM&ab_channel=C%C3%B3digosdeProgramaci%C3%B3n-MR
     // https://github.com/mroblesdev/checkout-mercadopago-php-js
     public function store(Request $request, CartService $cartService)
