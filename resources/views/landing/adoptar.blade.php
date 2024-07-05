@@ -12,40 +12,48 @@
                     <div class="glide__track" data-glide-el="track">
                         <ul class="glide__slides">
                             <li style="border: 1px solid" class="glide__slide">
-                                <figure><img src="/pets/{{ $pet->image }}" alt="" /></figure>
+                                <figure><img src="{{ asset('/pets/' . $pet->image ) }}" alt="" /></figure>
                             </li>
 
                             @if ($pet->image2)
                             <li style="border: 1px solid" class="glide__slide">
-                                <figure><img src="/pets/{{ $pet->image2 }}" alt="" /></figure>
+                                <figure><img src="{{ asset('/pets/' . $pet->image2) }}" alt="" /></figure>
                             </li>
                             @endif
 
                             @if ($pet->image3)
                             <li style="border: 1px solid" class="glide__slide">
-                                <figure><img src="/pets/{{ $pet->image3 }}" alt="" /></figure>
+                                <figure><img src="{{ asset('/pets/' . $pet->image3) }}" alt="" /></figure>
                             </li>
                             @endif
 
                             @if ($pet->image4)
                             <li style="border: 1px solid" class="glide__slide">
-                                <figure><img src="/pets/{{ $pet->image4 }}" alt="" /></figure>
+                                <figure><img src="{{ asset('/pets/' . $pet->image4) }}" alt="" /></figure>
                             </li>
                             @endif
                         </ul>
 
                         <div class="glide__bullets" data-glide-el="controls[nav]">
-                            <button class="glide__bullet" data-glide-dir="=0"><img src="/pets/{{ $pet->image }}" alt=""></button>
+                            <button class="glide__bullet" data-glide-dir="=0">
+                                <img src="{{ asset('/pets/' . $pet->image ) }}" alt="">
+                            </button>
                             @if ($pet->image2)
-                            <button class="glide__bullet" data-glide-dir="=1"><img src="/pets/{{ $pet->image2 }}" alt=""></button>
+                            <button class="glide__bullet" data-glide-dir="=1">
+                                <img src="{{ asset('/pets/' . $pet->image2) }}" alt="">
+                            </button>
                             @endif
 
                             @if ($pet->image3)
-                            <button class="glide__bullet" data-glide-dir="=2"><img src="/pets/{{ $pet->image3 }}" alt=""></button>
+                            <button class="glide__bullet" data-glide-dir="=2">
+                                <img src="{{ asset('/pets/' . $pet->image3) }}" alt="">
+                            </button>
                             @endif
 
                             @if ($pet->image4)
-                            <button class="glide__bullet" data-glide-dir="=3"><img src="/pets/{{ $pet->image4 }}" alt=""></button>
+                            <button class="glide__bullet" data-glide-dir="=3">
+                                <img src="{{ asset('/pets/' . $pet->image4) }}" alt="">
+                            </button>
                             @endif
                         </div>
                     </div>

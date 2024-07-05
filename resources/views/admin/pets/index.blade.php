@@ -31,7 +31,7 @@
                 <td>{{ $pet->id }}</td>
                 <td>
                     @if ($pet->image)
-                        <img src="/pets/{{ $pet->image }}" alt="{{ $pet->name }}" style="width: 60px;">
+                        <img src="{{ asset('/pets/' . $pet->image) }}" alt="{{ $pet->name }}" style="width: 60px;">
                     @endif
                 </td>
                 <td>{{ $pet->name }}</td>
@@ -57,9 +57,9 @@
                         </button>
                         <button class="btn btn-success updatePetImages" 
                             data-id="{{ $pet->id }}"
-                            data-image2="/pets/{{ $pet->image2 }}"
-                            data-image3="/pets/{{ $pet->image3 }}"
-                            data-image4="/pets/{{ $pet->image4 }}"
+                            data-image2="{{ asset('/pets/' . $pet->image2) }}"
+                            data-image3="{{ asset('/pets/' . $pet->image3) }}"
+                            data-image4="{{ asset('/pets/' . $pet->image4) }}""
                             >
                             <i class="bi bi-card-image"></i>
                         </button>

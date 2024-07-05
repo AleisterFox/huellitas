@@ -21,7 +21,6 @@ class CategoriesController extends Controller
         $request->validate([
             'name' => 'required',
             'parent_id' => 'required',
-            'image' => 'required'
         ]);
 
         if ($request->hasFile('image')) {

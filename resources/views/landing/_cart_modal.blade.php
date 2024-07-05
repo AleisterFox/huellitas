@@ -5,7 +5,7 @@
             <div class="product__info">
                 <i class="fas fa-x delete__product" data-id="{{ $product['product']->id }}"></i>
                 <figure>
-                    <img src="/images/{{ $product['product']->image }}" alt="Imagen" />
+                    <img src="{{ asset('/images/' . $product['product']->image) }}" alt="Imagen" />
                 </figure>
                 <p class="product__name">{{ $product['product']->name }}</p>
             </div>

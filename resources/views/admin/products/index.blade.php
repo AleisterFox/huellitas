@@ -34,7 +34,7 @@
                 <td>{{ $product->name }}</td>
                 <td>
                     @if ($product->image)
-                    <img src="/images/{{ $product->image }}" alt="{{ $product->name }}" style="width: 60px;">
+                        <img src="{{ asset('/images/'. $product->image) }}" alt="{{ $product->name }}" style="width: 60px;">
                     @endif
                 </td>
                 <td>
@@ -53,10 +53,10 @@
                         
                         <button class="btn btn-success updateProductImages" 
                             data-id="{{ $product->id }}"
-                            data-image2="/images/{{ $product->image2 }}"
-                            data-image3="/images/{{ $product->image3 }}"
-                            data-image4="/images/{{ $product->image4 }}"
-                            data-image5="/images/{{ $product->image5 }}"
+                            data-image2="{{ asset('/images/'. $product->image2) }}"
+                            data-image3="{{ asset('/images/'. $product->image3) }}"
+                            data-image4="{{ asset('/images/'. $product->image4) }}"
+                            data-image5="{{ asset('/images/'. $product->image5) }}"
                             >
                             <i class="bi bi-card-image"></i>
                         </button>
@@ -85,9 +85,7 @@
                 <form id="addCategoryForm" method="post">
                     @csrf
                     <input type="hidden" id="productId">
-                    <div class="update-categories">
-
-                    </div>
+                    <div class="update-categories"></div>
                 </form>
             </div>
             <div class="modal-footer">

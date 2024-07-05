@@ -10,7 +10,7 @@
         <div class="product" style="margin-bottom: 10px;">
             <i class="fas fa-x removeProduct" data-id="{{ $product['product']->id }}"></i>
             <figure>
-                <img src="/images/{{ $product['product']->image }}" alt="Imagen" />
+                <img src="{{ asset('/images/' . $product['product']->image) }}" alt="Imagen" />
             </figure>
             <div class="product__information">
                 <h3 class="product__name">{{ $product['product']->name }}</h3>

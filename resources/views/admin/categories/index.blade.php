@@ -73,10 +73,6 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="mb-3">
-                        <label for="image" class="form-label">Imagen</label>
-                        <input type="file" class="form-control" id="image" name="image" required>
-                    </div>
                 </form>
             </div>
             <div class="modal-footer">
@@ -108,10 +104,6 @@
                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
                         </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="image" class="form-label">Imagen</label>
-                        <input type="file" class="form-control" id="image" name="image" required>
                     </div>
                 </form>
             </div>

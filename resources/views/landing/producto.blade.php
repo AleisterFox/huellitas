@@ -10,59 +10,59 @@
                     <div class="glide__track" data-glide-el="track">
                         <ul class="glide__slides">
                             <li style="border: 1px solid" class="glide__slide">
-                                <figure><img src="/images/{{ $product->image }}" alt="" /></figure>
+                                <figure><img src="{{ asset('/images/' . $product->image) }}" alt="" /></figure>
                             </li>
 
                             @if ($product->image2)
                             <li style="border: 1px solid" class="glide__slide">
-                                <figure><img src="/images/{{ $product->image2 }}" alt="" /></figure>
+                                <figure><img src="{{ asset('/images/' . $product->image2) }}" alt="" /></figure>
                             </li>
                             @endif
 
                             @if ($product->image3)
                             <li style="border: 1px solid" class="glide__slide">
-                                <figure><img src="/images/{{ $product->image3 }}" alt="" /></figure>
+                                <figure><img src="{{ asset('/images/' . $product->image3) }}" alt="" /></figure>
                             </li>
                             @endif
 
                             @if ($product->image4)
                             <li style="border: 1px solid" class="glide__slide">
-                                <figure><img src="/images/{{ $product->image4 }}" alt="" /></figure>
+                                <figure><img src="{{ asset('/images/' . $product->image4) }}" alt="" /></figure>
                             </li>
                             @endif
 
                             @if ($product->image5)
                             <li style="border: 1px solid" class="glide__slide">
-                                <figure><img src="/images/{{ $product->image5 }}" alt="" /></figure>
+                                <figure><img src="{{ asset('/images/' . $product->image5) }}" alt="" /></figure>
                             </li>
                             @endif
                         </ul>
 
                         <div class="glide__bullets" data-glide-el="controls[nav]">
                             <button class="glide__bullet" data-glide-dir="=0">
-                                <img src="/images/{{ $product->image }}" alt="" />
+                                <img src="{{ asset('/images/' . $product->image) }}" alt="" />
                             </button>
                             @if ($product->image2)
                             <button class="glide__bullet" data-glide-dir="=1">
-                                <img src="/images/{{ $product->image2 }}" alt="" />
+                                <img src="{{ asset('/images/' . $product->image2) }}" alt="" />
                             </button>
                             @endif
 
                             @if ($product->image3)
                             <button class="glide__bullet" data-glide-dir="=2">
-                                <img src="/images/{{ $product->image3 }}" alt="" />
+                                <img src="{{ asset('/images/' . $product->image3) }}" alt="" />
                             </button>
                             @endif
 
                             @if ($product->image4)
                             <button class="glide__bullet" data-glide-dir="=3">
-                                <img src="/images/{{ $product->image4 }}" alt="" />
+                                <img src="{{ asset('/images/' . $product->image4) }}" alt="" />
                             </button>
                             @endif
 
                             @if ($product->image5)
                             <button class="glide__bullet" data-glide-dir="=4">
-                                <img src="/images/{{ $product->image5 }}" alt="" />
+                                <img src="{{ asset('/images/' . $product->image5) }}" alt="" />
                             </button>
                             @endif
                         </div>
