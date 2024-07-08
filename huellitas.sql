@@ -116,7 +116,7 @@ CREATE TABLE `categories` (
 
 LOCK TABLES `categories` WRITE;
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
-INSERT INTO `categories` VALUES (1,'Categoria padre',NULL,NULL,NULL,1,'2024-07-05 21:46:59','2024-07-05 21:46:59');
+INSERT INTO `categories` VALUES (1,'Categoria padre',NULL,NULL,NULL,1,'2024-07-10 20:11:00','2024-07-10 20:11:00');
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -268,6 +268,60 @@ LOCK TABLES `jobs` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `lading_page_configs`
+--
+
+DROP TABLE IF EXISTS `lading_page_configs`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `lading_page_configs` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `adopted_pets_count` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '12',
+  `whatsapp` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '5213314148548',
+  `banner_main_quote_title` varchar(900) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Dejando huella en tu corazón',
+  `banner_main_quote_description` varchar(900) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'En nuestra organización de adopción de perritos, nos dedicamos a encontrar hogares amorosos para perros en necesidad. ¡Únete a nosotros en esta noble misión!',
+  `banner_footer_quote_title` varchar(900) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Alianzas estratégicas',
+  `banner_footer_quote_description` varchar(900) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Somos una organización protectora de animales especializada, desde el 2020, en la ayuda a perros maltratados y/o abandonados. Nuestros rescatistas realizan diariamente labores heroicas en un intento por salvar la mayor cantidad de vidas posible; sin embargo, su capacidad de dar cobijo, alimento y atención médica, se ve ampliamente rebasada por una problemática que nunca cesa de crecer.',
+  `card_1_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Adopción de perritos',
+  `card_1_text` varchar(900) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Ofrecemos servicios de adopción de mascotas, encuentra a tu compañero peludo perfecto',
+  `card_1_image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `card_2_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Hacer donativos',
+  `card_2_text` varchar(900) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Tus donativos nos ayudan a seguir brindando cuidado y atención a los perritos en espera de un hogar amoroso.',
+  `card_2_image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `card_3_title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Foster to adopt',
+  `card_3_text` varchar(900) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Nuestro programa de foster to adopt te permite brindar un hogar temporal a un perrito antes de adoptarlo de manera permanente.',
+  `card_3_image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `contact_phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '3314148548',
+  `contact_email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'roman@huellitasdiferentes.com',
+  `contact_facebook` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `contact_instagram` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `donations_banner_title` varchar(900) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Donativos',
+  `donations_banner_image` varchar(900) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `donations_banner_description` text COLLATE utf8mb4_unicode_ci,
+  `adoption_banner_title` varchar(900) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Foster to Adopt',
+  `adoption_banner_image` varchar(900) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `adoption_banner_question` varchar(900) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '¿Te gustaría saber que es nuestro programa Foster to Adopt?',
+  `adoption_banner_description_1` text COLLATE utf8mb4_unicode_ci,
+  `adoption_banner_image_1` text COLLATE utf8mb4_unicode_ci,
+  `adoption_banner_description_2` text COLLATE utf8mb4_unicode_ci,
+  `adoption_banner_image_2` text COLLATE utf8mb4_unicode_ci,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `lading_page_configs`
+--
+
+LOCK TABLES `lading_page_configs` WRITE;
+/*!40000 ALTER TABLE `lading_page_configs` DISABLE KEYS */;
+INSERT INTO `lading_page_configs` VALUES (1,'12','5213314148548','Dejando huella en tu corazón','En nuestra organización de adopción de perritos, nos dedicamos a encontrar hogares amorosos para perros en necesidad. ¡Únete a nosotros en esta noble misión!','Alianzas estratégicas','Somos una organización protectora de animales especializada, desde el 2020, en la ayuda a perros maltratados y/o abandonados. Nuestros rescatistas realizan diariamente labores heroicas en un intento por salvar la mayor cantidad de vidas posible; sin embargo, su capacidad de dar cobijo, alimento y atención médica, se ve ampliamente rebasada por una problemática que nunca cesa de crecer.','Adopción de perritos','Ofrecemos servicios de adopción de mascotas, encuentra a tu compañero peludo perfecto',NULL,'Hacer donativos','Tus donativos nos ayudan a seguir brindando cuidado y atención a los perritos en espera de un hogar amoroso.',NULL,'Foster to adopt','Nuestro programa de foster to adopt te permite brindar un hogar temporal a un perrito antes de adoptarlo de manera permanente.',NULL,'3314148548','roman@huellitasdiferentes.com',NULL,NULL,'Donativos',NULL,NULL,'Foster to Adopt',NULL,'¿Te gustaría saber que es nuestro programa Foster to Adopt?',NULL,NULL,NULL,NULL,'2024-07-10 20:11:00','2024-07-10 20:11:00');
+/*!40000 ALTER TABLE `lading_page_configs` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `migrations`
 --
 
@@ -279,7 +333,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -288,7 +342,7 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES (1,'0001_01_01_000000_create_users_table',1),(2,'0001_01_01_000001_create_cache_table',1),(3,'0001_01_01_000002_create_jobs_table',1),(4,'2024_06_21_202914_create_categories_table',1),(5,'2024_06_21_203016_create_products_table',1),(6,'2024_06_21_235808_add_columns_to_products_table',1),(7,'2024_06_22_004758_create_contact_forms_table',1),(8,'2024_06_22_010411_create_adoption_forms_table',1),(9,'2024_06_22_010620_create_pets_table',1),(10,'2024_06_22_191326_create_category_product_table',1),(11,'2024_06_22_195903_create_pet_categories_table',1),(12,'2024_06_25_223211_add_column_status_to_pets_table',1),(13,'2024_06_25_224840_create_pet_adoption_forms_table',1),(14,'2024_06_30_153513_create_orders_table',1),(15,'2024_06_30_154147_create_order_product_table',1),(16,'2024_06_30_181447_add_column_to_orders_table',1);
+INSERT INTO `migrations` VALUES (1,'0001_01_01_000000_create_users_table',1),(2,'0001_01_01_000001_create_cache_table',1),(3,'0001_01_01_000002_create_jobs_table',1),(4,'2024_06_21_202914_create_categories_table',1),(5,'2024_06_21_203016_create_products_table',1),(6,'2024_06_21_235808_add_columns_to_products_table',1),(7,'2024_06_22_004758_create_contact_forms_table',1),(8,'2024_06_22_010411_create_adoption_forms_table',1),(9,'2024_06_22_010620_create_pets_table',1),(10,'2024_06_22_191326_create_category_product_table',1),(11,'2024_06_22_195903_create_pet_categories_table',1),(12,'2024_06_25_223211_add_column_status_to_pets_table',1),(13,'2024_06_25_224840_create_pet_adoption_forms_table',1),(14,'2024_06_30_153513_create_orders_table',1),(15,'2024_06_30_154147_create_order_product_table',1),(16,'2024_06_30_181447_add_column_to_orders_table',1),(17,'2024_07_08_212938_create_lading_page_configs_table',1),(18,'2024_07_08_214605_create_slides_table',1);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -453,7 +507,7 @@ CREATE TABLE `pet_categories` (
 
 LOCK TABLES `pet_categories` WRITE;
 /*!40000 ALTER TABLE `pet_categories` DISABLE KEYS */;
-INSERT INTO `pet_categories` VALUES (1,'Mestizos',NULL,'2024-07-05 21:46:59','2024-07-05 21:46:59'),(2,'Chihuahua',NULL,'2024-07-05 21:46:59','2024-07-05 21:46:59');
+INSERT INTO `pet_categories` VALUES (1,'Mestizos',NULL,'2024-07-10 20:11:00','2024-07-10 20:11:00'),(2,'Chihuahua',NULL,'2024-07-10 20:11:00','2024-07-10 20:11:00');
 /*!40000 ALTER TABLE `pet_categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -557,6 +611,36 @@ LOCK TABLES `sessions` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `slides`
+--
+
+DROP TABLE IF EXISTS `slides`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `slides` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci,
+  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `button_text` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `button_link` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `is_active` tinyint(1) NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `slides`
+--
+
+LOCK TABLES `slides` WRITE;
+/*!40000 ALTER TABLE `slides` DISABLE KEYS */;
+/*!40000 ALTER TABLE `slides` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `users`
 --
 
@@ -583,7 +667,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Admin','admin@gmail.com',NULL,'$2y$12$apt7rXgSOf1j41egmuUHi.rUeg1FkY5QVbyckQ3CN8e7cI6EFSp2y',NULL,'2024-07-05 21:46:59','2024-07-05 21:46:59');
+INSERT INTO `users` VALUES (1,'Admin','admin@gmail.com',NULL,'$2y$12$3iiTfcRMyHKop3CsLZkK0ORm5uoUjTR9pTuLmyvihLoNracrTTqtm',NULL,'2024-07-10 20:11:00','2024-07-10 20:11:00');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -596,4 +680,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-05  9:48:37
+-- Dump completed on 2024-07-10  8:13:09

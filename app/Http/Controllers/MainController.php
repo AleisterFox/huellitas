@@ -8,6 +8,7 @@ use App\Models\PetCategory;
 use App\Models\PetAdoptionForm;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Slide;
 use App\Services\CartService;
 
 class MainController extends Controller
@@ -34,7 +35,8 @@ class MainController extends Controller
 
         return view('index', [
             'products' => Product::all(),
-            'categories' => Category::all()
+            'categories' => Category::all(),
+            'slides' => Slide::all()
         ]);
     }
 

@@ -11,9 +11,13 @@ use App\Http\Controllers\AdoptionFormController;
 use App\Http\Controllers\PetsController;
 use App\Http\Controllers\PetCategoriesController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LadingPageConfigController;
 use App\Http\Controllers\PetAdoptionFormController;
 use App\Http\Controllers\ShoppingCartController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\SlideConfigController;
+use App\Http\Controllers\FosterToAdoptConfigController;
+use App\Http\Controllers\DonationsConfigController;
 
 Auth::routes(['register' => false]);
 
@@ -45,6 +49,11 @@ Route::middleware([])->group(function() {
 
 Route::prefix('admin')->middleware(['auth'])->group(function() {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('config', LadingPageConfigController::class)->only(['index', 'update']);
+    Route::resource('foster-to-adopt', FosterToAdoptConfigController::class)->only(['index', 'update']);
+    Route::resource('donations-form', DonationsConfigController::class)->only(['index', 'update']);
+
+    Route::resource('slides', SlideConfigController::class);
     Route::resource('productos', ProductsController::class);
     Route::get('productos/{product}/categorias', [ProductsController::class, 'editCategory'])->name('productos.categories');
     Route::put('productos/{product}/categorias', [ProductsController::class, 'updateCategory'])->name('productos.categories.update');

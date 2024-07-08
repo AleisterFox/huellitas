@@ -1,3 +1,7 @@
+@use('App\Models\LadingPageConfig')
+@php
+    $instance = LadingPageConfig::getInstance();
+@endphp
 <footer>
     <div class="top">
         <a href="#hero">
@@ -19,8 +23,8 @@
             <li>
                 <a href="/contacto" class="button">Contacto</a>
                 <div class="links">
-                    <a href="tel: 3314148548" target="_blank"><i class="fas fa-phone"></i> 3314148548</a>
-                    <a href="mailto: roman@huellitasdiferentes.com" target="_blank"><i class="fas fa-envelope"></i>roman@huellitasdiferentes.com</a>
+                    <a href="tel: {{ $instance->contact_phone }}" target="_blank"><i class="fas fa-phone"></i> {{ $instance->contact_phone }}</a>
+                    <a href="mailto: {{ $instance->contact_email }}" target="_blank"><i class="fas fa-envelope"></i>{{ $instance->contact_email }}</a>
                 </div>
             </li>
         </ul>

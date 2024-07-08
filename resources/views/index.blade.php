@@ -1,15 +1,19 @@
 @extends('layouts.main')
 
 @section('content')
+@use('App\Models\LadingPageConfig')
+@php
+$instace = LadingPageConfig::getInstance();
+@endphp
 <main>
     <section id="hero">
         <div class="glide" id="hero-slider">
             @session('message')
-                @include('layouts._alert', ['message' => $value])
+            @include('layouts._alert', ['message' => $value])
             @endif
             <div class="glide__track" data-glide-el="track">
                 <ul class="glide__slides">
-
+                    @if($slides->count() == 0)
                     <li style="border: 1px solid" class="glide__slide">
                         <figure><img src="/img/collie.jpg" alt="" /></figure>
                         <h1>¡Descubre a tu próximo compañero!</h1>
@@ -46,13 +50,31 @@
                         </p>
                         <a href="" class="button">Contacto</a>
                     </li>
+                    @else
+                    @foreach($slides as $slide)
+                    <li style="border: 1px solid" class="glide__slide">
+                        <figure><img src="{{ asset('slides/' . $slide->image) }}" alt="" /></figure>
+                        <h1>{{ $slide->title }}</h1>
+                        <p>
+                            {{ $slide->description }}
+                        </p>
+                        <a href="/contacto" class="button">Contacto</a>
+                    </li>
+                    @endforeach
+                    @endif
                 </ul>
 
                 <div class="glide__bullets" data-glide-el="controls[nav]">
-                    <button class="glide__bullet" data-glide-dir="=0"></button>
-                    <button class="glide__bullet" data-glide-dir="=1"></button>
-                    <button class="glide__bullet" data-glide-dir="=2"></button>
-                    <button class="glide__bullet" data-glide-dir="=3"></button>
+                    @if ($slides->count() > 1)
+                    @for ($i = 0; $i < $slides->count(); $i++)
+                        <button class="glide__bullet" data-glide-dir="={{ $i }}"></button>
+                        @endfor
+                        @else
+                        <button class="glide__bullet" data-glide-dir="=0"></button>
+                        <button class="glide__bullet" data-glide-dir="=1"></button>
+                        <button class="glide__bullet" data-glide-dir="=2"></button>
+                        <button class="glide__bullet" data-glide-dir="=3"></button>
+                        @endif
                 </div>
             </div>
         </div>
@@ -64,7 +86,7 @@
                     Perritos <br />
                     Adoptados
                 </p>
-                <h2 class="counter">“12”</h2>
+                <h2 class="counter">“{{ $instace->getAdoptionCount() }}”</h2>
             </div>
         </div>
     </section>
@@ -74,11 +96,9 @@
         <div class="container">
             <figure><img src="/img/comillas.png" alt=""></figure>
             <div class="text">
-                <h2>Dejando huella en tu corazón</h2>
+                <h2>{{ $instace->banner_main_quote_title }}</h2>
                 <p>
-                    En nuestra organización de adopción de perritos, nos dedicamos a
-                    encontrar hogares amorosos para perros en necesidad. <strong>¡Únete a
-                        nosotros en esta noble misión!</strong>
+                    {{ $instace->banner_main_quote_description }}
                 </p>
             </div>
             <figure><img src="/img/comillas.png" alt=""></figure>
@@ -88,21 +108,39 @@
         <section id="services">
             <div class="container">
                 <div class="service">
-                    <figure><img src="/img/victor.jpg" alt=""></figure>
-                    <h4 class="title">Adopción de perritos</h4>
-                    <p>Ofrecemos servicios de adopción de mascotas, encuentra a tu compañero peludo perfecto</p>
+                    <figure>
+                        @if ($instace->card_1_image)
+                        <img src="{{ asset('images/' . $instace->card_1_image) }}" alt="">
+                        @else
+                        <img src="/img/victor.jpg" alt="">
+                        @endif
+                    </figure>
+                    <h4 class="title">{{ $instace->card_1_title }}</h4>
+                    <p>{{ $instace->card_1_text }}</p>
                     <a href="/perritos" class="button">Ver más <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="service">
-                    <figure><img src="/img/donativos.jpg" alt=""></figure>
-                    <h4 class="title">Hacer donativos</h4>
-                    <p>Tus donativos nos ayudan a seguir brindando cuidado y atención a los perritos en espera de un hogar amoroso.</p>
+                    <figure>
+                        @if ($instace->card_2_image)
+                        <img src="{{ asset('images/' . $instace->card_2_image) }}" alt="">
+                        @else
+                        <img src="/img/donativos.jpg" alt="">
+                        @endif
+                    </figure>
+                    <h4 class="title">{{ $instace->card_2_title }}</h4>
+                    <p>{{ $instace->card_2_text }}</p>
                     <a href="/donaciones" class="button">Ver más <i class="fas fa-arrow-right"></i></a>
                 </div>
                 <div class="service">
-                    <figure><img src="/img/cachorro.png" alt=""></figure>
-                    <h4 class="title">Foster to adopt</h4>
-                    <p>Nuestro programa de foster to adopt te permite brindar un hogar temporal a un perrito antes de adoptarlo de manera permanente.</p>
+                    <figure>
+                        @if ($instace->card_3_image)
+                        <img src="{{ asset('images/' . $instace->card_3_image) }}" alt="">
+                        @else
+                        <img src="/img/cachorro.png" alt="">
+                        @endif
+                    </figure>
+                    <h4 class="title">{{ $instace->card_3_title }}</h4>
+                    <p>{{ $instace->card_3_text }}</p>
                     <a href="/adopciones" class="button">Ver más <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
@@ -141,10 +179,10 @@
         </section>
 
         <section id="alianzas">
-            <h2>Alianzas estratégicas</h2>
-            <p>Somos una organización protectora de animales especializada, desde el 2020, en la ayuda a perros maltratados y/o abandonados.
-                Nuestros rescatistas realizan diariamente labores heroicas en un intento por salvar la mayor cantidad de vidas posible; sin embargo,
-                su capacidad de dar cobijo, alimento y atención médica, se ve ampliamente rebasada por una problemática que nunca cesa de crecer.</p>
+            <h2>{{ $instace->banner_footer_quote_title }}</h2>
+            <p>
+                {{ $instace->banner_footer_quote_description }}
+            </p>
             <div class="alianzas__logos">
                 <figure><img src="/img/webflow.png" alt=""></figure>
                 <figure><img src="/img/relume.png" alt=""></figure>
@@ -158,15 +196,16 @@
         <div class="container">
             <div class="left">
                 <h2>Contacto</h2>
-                <a href="tel:3314148548"><i class="fas fa-phone"></i> &nbsp; 3314148548</a>
-                <a href="mailto:roman@huellitasdiferentes.com"><i class="fas fa-envelope"></i>&nbsp;roman@huellitasdiferentes.com</a>
+                <a href="tel:{{ $instace->contact_phone }}"><i class="fas fa-phone"></i> &nbsp; {{ $instace->contact_phone }}</a>
+                <a href="mailto:{{ $instace->contact_email }}"><i class="fas fa-envelope"></i>&nbsp;{{ $instace->contact_email }}</a>
                 <div class="socials">
-                    <a href=""><i class="fab fa-instagram"></i></a>
-                    <a href=""><i class="fab fa-facebook"></i></a>
+                    <a href="{{ $instace->contact_facebook }}"><i class="fab fa-instagram"></i></a>
+                    <a href="{{ $instace->contact_instagram }}"><i class="fab fa-facebook"></i></a>
                 </div>
             </div>
             <div class="right">
-                <form action="">
+                <form action="{{ route('contacto.store') }}" method="post">
+                    @csrf
                     <input type="text" name="name" id="name" placeholder="Nombre*" required>
                     <input type="tel" name="phone" id="phone" placeholder="Tel.">
                     <input type="email" name="email" id="email" placeholder="Email*" required>

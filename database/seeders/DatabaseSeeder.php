@@ -8,6 +8,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use App\Models\PetCategory;
 use App\Models\Category;
+use App\Models\LadingPageConfig;
 
 class DatabaseSeeder extends Seeder
 {
@@ -29,5 +30,7 @@ class DatabaseSeeder extends Seeder
         });
 
         Category::firstOrCreate(['name' => 'Categoria padre']);
+
+        LadingPageConfig::create();
     }
 }
