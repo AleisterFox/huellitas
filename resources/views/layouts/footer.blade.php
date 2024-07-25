@@ -31,8 +31,8 @@
     </div>
     <div class="middle">
         <div class="socials">
-            <a href="" target="_blank"><i class="fab fa-facebook"></i></a>
-            <a href="" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="{{ $instance->contact_facebook }}" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="{{ $instance->contact_instagram }}" target="_blank"><i class="fab fa-instagram"></i></a>
         </div>
     </div>
 </footer>

@@ -22,6 +22,13 @@
                     </div>
                     @endforeach
                 </form>
+                <h3>Tamaño</h3>
+                @foreach(\App\Models\Pet::getSizes() as $size)
+                <div class="dog-type">
+                    <label for="option3">{{ $size }}</label>
+                    <input type="checkbox" class="size-checkbox" value="{{ $size }}">
+                </div>
+                @endforeach
             </div>
             <div class="perritos-container">
                 @each('landing._perrito', $pets, 'pet')
@@ -39,14 +46,11 @@
 
 @push('scripts')
     <script>
-        $(".category-checkbox").on('click', function() {
 
-            if ($(this).val() != 0) {
-                $('#default-category').prop('checked', false);
-            } else {
-                $('.category-checkbox').prop('checked', false);
-                $(this).prop('checked', true);
-            }
+        function triggerCall() {
+            let sizes = $('.size-checkbox:checked').map(function() {
+                return $(this).val();
+            }).get();
 
             let categories = $('.category-checkbox:checked').map(function() {
                 return $(this).val();
@@ -56,12 +60,30 @@
                 url: '/perritos',
                 method: 'POST',
                 data: {
-                    categories: categories
+                    categories: categories,
+                    sizes: sizes
                 },
                 success: function(data) {
                     $('.perritos-container').html(data);
                 }
             });
+        }
+
+        $(".category-checkbox").on('click', function() {
+
+            if ($(this).val() != 0) {
+                $('#default-category').prop('checked', false);
+            } else {
+                $('.category-checkbox').prop('checked', false);
+                $(this).prop('checked', true);
+            }
+
+            triggerCall();
+        });
+
+        $(".size-checkbox").on('click', function() {
+            $('.size-checkbox').not(this).prop('checked', false);
+            triggerCall();
         });
     </script>
 @endpush

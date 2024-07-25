@@ -33,9 +33,9 @@
 <div class="mb-3">
     <label for="size" class="form-label" required>Tamaño</label>
     <select name="size" id="size" class="form-control">
-        <option value="Pequeño">Pequeño</option>
-        <option value="Mediano">Mediano</option>
-        <option value="Grande">Grande</option>
+        @foreach(\App\Models\Pet::getSizes() as $size)
+            <option value="{{ $size }}">{{ $size }}</option>
+        @endforeach
     </select>
 </div>
 <div class="mb-3">

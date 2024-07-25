@@ -166,7 +166,7 @@
                         <option value="1">si</option>
                         <option value="0">no</option>
                     </select>
-                    <label for="medio-informacion">¿Por qué medio te enteraste de la adopción de Ágata?</label>
+                    <label for="medio-informacion">¿Por qué medio te enteraste de la adopción de {{ $pet->name }}?</label>
                     <select name="media_adopt" id="medio-informacion">
                         <option value="">Seleccione*</option>
                         <option value="medio1">medio1</option>

@@ -24,6 +24,7 @@ $instance = LadingPageConfig::getInstance();
                 <th>Email</th>
                 <th>Facebook</th>
                 <th>Instagram</th>
+                <th>Perritos Adoptados</th>
             </tr>
         </thead>
         <tbody>
@@ -39,6 +40,9 @@ $instance = LadingPageConfig::getInstance();
                 </td>
                 <td>
                     <input type="text" class="form-control" name="contact_instagram" id="instagram" form="contactForm" value="{{ $instance->contact_instagram }}">
+                </td>
+                <td>
+                    <input type="text" class="form-control" name="adopted_pets_count" id="adopted_pets_count" form="contactForm" value="{{ $instance->adopted_pets_count }}">
                 </td>
             </tr>
         </tbody>

@@ -43,10 +43,16 @@ class MainController extends Controller
     public function perritos(Request $request)
     {
         if ($request->isMethod('post') && $request->has('categories')) {
+            $pets = Pet::query();
+
             if ($request->collect('categories')->contains(0)) {
-                $pets = Pet::all();
+                $pets = $pets->get();
             } else {
-                $pets = Pet::whereIn('breed', $request->collect('categories'))->get();
+                $pets = $pets->whereIn('breed', $request->collect('categories'))->get();
+            }
+
+            if ($request->has('sizes')) {
+                $pets = $pets->where('size', $request->collect('sizes')->first());
             }
 
             return $pets->map(function($pet) {

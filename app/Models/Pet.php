@@ -20,4 +20,13 @@ class Pet extends Model
     {
         return $this->status == 1 ? 'Disponible' : 'Adoptado';
     }
+
+    public static function getSizes()
+    {
+        return collect([
+            'Pequeño',
+            'Mediano',
+            'Grande'
+        ]);
+    }
 }
