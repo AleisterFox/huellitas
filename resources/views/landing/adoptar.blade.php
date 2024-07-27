@@ -63,7 +63,7 @@
                 <h2 class="dog__name">{{ $pet->name }}</h2>
                 <div class="gender">
                     <p><strong>Sexo:</strong></p>
-                    <p>Hembra</p>
+                    <p>{{ $pet->sex }}</p>
                 </div>
                 <div class="age">
                     <p><strong>Edad:</strong></p>
@@ -75,7 +75,7 @@
                 </div>
                 <div class="behavior">
                     <p><strong>Convive con:</strong></p>
-                    <p>Perros y niños</p>
+                    <p>{{ $pet->live_with }}</p>
                 </div>
                 <div class="race">
                     <p><strong>Mix de raza:</strong></p>

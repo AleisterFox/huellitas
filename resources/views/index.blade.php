@@ -58,7 +58,6 @@ $instace = LadingPageConfig::getInstance();
                         <p>
                             {{ $slide->description }}
                         </p>
-                        <a href="/contacto" class="button">Contacto</a>
                     </li>
                     @endforeach
                     @endif
