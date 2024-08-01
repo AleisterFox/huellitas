@@ -54,7 +54,7 @@ class OrderController extends Controller
         }
 
         MercadoPagoConfig::setAccessToken(env('MERCADO_PAGO_TOKEN'));
-        MercadoPagoConfig::setRuntimeEnviroment(MercadoPagoConfig::LOCAL);
+        MercadoPagoConfig::setRuntimeEnviroment(MercadoPagoConfig::SERVER);
 
         $client = new PreferenceClient();
 
@@ -62,22 +62,26 @@ class OrderController extends Controller
             return [
                 'id' => "PROD-{$product->id}",
                 'name' => $product->name,
-                'quantity' => $product->pivot->quantity,
+                'quantity' => (int) $product->pivot->quantity,
                 'unit_price' => (float) $product->pivot->price,
             ];
         });
 
-        $preference = $client->create([
-            'items' => [$products],
-            "auto_return" => "approved",
-            "back_urls" => [
-                "success" => route('order.callback', ['order' => $order, 'status' => 'success']),
-                "failure" => route('order.callback', ['order' => $order, 'status' => 'failure']),
-                "pending" => route('order.callback', ['order' => $order, 'status' => 'pending'])
-            ],
-            "statement_descriptor" => "Huellitas",
-            "external_reference" => "CDP001"
-        ]);
+        try {
+            $preference = $client->create([
+                'items' => [$products],
+                "auto_return" => "approved",
+                "back_urls" => [
+                    "success" => route('order.callback', ['order' => $order, 'status' => 'success']),
+                    "failure" => route('order.callback', ['order' => $order, 'status' => 'failure']),
+                    "pending" => route('order.callback', ['order' => $order, 'status' => 'pending'])
+                ],
+                "statement_descriptor" => "Huellitas",
+                "external_reference" => "CDP001"
+            ]);
+        } catch (\Exception $e) {
+            return redirect()->back()->with('message', 'Error al crear la preferencia');
+        }
 
         $order->update([
             'preferences_id' => $preference->id 

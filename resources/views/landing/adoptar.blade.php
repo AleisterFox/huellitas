@@ -167,11 +167,7 @@
                         <option value="0">no</option>
                     </select>
                     <label for="medio-informacion">¿Por qué medio te enteraste de la adopción de {{ $pet->name }}?</label>
-                    <select name="media_adopt" id="medio-informacion">
-                        <option value="">Seleccione*</option>
-                        <option value="medio1">medio1</option>
-                        <option value="medio12">medio2</option>
-                    </select>
+                    <input type="text" class="form-control" name="media_adopt">
                     <label for="why">Platícanos un poco más de ti, ¿Por qué consideras que eres la persona adecuada para darle un hogar?</label>
                     <textarea name="message" id="why" cols="30" rows="10" placeholder="Mensaje*" required></textarea>
                     <button type="submit" class="button">Enviar Formulario</button>
