@@ -101,7 +101,7 @@
                             </li>
                             @php
                                 $shouldOpen = in_array(request()->route()->getName(), [
-                                    'contacto.index', 'pet-adoption-form.index', 'slides.index', 'config.index', 'donations-form.index', 'donations-form.index'
+                                    'alianzas.index', 'contacto.index', 'pet-adoption-form.index', 'slides.index', 'config.index', 'donations-form.index', 'donations-form.index'
                                 ]);
                             @endphp
                             <li>
@@ -111,6 +111,11 @@
                                     <li class="w-100">
                                         <a href="{{ route('slides.index') }}" class="nav-link {{ request()->route()->getName() == 'slides.index' ? 'active' : '' }}">
                                             <span class="d-none d-sm-inline">Slides</span>
+                                        </a>
+                                    </li>
+                                    <li class="w-100">
+                                        <a href="{{ route('alianzas.index') }}" class="nav-link {{ request()->route()->getName() == 'alianzas.index' ? 'active' : '' }}">
+                                            <span class="d-none d-sm-inline">Alianzas</span>
                                         </a>
                                     </li>
                                     <li class="w-100">

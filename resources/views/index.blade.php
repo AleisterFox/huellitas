@@ -183,10 +183,9 @@ $instace = LadingPageConfig::getInstance();
                 {{ $instace->banner_footer_quote_description }}
             </p>
             <div class="alianzas__logos">
-                <figure><img src="/img/webflow.png" alt=""></figure>
-                <figure><img src="/img/relume.png" alt=""></figure>
-                <figure><img src="/img/webflow.png" alt=""></figure>
-                <figure><img src="/img/relume.png" alt=""></figure>
+                @foreach ($alliances as $alliance)
+                <figure><img src="{{ asset('slides/' . $alliance->image) }}" alt=""></figure>
+                @endforeach
             </div>
         </section>
 

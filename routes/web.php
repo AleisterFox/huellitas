@@ -18,6 +18,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\SlideConfigController;
 use App\Http\Controllers\FosterToAdoptConfigController;
 use App\Http\Controllers\DonationsConfigController;
+use App\Http\Controllers\AllianceController;
 
 Auth::routes(['register' => false]);
 
@@ -68,4 +69,5 @@ Route::prefix('admin')->middleware(['auth'])->group(function() {
     Route::resource('contacto', ContactFormController::class);
     Route::resource('adopciones', AdoptionFormController::class);
     Route::resource('pet-adoption-form', PetAdoptionFormController::class);
+    Route::resource('alianzas', AllianceController::class);
 });
