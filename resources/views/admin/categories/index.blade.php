@@ -73,10 +73,6 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="mb-3">
-                        <label for="image" class="form-label">Imagen</label>
-                        <input type="file" class="form-control" id="image" name="image" required>
-                    </div>
                 </form>
             </div>
             <div class="modal-footer">
@@ -91,7 +87,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="updateCategoryModal">Actualizar producto</h5>
+                <h5 class="modal-title" id="updateCategoryModal">Actualizar categoria</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -108,10 +104,6 @@
                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
                         </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="image" class="form-label">Imagen</label>
-                        <input type="file" class="form-control" id="image" name="image" required>
                     </div>
                 </form>
             </div>

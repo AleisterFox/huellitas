@@ -10,59 +10,59 @@
                     <div class="glide__track" data-glide-el="track">
                         <ul class="glide__slides">
                             <li style="border: 1px solid" class="glide__slide">
-                                <figure><img src="/images/{{ $product->image }}" alt="" /></figure>
+                                <figure><img src="{{ asset('/images/' . $product->image) }}" alt="" /></figure>
                             </li>
 
                             @if ($product->image2)
                             <li style="border: 1px solid" class="glide__slide">
-                                <figure><img src="/images/{{ $product->image2 }}" alt="" /></figure>
+                                <figure><img src="{{ asset('/images/' . $product->image2) }}" alt="" /></figure>
                             </li>
                             @endif
 
                             @if ($product->image3)
                             <li style="border: 1px solid" class="glide__slide">
-                                <figure><img src="/images/{{ $product->image3 }}" alt="" /></figure>
+                                <figure><img src="{{ asset('/images/' . $product->image3) }}" alt="" /></figure>
                             </li>
                             @endif
 
                             @if ($product->image4)
                             <li style="border: 1px solid" class="glide__slide">
-                                <figure><img src="/images/{{ $product->image4 }}" alt="" /></figure>
+                                <figure><img src="{{ asset('/images/' . $product->image4) }}" alt="" /></figure>
                             </li>
                             @endif
 
                             @if ($product->image5)
                             <li style="border: 1px solid" class="glide__slide">
-                                <figure><img src="/images/{{ $product->image5 }}" alt="" /></figure>
+                                <figure><img src="{{ asset('/images/' . $product->image5) }}" alt="" /></figure>
                             </li>
                             @endif
                         </ul>
 
                         <div class="glide__bullets" data-glide-el="controls[nav]">
                             <button class="glide__bullet" data-glide-dir="=0">
-                                <img src="/images/{{ $product->image }}" alt="" />
+                                <img src="{{ asset('/images/' . $product->image) }}" alt="" />
                             </button>
                             @if ($product->image2)
                             <button class="glide__bullet" data-glide-dir="=1">
-                                <img src="/images/{{ $product->image2 }}" alt="" />
+                                <img src="{{ asset('/images/' . $product->image2) }}" alt="" />
                             </button>
                             @endif
 
                             @if ($product->image3)
                             <button class="glide__bullet" data-glide-dir="=2">
-                                <img src="/images/{{ $product->image3 }}" alt="" />
+                                <img src="{{ asset('/images/' . $product->image3) }}" alt="" />
                             </button>
                             @endif
 
                             @if ($product->image4)
                             <button class="glide__bullet" data-glide-dir="=3">
-                                <img src="/images/{{ $product->image4 }}" alt="" />
+                                <img src="{{ asset('/images/' . $product->image4) }}" alt="" />
                             </button>
                             @endif
 
                             @if ($product->image5)
                             <button class="glide__bullet" data-glide-dir="=4">
-                                <img src="/images/{{ $product->image5 }}" alt="" />
+                                <img src="{{ asset('/images/' . $product->image5) }}" alt="" />
                             </button>
                             @endif
                         </div>
@@ -93,24 +93,7 @@
                 <i class="fas fa-x"></i>
             </div>
             <h2>Carrito de compra</h2>
-            <div class="products">
-                <div class="product">
-                    <div class="product__info">
-                        <i class="fas fa-x delete__product"></i>
-                        <figure><img src="/img/croquetas.jpg" alt="" /></figure>
-                        <p class="product__name">Nombre del producto</p>
-                    </div>
-                    <p class="product__price">$ 0.00 MXN</p>
-                </div>
-            </div>
-            <div class="subtotal">
-                <h4>Subtotal</h4>
-                <p class="subtotal__amount">$ 0.00 MXN</p>
-            </div>
-            <div class="total">
-                <h3>Total</h3>
-                <p class="total__amount">$ 0.00 MXN</p>
-            </div>
+            <div id="cart-content"></div>
             <a href="informacion" class="button">Finalizar Compra</a>
             <div class="cart__bottom">
                 <a href="javascript:void(0)" class="keep__buying">Seguir comprando</a>
@@ -175,7 +158,7 @@
             method: 'POST',
             data: params,
             success: function(response) {
-                console.log(response);
+                $("#cart-content").html(response);
             },
             error: function(error) {
                 console.log(error);
@@ -191,6 +174,23 @@
 
     addToCartButton.addEventListener('click', function() {
         addToCart();
+    });
+
+    $(document).on('click', '.delete__product', function() {
+        $.ajax({
+            url: '/remove-from-cart',
+            method: 'POST',
+            data: {
+                product_id: $(this).data('product_id'),
+                "_token": "{{ csrf_token() }}",
+            },
+            success: function(response) {
+                window.location.reload();
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
     });
 </script>
 @endpush

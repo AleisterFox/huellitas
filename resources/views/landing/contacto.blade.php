@@ -1,16 +1,11 @@
 @extends('layouts.main')
 
 @section('content')
+@use('App\Models\LadingPageConfig')
+@php
+    $instance = LadingPageConfig::getInstance();
+@endphp 
 <main>
-    @if (session('message'))
-        <div class="success-modal">
-            <div class="check"><i class="fas fa-check"></i></div>
-            <p>Enviado con éxito.</p>
-            <p>En breve nos pondremos en contacto con usted.</p>
-            <a href="javascript:void(0)" class="button close-success-modal">Cerrar</a>
-        </div>
-    @endif
-
     <section id="contact-page">
         <figure>
             <img src="img/contact.jpg" alt="" />
@@ -18,12 +13,15 @@
         <section id="contact">
             <div class="container">
                 <div class="left">
+                    @session('message')
+                        @include('layouts._alert', ['message' => $value])
+                    @endsession
                     <h2>Contacto</h2>
-                    <a href="tel:3314148548"><i class="fas fa-phone"></i> &nbsp; 3314148548</a>
-                    <a href="mailto:roman@huellitasdiferentes.com"><i class="fas fa-envelope"></i>&nbsp;roman@huellitasdiferentes.com</a>
+                    <a href="tel:{{ $instance->contact_phone }}"><i class="fas fa-phone"></i> &nbsp; {{ $instance->contact_phone }}</a>
+                    <a href="mailto:{{ $instace->contact_email }}"><i class="fas fa-envelope"></i>&nbsp;{{ $instance->contact_email }}</a>
                     <div class="socials">
-                        <a href=""><i class="fab fa-instagram"></i></a>
-                        <a href=""><i class="fab fa-facebook"></i></a>
+                        <a href="{{ $instance->contact_instagram }}"><i class="fab fa-instagram"></i></a>
+                        <a href="{{ $instance->contact_facebook }}"><i class="fab fa-facebook"></i></a>
                     </div>
                 </div>
                 <div class="right">
